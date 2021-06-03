@@ -7,12 +7,15 @@ import os
 # emoji codes https://emojiterra.com/rainbow/
 # keeping bot alive on repl.it https://www.codementor.io/@garethdwyer/building-a-discord-bot-with-python-and-repl-it-miblcwejz
 # change bot status https://python.plainenglish.io/how-to-change-discord-bot-status-with-discord-py-39219c8fceea
+# "run on repl.it" button https://replit.com/talk/learn/Configuring-GitHub-repos-to-run-on-Replit-and-contributing-back/23948
+
 
 client = discord.Client()
 
 words = ["pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "june", "heart", "jack"]
 
 #TODO: refactor emojis to two lists: default (unicode) and custom (Emoji objects)
+#TODO: get emojis from other servers using nqn (send message with command in order to use nqn to react)
 emoji_list = ["rainbow_flag", "prideblahaj", "rainbow", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin"]
 emoji_map = {}
 
@@ -56,8 +59,9 @@ async def on_message(message):
     if "ryan" in string:
         await message.add_reaction(emoji_map["ryancoin"])
 
-    #by midhat's (MIDBI7S#7667) request
+    #per midhat's request
     if "midhat" in string:
         await message.add_reaction("\u2699\uFE0F") #gear emoji = unity
+        await message.reply("father!")
 
 client.run(os.getenv('TOKEN'))
