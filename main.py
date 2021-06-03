@@ -2,6 +2,7 @@ import discord
 import os
 from keep_alive import keep_alive
 import re
+import time
 # from dotenv import load_dotenv
 # load_dotenv('---.env')
 # emoji info https://gist.github.com/scragly/b8d20aece2d058c8c601b44a689a47a0
@@ -23,7 +24,11 @@ proud_friendo_role_id = 849425044345716756 #for helpful allies
 
 pun_master_role_id = 842825815808409632
 roles_map = {}
+
 onlypuns_channel_id = 842807004879650826
+rant_channel_id = 838861911374037062
+
+times = {"last_cry_time":0}
 
 blahajgang_guild_id = 825807863146479657
 
@@ -31,11 +36,11 @@ blahajgang_guild_id = 825807863146479657
 
 #default -> unicode (see https://emojiterra.com for codes)
 default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars"]
-default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303"}
+default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303", "angry": "\U0001f620"}
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
-custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj"]
+custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry"]
 custom_map = {}
 
 #nqn -> custom emojis from other servers using NotQuiteNitro bot (can be done by sending a message with !react <emoji_name>)
@@ -89,6 +94,9 @@ async def on_message(message):
 
     if "rip" in string or "sad" in string:
         await message.add_reaction(custom_map["rip"])
+    
+    if "angry" in string or "anger" in string or "mad" in string:
+        await message.add_reaction(default_map["angry"])
 
     if "melon" in string:
         await message.add_reaction(custom_map["melonblahaj"])
@@ -142,5 +150,12 @@ async def on_message(message):
 
     if "ping" in string:
         await message.add_reaction(custom_map["angrypinghaj"])
+    
+    #react to msgs in #rant-here-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa but only if it has been more than an hour since last cry react
+    if message.channel.id == rant_channel_id:
+        if time.time() > times["last_cry_time"] + 3600:
+            await message.add_reaction(custom_map["blahajcry"])
+            times["last_cry_time"] = time.time()
+
 keep_alive()
 client.run(os.getenv('TOKEN'))
