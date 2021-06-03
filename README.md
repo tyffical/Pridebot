@@ -10,6 +10,8 @@ Note: BLAHAJGang-specific emojis will not work unless those emojis are also incl
 
 ## Run It Yourself
 
+Note: You will need a .env file with ```TOKEN={bot_token}```.
+
 ### Locally
 In a terminal, run
 ```
@@ -21,6 +23,8 @@ and you're good to go!
 
 ### On Repl.it
 [![Run on Repl.it](https://repl.it/badge/github/tyffical/Pridebot)](https://repl.it/github/tyffical/Pridebot)
+
+You can turn on the ```Always On``` setting (found by clicking on the repl name) to keep the bot continuously running!
 
 ## Contributors
 * Tiffany Trinh (https://www.mit.edu/~acetiff)
