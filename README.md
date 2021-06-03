@@ -13,17 +13,14 @@ Note: BLAHAJGang-specific emojis will not work unless those emojis are also incl
 ### Locally
 In a terminal, run
 ```
-git clone https://github.com/midhat-alkhateeb/Pridebot.git
+git clone https://github.com/tyffical/Pridebot.git
 cd Pridebot
 python main.py
 ```
 and you're good to go!
 
 ### On Repl.it
-[![Run on Repl.it](https://repl.it/badge/github/midhat-alkhateeb/Pridebot)](https://repl.it/github/midhat-alkhateeb/Pridebot)
-
-## Creator
-* Midhat Alkhateeb (https://github.com/midhat-alkhateeb)
+[![Run on Repl.it](https://repl.it/badge/github/tyffical/Pridebot)](https://repl.it/github/tyffical/Pridebot)
 
 ## Contributors
 * Tiffany Trinh (https://www.mit.edu/~acetiff)

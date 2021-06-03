@@ -20,6 +20,8 @@ words = ["pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "june", "h
 emoji_list = ["rainbow_flag", "prideblahaj", "rainbow", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin"]
 emoji_map = {}
 
+
+
 proud_friendo_role_id = 849425044345716756
 
 @client.event
@@ -59,11 +61,14 @@ async def on_message(message):
     
     if "ryan" in string:
         await message.add_reaction(emoji_map["ryancoin"])
+    
+    #per neel's request
+    if "space" in string or "innovation" in string or "motivation" in string:
+        await message.add_reaction("\U0001f680") #rocket emoji
 
-    #per midhat's request
-    if "midhat" in string:
-        await message.add_reaction("\u2699\uFE0F") #gear emoji = unity
-        await message.reply("father!")
+    #per hana's request
+    if "hana" in string:
+        await message.add_reaction("\u2728") #sparkles emoji
 
 keep_alive()
 client.run(os.getenv('TOKEN'))
