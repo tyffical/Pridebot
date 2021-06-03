@@ -20,7 +20,7 @@ python main.py
 and you're good to go!
 
 ### On Repl.it
-[![Run on Repl.it](https://repl.it/badge/github/tyffical/Pridebot)](https://repl.it/github/tyffical/Pridebot)
+[![Run on Repl.it](https://repl.it/badge/github/midhat-alkhateeb/Pridebot)](https://repl.it/github/midhat-alkhateeb/Pridebot)
 
 ## Creator
 * Midhat Alkhateeb (https://github.com/midhat-alkhateeb)
