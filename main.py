@@ -1,6 +1,7 @@
 import discord
 import os
 from keep_alive import keep_alive
+import re
 # from dotenv import load_dotenv
 # load_dotenv('---.env')
 # emoji info https://gist.github.com/scragly/b8d20aece2d058c8c601b44a689a47a0
@@ -9,6 +10,8 @@ from keep_alive import keep_alive
 # keeping bot alive on repl.it https://www.codementor.io/@garethdwyer/building-a-discord-bot-with-python-and-repl-it-miblcwejz
 # change bot status https://python.plainenglish.io/how-to-change-discord-bot-status-with-discord-py-39219c8fceea
 # "run on repl.it" button https://replit.com/talk/learn/Configuring-GitHub-repos-to-run-on-Replit-and-contributing-back/23948
+# python regex basics https://www.w3schools.com/python/python_regex.asp
+# python regex cheatsheet https://cheatography.com/mutanclan/cheat-sheets/python-regular-expression-regex/
 
 #global vars
 
@@ -79,10 +82,10 @@ async def on_message(message):
     
     if "blahaj" in string:
         await message.add_reaction(custom_map["justblahaj"])
-    
-    if "yeet" in string:
-        #TODO: yeets with an arbitrary number of e's (same for gaaaay)
-        await message.add_reaction(custom_map["blahajyeet"])
+
+    #matches yeets with an arbitrary number of e's
+    if re.search("yee+t", string) != None:
+      await message.add_reaction(custom_map["blahajyeet"])
 
     if "rip" in string:
         await message.add_reaction(custom_map["rip"])
