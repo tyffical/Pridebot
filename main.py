@@ -80,20 +80,20 @@ async def on_message(message):
 
             break
     
-    if "blahaj" in string:
+    if "blahaj" in string or "shark" in string:
         await message.add_reaction(custom_map["justblahaj"])
 
     #matches yeets with an arbitrary number of e's
     if re.search("yee+t", string) != None:
       await message.add_reaction(custom_map["blahajyeet"])
 
-    if "rip" in string:
+    if "rip" in string or "sad" in string:
         await message.add_reaction(custom_map["rip"])
 
     if "melon" in string:
         await message.add_reaction(custom_map["melonblahaj"])
     
-    if "ryan" in string:
+    if "ryan" in string or "swift" in string:
         await message.add_reaction(custom_map["ryancoin"])
     
     #per neel's request
