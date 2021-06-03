@@ -6,8 +6,7 @@ BLAHAJGang's custom-made pride Discord bot that reacts to pride-related messages
 ## Add to Server
 Note: BLAHAJGang-specific emojis will not work unless those emojis are also included in the server and have the same names.
 
-[Click here to invite the bot!]
-(https://discord.com/api/oauth2/authorize?client_id=849471740052504606&permissions=2148002880&scope=bot)
+[Click here to invite the bot!](https://discord.com/api/oauth2/authorize?client_id=849471740052504606&permissions=2148002880&scope=bot)
 
 ## Run It Yourself
 
