@@ -18,20 +18,28 @@ pride_words = ["pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "jun
 
 proud_friendo_role_id = 849425044345716756 #for helpful allies
 
+pun_master_role_id = 842825815808409632
+roles_map = {}
+onlypuns_channel_id = 842807004879650826
+
+blahajgang_guild_id = 825807863146479657
+
 #emojis
 
 #default -> unicode (see https://emojiterra.com for codes)
-default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles"]
-default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728"}
-#TODO: find a way to automate getting the unicodes
+default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars"]
+default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303"}
+#TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
-custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin"]
+custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj"]
 custom_map = {}
 
 #nqn -> custom emojis from other servers using NotQuiteNitro bot (can be done by sending a message with !react <emoji_name>)
+#unfortunately this does not work if sender is a bot :(
+#TODO: figure out a way to use nqn anyway?
 nqn_list = ["elonsmoke", "meow_coffee", "catclown", "LMAO", "crii", "blobdance", "meow_code", "meow_heart", "3c"]
-nqn_msg = "!react :{}:"
+nqn_msg = "!react {}"
 
 #actual bot functions
 
@@ -41,6 +49,8 @@ async def on_ready():
     print(client.user)
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
+    blahajgang_guild = discord.utils.get(client.guilds,id=blahajgang_guild_id)
+    roles_map["pun_master"] = discord.utils.get(blahajgang_guild.roles,id=pun_master_role_id)
     await client.change_presence(activity=discord.Game("Happy Pride Month! " + default_map["rainbow_flag"]))
 
 @client.event 
@@ -50,15 +60,21 @@ async def on_message(message):
       return
 
     string = "".join(message.content.lower().split()) #strip whitespace
+
+    #TODO: see if computer vision can be used to detect text or rainbows in images
     for word in pride_words:
         if word in string:
             await message.add_reaction(default_map["rainbow_flag"])
             await message.add_reaction(custom_map["prideblahaj"])
-            #TODO: check if bot/"User" object instead of "Member", no roles for them
+
+            #check if author not "Member" (i.e. bot) -> they have no roles
+            if not isinstance(message.author, discord.Member):
+              break
             for role in message.author.roles:
                 if role.id == proud_friendo_role_id:
                     await message.add_reaction(default_map["rainbow"])
                     await message.add_reaction(custom_map["partyblahaj"])
+
             break
     
     if "blahaj" in string:
@@ -80,30 +96,48 @@ async def on_message(message):
     #per neel's request
     if "space" in string or "innovation" in string or "motivation" in string:
         await message.add_reaction(default_map["rocket"])
-    if "elon" in string:
-        await message.reply(nqn_msg.format("elonsmoke"))
-    if "coffee" in string:
-        await message.reply(nqn_msg.format("meow_coffee"))
-    if "clown" in string:
-        await message.reply(nqn_msg.format("catclown"))
-    if "lmao" in string:
-        await message.reply(nqn_msg.format("LMAO"))
-    if "cry" in string or "cri" in string:
-        await message.reply(nqn_msg.format("crii"))
-    if "dance" in string:
-        await message.reply(nqn_msg.format("blobdance"))
+    # if "elon" in string:
+    #     await message.reply(nqn_msg.format("elonsmoke"))
+    # if "coffee" in string:
+    #     await message.reply(nqn_msg.format("meow_coffee"))
+    # if "clown" in string:
+    #     await message.reply(nqn_msg.format("catclown"))
+    # if "lmao" in string:
+    #     await message.reply(nqn_msg.format("LMAO"))
+    # if "cry" in string or "cri" in string or "sad" in string:
+    #     await message.reply(nqn_msg.format("crii"))
+    # if "dance" in string:
+    #     await message.reply(nqn_msg.format("blobdance"))
 
     #per hana's request
     if "hana" in string:
         await message.add_reaction(default_map["sparkles"]) 
 
     #tiffany having fun
-    if "code" in string or "hack" in string:
-        await message.reply(nqn_msg.format("meow_code"))
-    if "cat" in string or "kitty" in string or "meow" in string:
-        await message.reply(nqn_msg.format("meow_heart"))
-    if "tiff" in string:
-        await message.reply(nqn_msg.format("3c"))
+    # if "code" in string or "hack" in string:
+    #     await message.reply(nqn_msg.format("meow_code"))
+    # if "cat" in string or "kitty" in string or "meow" in string:
+    #     await message.reply(nqn_msg.format("meow_heart"))
+    # if "tiff" in string:
+    #     await message.reply(nqn_msg.format("3c"))
 
+    if "night" in string:
+        await message.add_reaction(default_map["night_with_stars"])
+
+    #restricted to #onlypuns channel
+    if message.channel.id == onlypuns_channel_id:
+        if "pun" in string:
+            not_pun_master = True
+            #prevent pinging the pun master if they made the msg
+            for role in message.author.roles:
+                if role.id == pun_master_role_id:
+                    not_pun_master = False
+                    break
+            #ping pun master to deliver a needed pun
+            if not_pun_master:
+                await message.reply(roles_map["pun_master"].mention)
+
+    if "ping" in string:
+        await message.add_reaction(custom_map["angrypinghaj"])
 keep_alive()
 client.run(os.getenv('TOKEN'))
