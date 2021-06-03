@@ -1,5 +1,6 @@
 import discord
 import os
+from keep_alive import keep_alive
 # from dotenv import load_dotenv
 # load_dotenv('---.env')
 # emoji info https://gist.github.com/scragly/b8d20aece2d058c8c601b44a689a47a0
@@ -64,4 +65,5 @@ async def on_message(message):
         await message.add_reaction("\u2699\uFE0F") #gear emoji = unity
         await message.reply("father!")
 
+keep_alive()
 client.run(os.getenv('TOKEN'))
