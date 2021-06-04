@@ -35,12 +35,12 @@ blahajgang_guild_id = 825807863146479657
 #emojis
 
 #default -> unicode (see https://emojiterra.com for codes)
-default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars"]
-default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303", "angry": "\U0001f620"}
+default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars", "angry", "sunrise", "pirate_flag"]
+default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303", "angry": "\U0001f620", "sunrise": "\U0001f305", "pirate_flag": "\U0001f3f4\u200D\u2620\uFE0F"}
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
-custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry"]
+custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj"]
 custom_map = {}
 
 #nqn -> custom emojis from other servers using NotQuiteNitro bot (can be done by sending a message with !react <emoji_name>)
@@ -85,6 +85,9 @@ async def on_message(message):
 
             break
     
+    if "straight" in string:
+        await message.add_reaction(default_map["pirate_flag"])
+
     if "blahaj" in string or "shark" in string:
         await message.add_reaction(custom_map["justblahaj"])
 
@@ -129,11 +132,14 @@ async def on_message(message):
     #     await message.reply(nqn_msg.format("meow_code"))
     # if "cat" in string or "kitty" in string or "meow" in string:
     #     await message.reply(nqn_msg.format("meow_heart"))
-    # if "tiff" in string:
-    #     await message.reply(nqn_msg.format("3c"))
+    if "tiff" in string:
+        # await message.reply(nqn_msg.format("3c"))
+        await message.add_reaction(custom_map["royalblahaj"])
 
     if "night" in string:
         await message.add_reaction(default_map["night_with_stars"])
+    if "morning" in string:
+        await message.add_reaction(default_map["sunrise"])
 
     #restricted to #onlypuns channel
     if message.channel.id == onlypuns_channel_id:
