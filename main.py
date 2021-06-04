@@ -179,6 +179,13 @@ async def on_message(message):
         if time.time() > times["last_cry_time"] + 3600:
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
+            
+@client.event
+async def on_message(message):
+  if client.user.mentioned_in(message):
+    await message.channel.send("Hey, <@826277072203808779>")
+ #I can't wait to see fun it brings. 
+            
 
 keep_alive()
 client.run(os.getenv('TOKEN'))
