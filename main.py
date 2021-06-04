@@ -40,7 +40,7 @@ default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
-custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj"]
+custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj", "rainbowblahaj", "spaceblahaj"]
 custom_map = {}
 
 #nqn -> custom emojis from other servers using NotQuiteNitro bot (can be done by sending a message with !react <emoji_name>)
@@ -86,6 +86,7 @@ async def on_message(message):
             for role in message.author.roles:
                 if role.id == proud_friendo_role_id:
                     await message.add_reaction(default_map["rainbow"])
+                    await message.add_reaction(custom_map["rainbowblahaj"])
                     await message.add_reaction(custom_map["partyblahaj"])
 
             break
@@ -102,8 +103,15 @@ async def on_message(message):
     if re.search("yee+t", string) != None:
       await message.add_reaction(custom_map["blahajyeet"])
 
-    if "rip" in string or "sad" in string:
+    if "rip" in string:
         await message.add_reaction(custom_map["rip"])
+    
+    #only cry if not in rant channel
+    if message.channel.id != rant_channel_id:
+        if "cry" in string or "cri" in string or "sad" in string:
+            await message.add_reaction(custom_map["blahajcry"])
+
+    #TODO: oofblahaj
     
     if "angry" in string or "anger" in string or "mad" in string:
         await message.add_reaction(default_map["angry"])
@@ -129,6 +137,8 @@ async def on_message(message):
     #     await message.reply(nqn_msg.format("crii"))
     # if "dance" in string:
     #     await message.reply(nqn_msg.format("blobdance"))
+    if "neel" in string:
+        await message.add_reaction(custom_map["spaceblahaj"])
 
     #per hana's request
     if "hana" in string:
@@ -151,14 +161,14 @@ async def on_message(message):
     if "ping" in string:
         await message.add_reaction(custom_map["angrypinghaj"])
 
-    if "innit" in string:
+    if "innit" in string or "bruv" in string:
         await message.add_reaction(default_map["england"])
 
     #per adam's request
     if "manannan" in string:
         await message.add_reaction(default_map["motorboat"])
     
-    if "adam" in string:
+    if "adam" in string or "iom" in string:
         await message.add_reaction(default_map["isle_of_man"])
 
     #restricted to #onlypuns channel, per vijay's request
