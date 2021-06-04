@@ -171,6 +171,14 @@ async def on_message(message):
     if "adam" in string or "iom" in string:
         await message.add_reaction(default_map["isle_of_man"])
 
+if "party" in string:
+        # await message.reply(nqn_msg.format("3c"))
+        await message.add_reaction(custom_map["isle_of_man"])
+
+        await message.add_reaction(custom_map["partyblahaj"])
+
+        await message.add_reaction(custom_map["tada"])
+
     #restricted to #onlypuns channel, per vijay's request
     if message.channel.id == onlypuns_channel_id:
         if "pun" in string:
