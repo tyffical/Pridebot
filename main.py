@@ -35,8 +35,8 @@ blahajgang_guild_id = 825807863146479657
 #emojis
 
 #default -> unicode (see https://emojiterra.com for codes)
-default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars", "angry", "sunrise", "pirate_flag"]
-default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303", "angry": "\U0001f620", "sunrise": "\U0001f305", "pirate_flag": "\U0001f3f4\u200D\u2620\uFE0F"}
+default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars", "angry", "sunrise", "pirate_flag", "england", "motorboat", "isle_of_man"]
+default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303", "angry": "\U0001f620", "sunrise": "\U0001f305", "pirate_flag": "\U0001f3f4\u200D\u2620\uFE0F", "england": "\U0001f3f4\U000e0067\U000e0062\U000e0065\U000e006e\U000e0067\U000e007f", "motorboat": "	\U0001f6e5\uFE0F", "isle_of_man": "\U0001f1ee\U0001f1f2"}
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
@@ -61,15 +61,18 @@ async def on_ready():
     roles_map["pun_master"] = discord.utils.get(blahajgang_guild.roles,id=pun_master_role_id)
     await client.change_presence(activity=discord.Game("Happy Pride Month! " + default_map["rainbow_flag"]))
 
+#TODO: refactor this function maybe, it's getting long
 @client.event 
 async def on_message(message): 
     #ignore bot's own message
     if message.author.id == client.user.id:
       return
 
-    string = "".join(message.content.lower().split()) #strip whitespace
+    #strip whitespace and change to lowercase
+    string = "".join(message.content.lower().split())
 
     #TODO: see if computer vision can be used to detect text or rainbows in images
+    #pride reacts
     for word in pride_words:
         if word in string:
             await message.add_reaction(default_map["rainbow_flag"])
@@ -78,6 +81,8 @@ async def on_message(message):
             #check if author not "Member" (i.e. bot) -> they have no roles
             if not isinstance(message.author, discord.Member):
               break
+
+            #proud friendo gets extra reacts, per jack's request
             for role in message.author.roles:
                 if role.id == proud_friendo_role_id:
                     await message.add_reaction(default_map["rainbow"])
@@ -85,6 +90,8 @@ async def on_message(message):
 
             break
     
+    #miscellaneous reacts
+
     if "straight" in string:
         await message.add_reaction(default_map["pirate_flag"])
 
@@ -141,7 +148,20 @@ async def on_message(message):
     if "morning" in string:
         await message.add_reaction(default_map["sunrise"])
 
-    #restricted to #onlypuns channel
+    if "ping" in string:
+        await message.add_reaction(custom_map["angrypinghaj"])
+
+    if "innit" in string:
+        await message.add_reaction(default_map["england"])
+
+    #per adam's request
+    if "manannan" in string:
+        await message.add_reaction(default_map["motorboat"])
+    
+    if "adam" in string:
+        await message.add_reaction(default_map["isle_of_man"])
+
+    #restricted to #onlypuns channel, per vijay's request
     if message.channel.id == onlypuns_channel_id:
         if "pun" in string:
             not_pun_master = True
@@ -153,11 +173,8 @@ async def on_message(message):
             #ping pun master to deliver a needed pun
             if not_pun_master:
                 await message.reply(roles_map["pun_master"].mention)
-
-    if "ping" in string:
-        await message.add_reaction(custom_map["angrypinghaj"])
     
-    #react to msgs in #rant-here-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa but only if it has been more than an hour since last cry react
+    #react to msgs in #rant-here-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa but only if it has been more than an hour since last cry react, per neel's request
     if message.channel.id == rant_channel_id:
         if time.time() > times["last_cry_time"] + 3600:
             await message.add_reaction(custom_map["blahajcry"])
