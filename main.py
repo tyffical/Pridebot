@@ -35,8 +35,8 @@ blahajgang_guild_id = 825807863146479657
 #emojis
 
 #default -> unicode (see https://emojiterra.com for codes)
-default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars", "angry", "sunrise", "pirate_flag", "england", "motorboat", "isle_of_man", "tada"]
-default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303", "angry": "\U0001f620", "sunrise": "\U0001f305", "pirate_flag": "\U0001f3f4\u200D\u2620\uFE0F", "england": "\U0001f3f4\U000e0067\U000e0062\U000e0065\U000e006e\U000e0067\U000e007f", "motorboat": "	\U0001f6e5\uFE0F", "isle_of_man": "\U0001f1ee\U0001f1f2", "tada": "\U0001F389"}
+default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars", "angry", "sunrise", "pirate_flag", "england", "motorboat", "isle_of_man", "tada", "regional_indicator_p", "regional_indicator_a", "regional_indicator_r", "regional_indicator_t", "regional_indicator_y", "white_check_mark", "x"]
+default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303", "angry": "\U0001f620", "sunrise": "\U0001f305", "pirate_flag": "\U0001f3f4\u200D\u2620\uFE0F", "england": "\U0001f3f4\U000e0067\U000e0062\U000e0065\U000e006e\U000e0067\U000e007f", "motorboat": "	\U0001f6e5\uFE0F", "isle_of_man": "\U0001f1ee\U0001f1f2", "tada": "\U0001F389", "regional_indicator_p" : "\U0001F1F5", "regional_indicator_a": "\U0001F1E6", "regional_indicator_r": "\U0001F1F7", "regional_indicator_t" : "\U0001F1F9", "regional_indicator_y" : "\U0001F1FF", "white_check_mark" : "\U0002705", "x": "\U000274C"}
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
@@ -177,6 +177,15 @@ async def on_message(message):
         await message.add_reaction(default_map["tada"])
         await message.add_reaction(custom_map["partyblahaj"])
 
+    #also added by adam but not in the club
+    if "partyisland:thevirtualexperience" in string:
+        await message.add_reaction(default_map["regional_indicator_p"])
+        await message.add_reaction(default_map["regional_indicator_a"])
+        await message.add_reaction(default_map["regional_indicator_r"])
+        await message.add_reaction(default_map["regional_indicator_t"])
+        await message.add_reaction(default_map["regional_indicator_y"])
+        await message.add_reaction(default_map["white_check_mark"])
+        await message.add_reaction(default_map["x"])
 
     #restricted to #onlypuns channel, per vijay's request
     if message.channel.id == onlypuns_channel_id:
