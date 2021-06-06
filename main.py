@@ -77,6 +77,9 @@ async def on_message(message):
     #strip whitespace and change to lowercase
     string = "".join(message.content.lower().split())
 
+    #split by spaces, commas, periods, etc to get the words in the string
+    words = re.split(r"[,:. \"'-]+", message.content.lower())
+
     #TODO: see if computer vision can be used to detect text or rainbows in images
     #pride reacts
     for word in pride_words:
@@ -148,7 +151,7 @@ async def on_message(message):
     if "oof" in string:
         await message.add_reaction(custom_map["blahajoof"])
     
-    if "angry" in string or "anger" in string or "mad" in string:
+    if "angry" in string or "anger" in string or "mad" in words:
         await message.add_reaction(default_map["angry"])
 
     if "melon" in string:
