@@ -40,7 +40,7 @@ default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
-custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj", "rainbowblahaj", "spaceblahaj"]
+custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj", "rainbowblahaj", "spaceblahaj", "blahajoof"]
 custom_map = {}
 
 #nqn -> custom emojis from other servers using NotQuiteNitro bot (can be done by sending a message with !react <emoji_name>)
@@ -112,7 +112,8 @@ async def on_message(message):
         if "cry" in string or "cri" in string or "sad" in string:
             await message.add_reaction(custom_map["blahajcry"])
 
-    #TODO: oofblahaj
+    if "oof" in string:
+        await message.add_reaction(custom_map["blahajoof"])
     
     if "angry" in string or "anger" in string or "mad" in string:
         await message.add_reaction(default_map["angry"])
