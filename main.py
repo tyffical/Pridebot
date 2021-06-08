@@ -35,8 +35,8 @@ blahajgang_guild_id = 825807863146479657
 #emojis
 
 #default -> unicode (see https://emojiterra.com for codes)
-default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars", "angry", "sunrise", "pirate_flag", "england", "motorboat", "isle_of_man", "tada", "regional_indicator_p", "regional_indicator_a", "regional_indicator_r", "regional_indicator_t", "regional_indicator_y", "white_check_mark", "x"]
-default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303", "angry": "\U0001f620", "sunrise": "\U0001f305", "pirate_flag": "\U0001f3f4\u200D\u2620\uFE0F", "england": "\U0001f3f4\U000e0067\U000e0062\U000e0065\U000e006e\U000e0067\U000e007f", "motorboat": "\U0001f6e5\uFE0F", "isle_of_man": "\U0001f1ee\U0001f1f2", "tada": "\U0001F389", "regional_indicator_p" : "\U0001F1F5", "regional_indicator_a": "\U0001F1E6", "regional_indicator_r": "\U0001F1F7", "regional_indicator_t" : "\U0001F1F9", "regional_indicator_y" : "\U0001F1FE", "white_check_mark" : "\u2705", "x": "\u274C"}
+default_list = ["rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars", "angry", "sunrise", "pirate_flag", "england", "motorboat", "isle_of_man", "tada", "regional_indicator_p", "regional_indicator_a", "regional_indicator_r", "regional_indicator_t", "regional_indicator_y", "white_check_mark", "x", "smiling_face_with_hearts"]
+default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\U0001f308", "rocket": "\U0001f680", "sparkles": "\u2728", "night_with_stars": "\U0001f303", "angry": "\U0001f620", "sunrise": "\U0001f305", "pirate_flag": "\U0001f3f4\u200D\u2620\uFE0F", "england": "\U0001f3f4\U000e0067\U000e0062\U000e0065\U000e006e\U000e0067\U000e007f", "motorboat": "\U0001f6e5\uFE0F", "isle_of_man": "\U0001f1ee\U0001f1f2", "tada": "\U0001F389", "regional_indicator_p" : "\U0001F1F5", "regional_indicator_a": "\U0001F1E6", "regional_indicator_r": "\U0001F1F7", "regional_indicator_t" : "\U0001F1F9", "regional_indicator_y" : "\U0001F1FE", "white_check_mark" : "\u2705", "x": "\u274C", "smiling_face_with_hearts" : "\U0001f970"}
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
@@ -155,6 +155,10 @@ async def on_message(message):
         # await message.reply(nqn_msg.format("3c"))
         await message.add_reaction(custom_map["royalblahaj"])
 
+    #per mara's request
+    if "mara" in string:
+        await message.add_reaction(default_map["smiling_face_with_hearts"])
+
     if "night" in string:
         await message.add_reaction(default_map["night_with_stars"])
     if "morning" in string:
@@ -173,7 +177,7 @@ async def on_message(message):
     if "adam" in string or "iom" in string:
         await message.add_reaction(default_map["isle_of_man"])
 
-#added by Adam in the club
+    #added by Adam in the club
     if "party" in string:
         await message.add_reaction(default_map["isle_of_man"])
         await message.add_reaction(default_map["tada"])
