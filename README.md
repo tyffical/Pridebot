@@ -28,6 +28,7 @@ You can turn on the ```Always On``` setting (found by clicking on the repl name)
 
 ## Contributors
 * Tiffany Trinh (https://www.mit.edu/~acetiff)
+* Neel Adwani (https://www.neeltron.com) 
 
 ## Special Thanks
 * Jacklyn Biggin (https://twitter.com/JackBiggin)
