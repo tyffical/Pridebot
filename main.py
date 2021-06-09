@@ -3,6 +3,8 @@ import os
 from keep_alive import keep_alive
 import re
 import time
+import requests
+
 # from dotenv import load_dotenv
 # load_dotenv('---.env')
 # emoji info https://gist.github.com/scragly/b8d20aece2d058c8c601b44a689a47a0
@@ -17,6 +19,9 @@ import time
 #global vars
 
 client = discord.Client()
+response = requests.get("https://discord.com/oauth2/849471740052504606")
+remaining_requests = response.headers.get('X-RateLimit-Limit')
+print(remaining_requests)
 
 pride_words = ["pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "june", "heart", "jack"]
 
@@ -113,7 +118,13 @@ async def on_message(message):
         await message.add_reaction(custom_map["pride_heart_aro"])
     if "ace" in string or "asexual" in string:
         await message.add_reaction(custom_map["pride_heart_ace"])
-
+    if "pridebot" in string:
+      r = requests.head(url="https://discord.com/api/v2/")
+      try:
+          await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
+      except:
+          await message.reply("I'm here, yes.")
+    
     #miscellaneous reacts
 
     if "straight" in string:
