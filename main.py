@@ -40,7 +40,7 @@ default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
-custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj", "rainbowblahaj", "spaceblahaj", "blahajoof"]
+custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj", "rainbowblahaj", "spaceblahaj", "blahajoof", "pride_heart_trans", "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary", "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay", "pride_heart_bi", "pride_heart_aro", "pride_heart_ace"]
 custom_map = {}
 
 #nqn -> custom emojis from other servers using NotQuiteNitro bot (can be done by sending a message with !react <emoji_name>)
@@ -91,7 +91,29 @@ async def on_message(message):
                     await message.add_reaction(custom_map["partyblahaj"])
 
             break
-    
+
+    #identity-specific reacts
+    if "trans" in string:
+        await message.add_reaction(custom_map["pride_heart_trans"])
+    if "poc" in string:
+        await message.add_reaction(custom_map["pride_heart_pocpride"])
+    if "pan" in string:
+        await message.add_reaction(custom_map["pride_heart_pan"])
+    if "nonbinary" in string or "nb" in string:
+        await message.add_reaction(custom_map["pride_heart_nonbinary"])
+    if "lesbian" in string:
+        await message.add_reaction(custom_map["pride_heart_lesbian"])
+    if "genderqueer" in string:
+        await message.add_reaction(custom_map["pride_heart_genderqueer"])
+    if "gay" in string:
+        await message.add_reaction(custom_map["pride_heart_gay"])
+    if "bi" in string:
+        await message.add_reaction(custom_map["pride_heart_bi"])
+    if "aro" in string:
+        await message.add_reaction(custom_map["pride_heart_aro"])
+    if "ace" in string or "asexual" in string:
+        await message.add_reaction(custom_map["pride_heart_ace"])
+
     #miscellaneous reacts
 
     if "straight" in string:
