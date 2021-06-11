@@ -151,7 +151,7 @@ async def on_message(message):
     if "oof" in string:
         await message.add_reaction(custom_map["blahajoof"])
     
-    if "angry" in string or "anger" in string or "mad" in words:
+    if "angry" in words or "anger" in words or "mad" in words:
         await message.add_reaction(default_map["angry"])
 
     if "melon" in string:
