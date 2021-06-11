@@ -78,7 +78,8 @@ async def on_message(message):
     string = "".join(message.content.lower().split())
 
     #split by spaces, commas, periods, etc to get the words in the string
-    words = re.split(r"[,:. \"'-]+", message.content.lower())
+    # words = re.split(r"[,:. \"'-]+", message.content.lower())
+    words = re.split(" ", message.content.lower())
 
     #TODO: see if computer vision can be used to detect text or rainbows in images
     #pride reacts
