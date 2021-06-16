@@ -229,6 +229,16 @@ async def on_message(message):
         await message.add_reaction(default_map["white_check_mark"])
         await message.add_reaction(default_map["x"])
 
+    if "dharmik" in string:
+        await message.add_reaction(default_map["regional_indicator_d"])
+        await message.add_reaction(default_map["regional_indicator_h"])
+        await message.add_reaction(default_map["regional_indicator_a"])
+        await message.add_reaction(default_map["regional_indicator_r"])
+        await message.add_reaction(default_map["regional_indicator_m"])
+        await message.add_reaction(default_map["regional_indicator_i"])
+        await message.add_reaction(default_map["regional_indicator_k"])
+
+
     #restricted to #onlypuns channel, per vijay's request
     if message.channel.id == onlypuns_channel_id:
         if "pun" in string:
