@@ -54,6 +54,10 @@ custom_map = {}
 nqn_list = ["elonsmoke", "meow_coffee", "catclown", "LMAO", "crii", "blobdance", "meow_code", "meow_heart", "3c"]
 nqn_msg = "!react {}"
 
+
+#goodmorning in different lang
+goodmorningindifflang = ["guten morgen", "", "",]
+
 #actual bot functions
 
 @client.event
@@ -198,6 +202,9 @@ async def on_message(message):
     if "night" in string:
         await message.add_reaction(default_map["night_with_stars"])
     if "morning" in string:
+        await message.add_reaction(default_map["sunrise"])
+
+    if goodmorningindifflang in string:
         await message.add_reaction(default_map["sunrise"])
 
     if "ping" in string:
