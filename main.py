@@ -32,6 +32,7 @@ roles_map = {}
 
 onlypuns_channel_id = 842807004879650826
 rant_channel_id = 838861911374037062
+important_init_channel_id = 850119805330653224
 
 times = {"last_cry_time":0}
 
@@ -70,13 +71,15 @@ async def on_ready():
 #TODO: map keywords to reacts 
 @client.event 
 async def on_message(message): 
-    #react with melon because melon is amazing
-    await message.add_reaction(custom_map["watermelon"])
-    
-    
     #ignore bot's own message
     if message.author.id == client.user.id:
       return
+
+    #react with melon because melon is amazing -adam
+    #only in #dis-for-important-linkz-n-messages-init tho to prevent spam -tiff
+    if message.channel.id == important_init_channel_id:
+      await message.add_reaction(default_map["watermelon"])
+    
 
     #strip whitespace and change to lowercase
     string = "".join(message.content.lower().split())
