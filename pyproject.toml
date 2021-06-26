@@ -8,6 +8,7 @@ authors = ["tyffical <<>>"]
 python = "^3.8"
 discord = "^1.0.1"
 flask = "^2.0.1"
+codebug-tether = "^0.9.1"
 
 [tool.poetry.dev-dependencies]
 

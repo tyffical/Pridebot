@@ -161,7 +161,7 @@ async def on_message(message):
     if "melon" in string:
         await message.add_reaction(custom_map["melonblahaj"])
     
-    if "ryan" in string or "swift" in string:
+    if "ryan" in string:
         await message.add_reaction(custom_map["ryancoin"])
     
     #per neel's request
