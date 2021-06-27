@@ -4,6 +4,9 @@ from keep_alive import keep_alive
 import re
 import time
 import requests
+import glob, random
+from dotenv import load_dotenv
+load_dotenv()
 
 # from dotenv import load_dotenv
 # load_dotenv('---.env')
@@ -265,9 +268,10 @@ async def on_message(message):
     if "init" in string or "scream" in string:
         await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
         
-    #gift blahaj for good work or anyway coz why not
-    if message.content.startswith("gift"):
-        mention = string.split('gift')
+    # gift blahaj for good work or anyway coz why not
+    if message.content.startswith("flag"):
+        mention = string.split('flag')
+        print(mention)
         myid = message.author.id #improvement -> this line gets your id, we want it to get the mentioned person's id 
         res = re.split("[!<>@]", mention[1])
         reason = re.split("[!<>@\d+]", mention[1])
@@ -279,11 +283,30 @@ async def on_message(message):
         elif int(res) == myid:
             await message.reply("Ha! you can't gift yourself.")
         else:
-            await message.reply("{} Here's a plushie for you:\n".format(mention[1]), file=discord.File('giftBlahaj.png') )
-            # print(mention[1])
-            # print(type(myid))
-            # print(message.author.id)
-            # print(type(res))
+            path = ["./flags/*.png"]
+            random_flag = glob.glob(random.choice(path))
+            await message.reply("{mention} Here's a gift from blahaj and {author}:\n".format(mention= mention[1], author = message.author.mention), file=discord.File(random.choice(random_flag)))
+
+    if message.content.startswith("gift"):
+        mention = string.split('gift')
+        myid = message.author.id #improvement -> this line gets your id, we want it to get the mentioned person's id 
+        res = re.split("[!<>@]", mention[1])
+        reason = re.split("[!<>@\d+]", mention[1])
+        res= list(filter(None, res))
+        res = res[0]
+        reason = list(filter(None, reason))
+        if not reason:
+            reason = "no reason, you simply zdeserve it. yeet"
+        else:
+            reason = reason[0]
+        # print(reason)
+        if not mention[1]:
+            await message.reply("whom should I send a gift?")
+        elif int(res) == myid:
+            await message.reply("Ha! you can't gift yourself.")
+        else:
+            await message.reply("{mention} Here's a plushie for you:\n reason: {why}".format(mention = mention[1], why=reason), file=discord.File('giftBlahaj.png'))
+        print(reason[0])
 
 keep_alive()
 client.run(os.getenv('TOKEN'))
