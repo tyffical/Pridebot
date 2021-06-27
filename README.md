@@ -30,6 +30,7 @@ You can turn on the ```Always On``` setting (found by clicking on the repl name)
 * Tiffany Trinh (https://www.mit.edu/~acetiff)
 * Neel Adwani (https://www.neeltron.com) 
 * Adam Drummond (https://adamd.fyi/)
+* Ashwin Kumar Uppala (https://github.com/ashwinexe)
 
 ## Special Thanks
 * Jacklyn Biggin (https://twitter.com/JackBiggin)
