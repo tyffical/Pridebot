@@ -132,12 +132,15 @@ async def on_message(message):
         await message.add_reaction(custom_map["pride_heart_aro"])
     if "ace" in string or "asexual" in string:
         await message.add_reaction(custom_map["pride_heart_ace"])
-    if "pridebot" in string:
-      r = requests.head(url="https://discord.com/api/v2/")
-      try:
-          await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
-      except:
-          await message.reply("I'm here, yes.")
+
+    #pridebot responding to a mention of its name
+    if message.channel.id != important_init_channel_id:
+        if "pridebot" in string:
+            r = requests.head(url="https://discord.com/api/v2/")
+            try:
+                await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
+            except:
+                await message.reply("I'm here, yes.")
     
     #miscellaneous reacts
 
@@ -149,7 +152,7 @@ async def on_message(message):
 
     #matches yeets with an arbitrary number of e's
     if re.search("yee+t", string) != None:
-      await message.add_reaction(custom_map["blahajyeet"])
+        await message.add_reaction(custom_map["blahajyeet"])
 
     if "rip" in string:
         await message.add_reaction(custom_map["rip"])
@@ -265,12 +268,13 @@ async def on_message(message):
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
 
-    #scream for INIT
-    if "init" in string or "scream" in string:
-        await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
+    #scream for INIT, but not in important init channel
+    if message.channel.id != important_init_channel_id:
+        if "init" in string or "scream" in string:
+            await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
 
     # gift a pride flag 
-    if message.content.startswith("colors"):
+    if message.channel.id != important_init_channel_id and message.content.startswith("colors"):
         mention = string.split('colors')
         print(mention)
         myid = message.author.id #improvement -> this line gets your id, we want it to get the mentioned person's id 
@@ -289,7 +293,7 @@ async def on_message(message):
             await message.reply("{mention} Here's a gift from blahaj and {author}:\n".format(mention= mention[1], author = message.author.mention), file=discord.File(random.choice(random_flag)))
     
     # gift blahaj for good work or anyway coz why not
-    if message.content.startswith("gift"):
+    if message.channel.id != important_init_channel_id and message.content.startswith("gift"):
         mention = string.split('gift')
         myid = message.author.id #improvement -> this line gets your id, we want it to get the mentioned person's id 
         res = re.split("[!<>@]", mention[1])
