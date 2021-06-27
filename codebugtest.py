@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 from codebug_tether import CodeBug
 import time
 print("1")
