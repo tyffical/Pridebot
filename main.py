@@ -269,8 +269,8 @@ async def on_message(message):
         await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
 
     # gift a pride flag 
-    if message.content.startswith("flag"):
-        mention = string.split('flag')
+    if message.content.startswith("colors"):
+        mention = string.split('colors')
         print(mention)
         myid = message.author.id #improvement -> this line gets your id, we want it to get the mentioned person's id 
         res = re.split("[!<>@]", mention[1])
