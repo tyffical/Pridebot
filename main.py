@@ -267,8 +267,8 @@ async def on_message(message):
     #scream for INIT
     if "init" in string or "scream" in string:
         await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
-        
-    # gift blahaj for good work or anyway coz why not
+
+    # gift a pride flag 
     if message.content.startswith("flag"):
         mention = string.split('flag')
         print(mention)
@@ -286,7 +286,8 @@ async def on_message(message):
             path = ["./flags/*.png"]
             random_flag = glob.glob(random.choice(path))
             await message.reply("{mention} Here's a gift from blahaj and {author}:\n".format(mention= mention[1], author = message.author.mention), file=discord.File(random.choice(random_flag)))
-
+    
+    # gift blahaj for good work or anyway coz why not
     if message.content.startswith("gift"):
         mention = string.split('gift')
         myid = message.author.id #improvement -> this line gets your id, we want it to get the mentioned person's id 
