@@ -297,7 +297,7 @@ async def on_message(message):
         res = res[0]
         reason = list(filter(None, reason))
         if not reason:
-            reason = "no reason, you simply zdeserve it. yeet"
+            reason = "no reason, you simply deserve it. yeet"
         else:
             reason = reason[0]
         # print(reason)
