@@ -198,6 +198,12 @@ async def on_message(message):
         # await message.reply(nqn_msg.format("3c"))
         await message.add_reaction(custom_map["royalblahaj"])
 
+    if "ash" in string:
+        await message.add_reaction(default_map["regional_indicator_y"])
+        await message.add_reaction(default_map["regional_indicator_o"])
+        await message.add_reaction(default_map["regional_indicator_l"])
+        await message.add_reaction(default_map["o2"])
+
     #per mara's request
     if "mara" in string:
         await message.add_reaction(default_map["smiling_face_with_hearts"])
@@ -254,6 +260,30 @@ async def on_message(message):
         if time.time() > times["last_cry_time"] + 3600:
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
+
+    #scream for INIT
+    if "init" in string or "scream" in string:
+        await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
+        
+    #gift blahaj for good work or anyway coz why not
+    if message.content.startswith("gift"):
+        mention = string.split('gift')
+        myid = message.author.id #improvement -> this line gets your id, we want it to get the mentioned person's id 
+        res = re.split("[!<>@]", mention[1])
+        reason = re.split("[!<>@\d+]", mention[1])
+        res = res[3]
+        reason = list(filter(None, reason))
+        # print(reason)
+        if not mention[1]:
+            await message.reply("whom should I send a gift?")
+        elif int(res) == myid:
+            await message.reply("Ha! you can't gift yourself.")
+        else:
+            await message.reply("{} Here's a plushie for you:\n".format(mention[1]), file=discord.File('giftBlahaj.png') )
+            # print(mention[1])
+            # print(type(myid))
+            # print(message.author.id)
+            # print(type(res))
 
 keep_alive()
 client.run(os.getenv('TOKEN'))
