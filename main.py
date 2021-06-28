@@ -275,6 +275,7 @@ async def on_message(message):
             await message.add_reaction(custom_map["initinit"])
 
     # gift a pride flag 
+    message.content = message.content.lower()
     if message.channel.id != important_init_channel_id and message.content.startswith("colors"):
         mention = string.split('colors')
         print(mention)
@@ -294,7 +295,8 @@ async def on_message(message):
             await message.reply("{mention} Here's a gift from blahaj and {author}:\n".format(mention= mention[1], author = message.author.mention), file=discord.File(random.choice(random_flag)))
     
     # gift blahaj for good work or anyway coz why not
-    if message.channel.id != important_init_channel_id and message.content.startswith("gift"):
+    message.content = message.content.lower()
+    if message.channel.id != important_init_channel_id and (message.content.startswith("gift")):
         mention = string.split('gift')
         myid = message.author.id #improvement -> this line gets your id, we want it to get the mentioned person's id 
         res = re.split("[!<>@]", mention[1])
@@ -313,7 +315,10 @@ async def on_message(message):
             await message.reply("Ha! you can't gift yourself.")
         else:
             await message.reply("{mention} Here's a plushie for you:\n reason: {why}".format(mention = mention[1], why=reason), file=discord.File('giftBlahaj.png'))
-        print(reason[0])
+        print(reason)
+        member = message.mentions[0]
+        print(member)
+
 
 keep_alive()
 client.run(os.getenv('TOKEN'))
