@@ -50,7 +50,7 @@ default_map = {"rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308", "rainbow": "\
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
 #custom -> discord.Emoji objects
-custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj", "rainbowblahaj", "spaceblahaj", "blahajoof", "pride_heart_trans", "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary", "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay", "pride_heart_bi", "pride_heart_aro", "pride_heart_ace"]
+custom_list = ["prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip", "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj", "rainbowblahaj", "spaceblahaj", "blahajoof", "pride_heart_trans", "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary", "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay", "pride_heart_bi", "pride_heart_aro", "pride_heart_ace", "initinit"]
 custom_map = {}
 
 #nqn -> custom emojis from other servers using NotQuiteNitro bot (can be done by sending a message with !react <emoji_name>)
@@ -268,10 +268,11 @@ async def on_message(message):
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
 
-    #scream for INIT, but not in important init channel
+    #scream for INIT, but reactions only it is too much
     if message.channel.id != important_init_channel_id:
         if "init" in string or "scream" in string:
-            await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
+            # await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
+            await message.add_reaction(custom_map["initinit"])
 
     # gift a pride flag 
     if message.channel.id != important_init_channel_id and message.content.startswith("colors"):
