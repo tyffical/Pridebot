@@ -56,7 +56,7 @@ custom_map = {}
 #nqn -> custom emojis from other servers using NotQuiteNitro bot (can be done by sending a message with !react <emoji_name>)
 #unfortunately this does not work if sender is a bot :(
 #TODO: figure out a way to use nqn anyway?
-nqn_list = ["elonsmoke", "meow_coffee", "catclown", "LMAO", "crii", "blobdance", "meow_code", "meow_heart", "3c"]
+nqn_list = ["elonsmoke", "meow_coffee", "catclown", "LMAO", "crii", "blobdance", "meow_code", "meow_heart", "3c","kirbydance"]
 nqn_msg = "!react {}"
 
 #actual bot functions
