@@ -42,6 +42,8 @@ times = {"last_cry_time":0}
 
 blahajgang_guild_id = 825807863146479657
 
+responses = ["hey homie", "sup mate?", "why'd you summon me, mate?", "sorry, im busy atm"]
+
 #emojis
 
 #default -> unicode (see https://emojiterra.com for codes)
@@ -140,7 +142,8 @@ async def on_message(message):
             try:
                 await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
             except:
-                await message.reply("I'm here, yes.")
+                rn = random.randint(0, 3)
+                await message.reply(responses[rn])
     
     #miscellaneous reacts
 
