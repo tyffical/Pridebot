@@ -215,6 +215,10 @@ async def on_message(message):
     if "mara" in string:
         await message.add_reaction(default_map["smiling_face_with_hearts"])
 
+        #per Rico's request
+    if "Rico" in string:
+        await message.add_reaction(default_map["flag_in" "flag_us"])
+
     if "night" in string:
         await message.add_reaction(default_map["night_with_stars"])
     if "morning" in string:
