@@ -11,7 +11,7 @@ import random
 
 load_dotenv()
 
-client = commands.Bot(command_prefix="-")
+a = commands.Bot(command_prefix="-")
 
 player1 = ""
 player2 = ""
@@ -433,7 +433,7 @@ async def on_message(message):
         member = message.mentions[0]
         print(member)
 
-@client.command()
+@a.command()
 async def tictactoe(ctx, p1: discord.Member, p2: discord.Member):
     global count
     global player1
@@ -474,7 +474,7 @@ async def tictactoe(ctx, p1: discord.Member, p2: discord.Member):
     else:
         await ctx.send("A game is already in progress! Finish it before starting a new one.")
 
-@client.command()
+@a.command()
 async def end(ctx):
   global gameOver
   gameOver = True
@@ -482,7 +482,7 @@ async def end(ctx):
 
 
   
-@client.command()
+@a.command()
 async def place(ctx, pos: int):
     global turn
     global player1
