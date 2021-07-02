@@ -7,34 +7,10 @@ import requests
 import glob, random
 from dotenv import load_dotenv
 from discord.ext import commands
-import random
 
 load_dotenv()
 
-a = commands.Bot(command_prefix="-")
-
-player1 = ""
-player2 = ""
-turn = ""
-gameOver = True
-
-board = []
-
-winningConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-]
-
-
-
-# from dotenv import load_dotenv
-# load_dotenv('---.env')
+a = commands.Bot(command_prefix="!")
 # emoji info https://gist.github.com/scragly/b8d20aece2d058c8c601b44a689a47a0
 # discord.py docs https://discordpy.readthedocs.io/en/latest/api.html
 # emoji codes https://emojiterra.com/
@@ -48,9 +24,14 @@ winningConditions = [
 #global vars
 
 client = discord.Client()
+
+
 response = requests.get("https://discord.com/oauth2/849471740052504606")
 remaining_requests = response.headers.get('X-RateLimit-Limit')
 print(remaining_requests)
+
+
+
 
 pride_words = [
     "pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "june",
@@ -155,21 +136,19 @@ async def on_ready():
 
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
-
-
 @client.event
 async def on_message(message):
     #ignore bot's own message
     if message.author.id == client.user.id:
         return
-
+    sentiment = os.environ['sentiment']
     #sentiment analysis
     r = requests.post(
         "https://api.deepai.org/api/sentiment-analysis",
         data={
             'text': message.content,
         },
-        headers={'api-key': '5ff4d870-a061-48f1-aa99-e4aece558718'})
+        headers={'api-key': sentiment})
     print(str(message.content))
     print(r.json()) #prints out id and output: formated as array of ['verypositive/positive/neutral/negative/verynegative']
     if message.channel.id == sentiment_channel_id:
@@ -433,6 +412,24 @@ async def on_message(message):
         member = message.mentions[0]
         print(member)
 
+player1 = ""
+player2 = ""
+turn = ""
+gameOver = True
+
+board = []
+
+winningConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+]
+
 @a.command()
 async def tictactoe(ctx, p1: discord.Member, p2: discord.Member):
     global count
@@ -474,14 +471,6 @@ async def tictactoe(ctx, p1: discord.Member, p2: discord.Member):
     else:
         await ctx.send("A game is already in progress! Finish it before starting a new one.")
 
-@a.command()
-async def end(ctx):
-  global gameOver
-  gameOver = True
-  await ctx.send("game ended")
-
-
-  
 @a.command()
 async def place(ctx, pos: int):
     global turn
@@ -553,7 +542,7 @@ async def place_error(ctx, error):
         await ctx.send("Please enter a position you would like to mark.")
     elif isinstance(error, commands.BadArgument):
         await ctx.send("Please make sure to enter an integer.")
-        
-        
+
 keep_alive()
-client.run(os.getenv('TOKEN'))
+a.run('ODEzNDMxNzE1MzM0NzE3NDQw.YDPNUQ.yqp2crZI2aIleXB8cVrm4ltBvwY')
+client.run('ODEzNDMxNzE1MzM0NzE3NDQw.YDPNUQ.yqp2crZI2aIleXB8cVrm4ltBvwY')
