@@ -9,8 +9,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# from dotenv import load_dotenv
-# load_dotenv('---.env')
 # emoji info https://gist.github.com/scragly/b8d20aece2d058c8c601b44a689a47a0
 # discord.py docs https://discordpy.readthedocs.io/en/latest/api.html
 # emoji codes https://emojiterra.com/
