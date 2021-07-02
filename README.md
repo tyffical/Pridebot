@@ -33,7 +33,7 @@ You can turn on the ```Always On``` setting (found by clicking on the repl name)
 * Ashwin Kumar Uppala (https://github.com/ashwinexe)
 
 ## Special Thanks
-* Jacklyn Biggin (https://twitter.com/JackBiggin)
+* Jacklyn Biggin (https://poly.work/jacklynbiggin)
   * Creator of BLAHAJGang &#x2764;&#xFE0F;
 * BLAHAJ (https://www.ikea.com/us/en/p/blahaj-soft-toy-shark-90373590/)
   * We wouldn't be a cult without you &#x2764;&#xFE0F;
