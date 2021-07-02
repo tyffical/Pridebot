@@ -89,6 +89,8 @@ default_map = {
     "regional_indicator_o": "\U0001f1f4",
     "regional_indicator_l": "\U0001f1f1",
     "o2": "\U0001f17e\uFE0F"
+    "flag_us":"\U0001f1fa\U0001f1f8"
+    "flag_in":"\U0001f1ee\U0001f1f3"
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
@@ -295,6 +297,11 @@ async def on_message(message):
     #per mara's request
     if "mara" in string:
         await message.add_reaction(default_map["smiling_face_with_hearts"])
+        
+        #per Rico's Request
+        if "rico" in string:
+             await message.add_reaction(default_map["regional_indicator_y"])
+             await message.add_reaction(default_map["regional_indicator_o"])
 
     if "night" in string:
         await message.add_reaction(default_map["night_with_stars"])
