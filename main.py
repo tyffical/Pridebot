@@ -28,6 +28,9 @@ response = requests.get("https://discord.com/oauth2/849471740052504606")
 remaining_requests = response.headers.get('X-RateLimit-Limit')
 print(remaining_requests)
 
+
+
+
 pride_words = [
     "pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "june",
     "heart", "jack"
@@ -136,14 +139,14 @@ async def on_message(message):
     #ignore bot's own message
     if message.author.id == client.user.id:
         return
-
+    sentiment = os.environ['sentiment']
     #sentiment analysis
     r = requests.post(
         "https://api.deepai.org/api/sentiment-analysis",
         data={
             'text': message.content,
         },
-        headers={'api-key': '5ff4d870-a061-48f1-aa99-e4aece558718'})
+        headers={'api-key': sentiment})
     print(str(message.content))
     print(r.json()) #prints out id and output: formated as array of ['verypositive/positive/neutral/negative/verynegative']
     if message.channel.id == sentiment_channel_id:
