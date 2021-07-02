@@ -216,7 +216,7 @@ async def on_message(message):
         await message.add_reaction(default_map["smiling_face_with_hearts"])
 
         #per Rico's request
-    if "Rico" in string:
+    if "rico" in string:
         await message.add_reaction(default_map["flag_in"])
         await message.add_reaction(default_map["flag_us"])
 
