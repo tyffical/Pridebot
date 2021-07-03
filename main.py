@@ -92,6 +92,8 @@ default_map = {
     "flag_us": "\U0001f1fa\U0001f1f8",
     "flag_in": "\U0001f1ee\U0001f1f3",
     "older_adult":"\U0001f9d3\U0001f3fb",
+    "flag_in": "\U0001f1ee\U0001f1f3"
+
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
