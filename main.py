@@ -91,6 +91,7 @@ default_map = {
     "o2": "\U0001f17e\uFE0F"
     "flag_us":"\U0001f1fa\U0001f1f8"
     "flag_in":"\U0001f1ee\U0001f1f3"
+    "older_adult": "\U0001f9d3\U0001f3fb"
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
@@ -102,7 +103,7 @@ custom_list = [
     "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary",
     "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay",
     "pride_heart_bi", "pride_heart_aro", "pride_heart_ace", "initinit",
-    "blaheart", "melonBLAHAJ", "yaay"
+    "blaheart", "melonBLAHAJ", "yaay","blahajuwu"
 ]
 custom_map = {}
 
@@ -256,6 +257,12 @@ async def on_message(message):
 
     if "ryan" in string:
         await message.add_reaction(custom_map["ryancoin"])
+    
+    if "uwu" in string:
+        await message.add_reaction(custom_map["blahajuwu"])
+
+    if "boomer" in string:
+        await message.add_reaction(default_map["older_adult"]))
 
     #per neel's request
     if "space" in string or "innovation" in string or "motivation" in string:
