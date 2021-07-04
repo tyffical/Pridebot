@@ -263,7 +263,7 @@ async def on_message(message):
         await message.add_reaction(custom_map["blahajuwu"])
 
     if "boomer" in string:
-        await message.add_reaction(default_map["older_adult"]))
+        await message.add_reaction(default_map["older_adult"])
 
     #per neel's request
     if "space" in string or "innovation" in string or "motivation" in string:
