@@ -424,5 +424,33 @@ async def on_message(message):
         print(member)
 
 
+    message.content = message.content.lower()
+    if message.channel.id != important_init_channel_id and (
+            message.content.startswith("arrest")):
+        mention = string.split('arrest')
+        myid = message.author.id  #improvement -> this line gets your id, we want it to get the mentioned person's id
+        res = re.split("[!<>@]", mention[1])
+        reason = re.split("[!<>@\d+]", mention[1])
+        res = list(filter(None, res))
+        res = res[0]
+        reason = list(filter(None, reason))
+        if not reason:
+            reason = "cuz they can"
+        else:
+            reason = reason[0]
+        # print(reason)
+        if not mention[1]:
+            await message.reply("whom should I arrest?")
+        elif int(res) == myid:
+            await message.reply("Ha! you can't arrest yourself.")
+        else:
+            await message.reply(
+                "{mention} You're under arrest!\n reason: {why}".format(
+                    mention=mention[1], why=reason))
+        print(reason)
+        member = message.mentions[0]
+        print(member)
+
+
 keep_alive()
 client.run(os.getenv('TOKEN'))
