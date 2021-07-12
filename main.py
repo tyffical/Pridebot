@@ -104,7 +104,7 @@ custom_list = [
     "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary",
     "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay",
     "pride_heart_bi", "pride_heart_aro", "pride_heart_ace", "initinit",
-    "blaheart", "melonBLAHAJ", "yaay","blahajuwu"
+    "blaheart", "melonBLAHAJ", "yaay","blahajuwu", "mlhblahaj"
 ]
 custom_map = {}
 
@@ -282,6 +282,13 @@ async def on_message(message):
     #     await message.reply(nqn_msg.format("blobdance"))
     if "neel" in string:
         await message.add_reaction(custom_map["spaceblahaj"])
+    
+    # yes i added this myself
+    # i just want cool reaction, okay?
+    # why are you looking at me like that
+    # stop it
+    if "vik" in string:
+        await message.add_reaction(custom_map["mlhblahaj"])
 
     #per hana's request
     if "hana" in string:
