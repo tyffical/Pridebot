@@ -91,7 +91,11 @@ default_map = {
     "o2": "\U0001f17e\uFE0F",
     "flag_us": "\U0001f1fa\U0001f1f8",
     "older_adult":"\U0001f9d3\U0001f3fb",
-    "flag_in": "\U0001f1ee\U0001f1f3"
+    "flag_in": "\U0001f1ee\U0001f1f3",
+    "regional_indicator_m": "\U0001f1f2",
+    "regional_indicator_e": "\U0001f1ea",
+    "m": "\u24C2\uFE0F",
+    "e_mail": "\U0001f4e7",
 
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
