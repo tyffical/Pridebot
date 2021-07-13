@@ -140,10 +140,9 @@ async def on_ready():
                               default_map["rainbow_flag"]))
 
 @slash.slash(name="hug")
-async def hug(ctx: SlashContext, arg0: str):
+async def hug(ctx: SlashContext):
     hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
-    embed = discord.Embed(title=hug_url)
-    await ctx.send(content=arg0, embeds=[embed])
+    await ctx.send(hug_url)
 
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
