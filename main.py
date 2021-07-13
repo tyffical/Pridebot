@@ -106,7 +106,7 @@ custom_list = [
     "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary",
     "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay",
     "pride_heart_bi", "pride_heart_aro", "pride_heart_ace", "initinit",
-    "blaheart", "melonBLAHAJ", "yaay","blahajuwu", "mlhblahaj"
+    "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj", "adam"
 ]
 custom_map = {}
 
@@ -147,25 +147,27 @@ async def on_message(message):
     #ignore bot's own message
     if message.author.id == client.user.id:
         return
-    sentiment = os.environ['sentiment']
-    #sentiment analysis
-    r = requests.post(
-        "https://api.deepai.org/api/sentiment-analysis",
-        data={
-            'text': message.content,
-        },
-        headers={'api-key': sentiment})
-    print(str(message.content))
-    print(r.json()) #prints out id and output: formated as array of ['verypositive/positive/neutral/negative/verynegative']
-    if message.channel.id == sentiment_channel_id:
-        sentiment = str(r.json()["output"][0]).lower()
-        #switch to match-case (aka switch) statements for python 3.10
-        if sentiment == "verypositive" or sentiment == "positive":
-            await message.add_reaction(custom_map["blaheart"])
-        elif sentiment == "neutral":
-            await message.add_reaction(custom_map["melonBLAHAJ"])
-        else:
-            await message.add_reaction(custom_map["yaay"])
+
+    #sentiment analysis disabled until a free api is found
+    # sentiment = os.environ['sentiment']
+    # #sentiment analysis
+    # r = requests.post(
+    #     "https://api.deepai.org/api/sentiment-analysis",
+    #     data={
+    #         'text': message.content,
+    #     },
+    #     headers={'api-key': sentiment})
+    # print(str(message.content))
+    # print(r.json()) #prints out id and output: formated as array of ['verypositive/positive/neutral/negative/verynegative']
+    # if message.channel.id == sentiment_channel_id:
+    #     sentiment = str(r.json()["output"][0]).lower()
+    #     #switch to match-case (aka switch) statements for python 3.10
+    #     if sentiment == "verypositive" or sentiment == "positive":
+    #         await message.add_reaction(custom_map["blaheart"])
+    #     elif sentiment == "neutral":
+    #         await message.add_reaction(custom_map["melonBLAHAJ"])
+    #     else:
+    #         await message.add_reaction(custom_map["yaay"])
 
 
     #react with melon because melon is amazing -adam
@@ -270,6 +272,10 @@ async def on_message(message):
 
     if "boomer" in string:
         await message.add_reaction(default_map["older_adult"])
+        
+    # gamerhaj react for pro blahaj gamer
+    if "adi" in string:
+        await message.add_reaction(custom_map["gamerhaj"])
 
     #per neel's request
     if "space" in string or "innovation" in string or "motivation" in string:
@@ -305,7 +311,7 @@ async def on_message(message):
     #     await message.reply(nqn_msg.format("meow_code"))
     # if "cat" in string or "kitty" in string or "meow" in string:
     #     await message.reply(nqn_msg.format("meow_heart"))
-    if "tiff" in string:
+    if "tiff" in string or "tyff" in string:
         # await message.reply(nqn_msg.format("3c"))
         await message.add_reaction(custom_map["royalblahaj"])
 
@@ -341,6 +347,7 @@ async def on_message(message):
 
     if "adam" in string or "iom" in string:
         await message.add_reaction(default_map["isle_of_man"])
+        await message.add_reaction(custom_map["adam"])
 
     #added by Adam in the club
     if "party" in string:
