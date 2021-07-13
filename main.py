@@ -104,7 +104,7 @@ custom_list = [
     "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary",
     "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay",
     "pride_heart_bi", "pride_heart_aro", "pride_heart_ace", "initinit",
-    "blaheart", "melonBLAHAJ", "yaay","blahajuwu", "mlhblahaj"
+    "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj"
 ]
 custom_map = {}
 
@@ -264,6 +264,10 @@ async def on_message(message):
 
     if "boomer" in string:
         await message.add_reaction(default_map["older_adult"])
+        
+    # gamerhaj react for pro blahaj gamer
+    if "adi" in string:
+        await message.add_reaction(custom_map["gamerhaj"])
 
     #per neel's request
     if "space" in string or "innovation" in string or "motivation" in string:
