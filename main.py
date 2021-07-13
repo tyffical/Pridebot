@@ -310,10 +310,10 @@ async def on_message(message):
         await message.add_reaction(custom_map["royalblahaj"])
 
     if "ash" in string:
-        await message.add_reaction(default_map["regional_indicator_y"])
-        await message.add_reaction(default_map["regional_indicator_o"])
-        await message.add_reaction(default_map["regional_indicator_l"])
-        await message.add_reaction(default_map["o2"])
+        await message.add_reaction(default_map["regional_indicator_m"])
+        await message.add_reaction(default_map["regional_indicator_e"])
+        await message.add_reaction(default_map["m"])
+        await message.add_reaction(default_map["email"])
 
     #per mara's request
     if "mara" in string:
