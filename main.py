@@ -140,9 +140,10 @@ async def on_ready():
                               default_map["rainbow_flag"]))
 
 @slash.slash(name="hug")
-async def hug(ctx: SlashContext):
+async def hug(ctx: SlashContext, arg0: str):
     hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
-    ctx.send(hug_url)
+    embed = discord.Embed(title=hug_url)
+    await ctx.send(content=arg0, embeds=[embed])
 
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
@@ -323,7 +324,7 @@ async def on_message(message):
         await message.add_reaction(default_map["regional_indicator_m"])
         await message.add_reaction(default_map["regional_indicator_e"])
         await message.add_reaction(default_map["m"])
-        await message.add_reaction(default_map["email"])
+        await message.add_reaction(default_map["e_mail"])
 
     #per mara's request
     if "mara" in string:
