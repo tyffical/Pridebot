@@ -447,6 +447,36 @@ async def on_message(message):
         member = message.mentions[0]
         print(member)
 
+    # Who doesn’t need a hug every now and again?
+    message.content = message.content.lower()
+    if message.channel.id != important_init_channel_id and (
+            message.content.startswith("hug")):
+        mention = string.split('hug')
+        # improvement -> this line gets your id, we want it to get the mentioned person's id
+        myid = message.author.id
+        res = re.split("[!<>@]", mention[1])
+        reason = re.split("[!<>@\d+]", mention[1])
+        res = list(filter(None, res))
+        res = res[0]
+        reason = list(filter(None, reason))
+        if not reason:
+            reason = "no reason, you simply deserve it. yeet"
+        else:
+            reason = reason[0]
+        # print(reason)
+        if not mention[1]:
+            await message.reply("whom do you want to hug?")
+        elif int(res) == myid:
+            await message.reply("Ha! you can't hug yourself.")
+        else:
+            await message.reply(
+                "{mention} Everbody needs a hug. It changes your metabolism:\n Reason: {why}".format(
+                    mention=mention[1], why=reason),
+                file=discord.File('hug.gif'))
+        print(reason)
+        member = message.mentions[0]
+        print(member)
+
 
     message.content = message.content.lower()
     if message.channel.id != important_init_channel_id and (
