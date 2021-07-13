@@ -10,6 +10,7 @@ discord = "^1.0.1"
 flask = "^2.0.1"
 codebug-tether = "^0.9.1"
 python-dotenv = "^0.18.0"
+discord-py-slash-command = "^2.3.2"
 
 [tool.poetry.dev-dependencies]
 
