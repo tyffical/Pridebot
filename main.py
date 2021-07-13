@@ -323,7 +323,7 @@ async def on_message(message):
         await message.add_reaction(default_map["regional_indicator_m"])
         await message.add_reaction(default_map["regional_indicator_e"])
         await message.add_reaction(default_map["m"])
-        await message.add_reaction(default_map["email"])
+        await message.add_reaction(default_map["e_mail"])
 
     #per mara's request
     if "mara" in string:
