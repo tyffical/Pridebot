@@ -104,7 +104,7 @@ custom_list = [
     "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary",
     "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay",
     "pride_heart_bi", "pride_heart_aro", "pride_heart_ace", "initinit",
-    "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj"
+    "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj", "adam"
 ]
 custom_map = {}
 
@@ -305,7 +305,7 @@ async def on_message(message):
     #     await message.reply(nqn_msg.format("meow_code"))
     # if "cat" in string or "kitty" in string or "meow" in string:
     #     await message.reply(nqn_msg.format("meow_heart"))
-    if "tiff" in string:
+    if "tiff" in string or "tyff" in string:
         # await message.reply(nqn_msg.format("3c"))
         await message.add_reaction(custom_map["royalblahaj"])
 
@@ -341,6 +341,7 @@ async def on_message(message):
 
     if "adam" in string or "iom" in string:
         await message.add_reaction(default_map["isle_of_man"])
+        await message.add_reaction(custom_map["adam"])
 
     #added by Adam in the club
     if "party" in string:
