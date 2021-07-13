@@ -94,8 +94,8 @@ default_map = {
     "flag_in": "\U0001f1ee\U0001f1f3",
     "regional_indicator_m": "\U0001f1f2",
     "regional_indicator_e": "\U0001f1ea",
-    "regional_indicator_m": "\U0001f1f2",
-    "regional_indicator_e": "\U0001f1ea",
+    "m": "\u24C2\uFE0F",
+    "e_mail": "\U0001f4e7",
     
 
 }
