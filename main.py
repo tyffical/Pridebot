@@ -1,4 +1,5 @@
 import discord
+from discord_slash import SlashCommand, SlashContext
 import os
 from keep_alive import keep_alive
 import re
@@ -22,6 +23,7 @@ load_dotenv()
 #global vars
 
 client = discord.Client()
+slash = SlashCommand(client)
 response = requests.get("https://discord.com/oauth2/849471740052504606")
 remaining_requests = response.headers.get('X-RateLimit-Limit')
 print(remaining_requests)
@@ -133,6 +135,10 @@ async def on_ready():
         activity=discord.Game("Happy Pride Month! " +
                               default_map["rainbow_flag"]))
 
+@slash.slash(name="hug")
+async def hug(ctx: SlashContext):
+    hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
+    ctx.send(hug_url)
 
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
