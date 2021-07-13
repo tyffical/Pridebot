@@ -144,6 +144,11 @@ guild_ids = [blahajgang_guild_id]
 async def hug(ctx):
     hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
     await ctx.send(content=hug_url)
+    
+@slash.slash(name="elmoash", guild_ids=guild_ids)
+async def hug(ctx):
+    hug_url = "https://tenor.com/view/ashwin-rise-elmo-meme-lord-rise-ashwin-meme-lord-rise-gif-22312460"
+    await ctx.send(content=hug_url)
 
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
