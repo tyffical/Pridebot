@@ -19,17 +19,15 @@ load_dotenv()
 # "run on repl.it" button https://replit.com/talk/learn/Configuring-GitHub-repos-to-run-on-Replit-and-contributing-back/23948
 # python regex basics https://www.w3schools.com/python/python_regex.asp
 # python regex cheatsheet https://cheatography.com/mutanclan/cheat-sheets/python-regular-expression-regex/
+# discord.py slash commands https://discord-py-slash-command.readthedocs.io/en/latest/quickstart.html
 
 #global vars
 
-client = discord.Client()
-slash = SlashCommand(client)
+client = discord.Client(intents=discord.Intents.all())
+slash = SlashCommand(client, sync_commands=True)
 response = requests.get("https://discord.com/oauth2/849471740052504606")
 remaining_requests = response.headers.get('X-RateLimit-Limit')
 print(remaining_requests)
-
-
-
 
 pride_words = [
     "pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "june",
@@ -125,7 +123,7 @@ nqn_msg = "!react {}"
 
 #actual bot functions
 
-
+#bot startup and status
 @client.event
 async def on_ready():
     print("I'm in")
@@ -139,14 +137,17 @@ async def on_ready():
         activity=discord.Game("Happy Pride Month! " +
                               default_map["rainbow_flag"]))
 
-@slash.slash(name="hug")
-async def hug(ctx: SlashContext, arg0: str):
+#bot slash commands
+guild_ids = [blahajgang_guild_id]
+
+@slash.slash(name="hug", guild_ids=guild_ids)
+async def hug(ctx):
     hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
-    embed = discord.Embed(title=hug_url)
-    await ctx.send(content=arg0, embeds=[embed])
+    await ctx.send(content=hug_url)
 
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
+#bot message reactions and replies
 @client.event
 async def on_message(message):
     #ignore bot's own message
