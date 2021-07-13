@@ -146,9 +146,9 @@ async def hug(ctx):
     await ctx.send(content=hug_url)
     
 @slash.slash(name="elmoash", guild_ids=guild_ids)
-async def hug(ctx):
-    hug_url = "https://tenor.com/view/ashwin-rise-elmo-meme-lord-rise-ashwin-meme-lord-rise-gif-22312460"
-    await ctx.send(content=hug_url)
+async def elmoash(ctx):
+    gif_url = "https://tenor.com/view/ashwin-rise-elmo-meme-lord-rise-ashwin-meme-lord-rise-gif-22312460"
+    await ctx.send(content=gif_url)
 
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
