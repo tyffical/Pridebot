@@ -96,6 +96,7 @@ default_map = {
     "regional_indicator_e": "\U0001f1ea",
     "m": "\u24C2\uFE0F",
     "e_mail": "\U0001f4e7",
+    "flag_vn": "\U0001f1fb\U0001f1f3"
 
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
@@ -108,7 +109,7 @@ custom_list = [
     "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary",
     "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay",
     "pride_heart_bi", "pride_heart_aro", "pride_heart_ace", "initinit",
-    "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj", "adam"
+    "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj", "adam", "awwblahaj"
 ]
 custom_map = {}
 
@@ -312,6 +313,11 @@ async def on_message(message):
     # stop it
     if "vik" in string:
         await message.add_reaction(custom_map["mlhblahaj"])
+        
+    # i added this myself :)
+    if "bailey" in string:
+        await message.add_reaction(custom_map["awwblahaj"])
+        await message.add_reaction(default_map["flag_vn"])
 
     #per hana's request
     if "hana" in string:
