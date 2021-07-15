@@ -457,34 +457,6 @@ async def on_message(message):
     # Basically now, the reason is coming in the mention and ignoring spaces cause of the string thing
     # Thank you for coming to my TED Talk
     # I know, I'm very descriptive
-    
-    # message.content = message.content.lower()
-    # if message.channel.id != important_init_channel_id and (
-            # message.content.startswith("gift")):
-        # mention = string.split('gift')
-        # myid = message.author.id  #improvement -> this line gets your id, we want it to get the mentioned person's id
-        # res = re.split("[!<>@]", mention[1])
-        # reason = re.split("[!<>@\d+]", mention[1])
-        # res = list(filter(None, res))
-        # res = res[0]
-        # reason = list(filter(None, reason))
-        # if not reason:
-            # reason = "no reason, you simply deserve it. yeet"
-        # else:
-            # reason = reason[0]
-        # print(reason)
-        # if not mention[1]:
-            # await message.reply("whom should I send a gift?")
-        # elif int(res) == myid:
-            # await message.reply("Ha! you can't gift yourself.")
-        # else:
-            # await message.reply(
-                # "{mention} Here's a plushie for you:\n reason: {why}".format(
-                    # mention=mention[1], why=reason),
-                # file=discord.File('giftBlahaj.png'))
-        # print(reason)
-        # member = message.mentions[0]
-        # print(member)
 
     # Who doesn’t need a hug every now and again?
     message.content = message.content.lower()
