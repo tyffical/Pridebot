@@ -1,5 +1,6 @@
 import discord
 from discord_slash import SlashCommand
+from discord_slash.utils.manage_commands import create_option
 import os
 from keep_alive import keep_alive
 import re
@@ -9,7 +10,6 @@ import glob, random
 from dotenv import load_dotenv
 from ids import role_ids, channel_ids, guild_ids
 from emojis import default_map, custom_list
-# from slash_commands import hug, elmoash, gift #perhaps i should run both files at the same time?
 
 load_dotenv()
 
@@ -19,6 +19,9 @@ load_dotenv()
 # "run on repl.it" button https://replit.com/talk/learn/Configuring-GitHub-repos-to-run-on-Replit-and-contributing-back/23948
 # python regex basics https://www.w3schools.com/python/python_regex.asp
 # python regex cheatsheet https://cheatography.com/mutanclan/cheat-sheets/python-regular-expression-regex/
+# discord py slash commands #https://discord-py-slash-command.readthedocs.io/en/latest/gettingstarted.html #https://discord-py-slash-command.readthedocs.io/en/latest/discord_slash.context.html
+#https://discord-py-slash-command.readthedocs.io/en/latest/gettingstarted.html?highlight=options#more-in-the-option-give-them-a-choice
+#https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-type
 
 #global vars
 
@@ -63,15 +66,42 @@ async def on_ready():
 #bot slash commands
 guild_ids_list = [guild_ids["blahajgang"]]
 
-@slash.slash(name="hug", guild_ids=guild_ids_list)
+@slash.slash(name="hug", guild_ids=guild_ids_list, description="hug gif because we all need it <3")
 async def hug(ctx):
     hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
     await ctx.send(content=hug_url)
     
-@slash.slash(name="elmoash", guild_ids=guild_ids_list)
+@slash.slash(name="elmoash", guild_ids=guild_ids_list, description="gif of ash morphing into elmo")
 async def elmoash(ctx):
     gif_url = "https://tenor.com/view/ashwin-rise-elmo-meme-lord-rise-ashwin-meme-lord-rise-gif-22312460"
     await ctx.send(content=gif_url)
+
+@slash.slash(name="gift", guild_ids=guild_ids_list, description="gift a friendo a blahaj!", 
+options=[create_option(
+          name="recipient",
+          description="Who do you want to give this to?",
+          option_type=6, #corresponds to USER
+          required=False),
+        create_option(
+          name="reason",
+          description="Why are you gifting this to them?",
+          option_type=3, #corresponds to STRING
+          required=False)
+          ])
+async def gift(ctx, recipient=None, reason=None):
+    mention = recipient.id if recipient else None
+    myid = ctx.author_id 
+    if not reason:
+        reason = "no reason, you simply deserve it. yeet"
+    if not mention:
+        await ctx.send(content="To whom should I send a gift?")
+    elif mention == myid:
+        await ctx.send(content="Ha! you can't gift yourself.")
+    else:
+        await ctx.send(
+            content="<@{mention}>, here's a plushie for you!\n reason: {reason}".format(
+                mention=mention, reason=reason),
+            file=discord.File('giftBlahaj.png'))
 
 
 #TODO: refactor this function maybe (react func and mention func)
@@ -83,41 +113,12 @@ async def on_message(message):
     if message.author.id == client.user.id:
         return
 
-
-    #react with melon because melon is amazing -adam
-    #only in #dis-for-important-linkz-n-messages-init tho to prevent spam -tiff
-    if message.channel.id == channel_ids["important_init"]:
-        await message.add_reaction(default_map["watermelon"])
-    
-    # # gift blahaj for good work or anyway coz why not
-    # # NOTE from Vikram: moved up cause lower and join cause ew gross bugs
-    # # Basically now, the reason is coming in the mention and ignoring spaces cause of the string thing
-    # # Thank you for coming to my TED Talk
-    # # I know, I'm very descriptive
-    if message.channel.id != channel_ids["important_init"] and (
-            message.content.lower().startswith("gift")):
-        mention = message.mentions[0].id if len(message.mentions) >= 1 else None
-        myid = message.author.id 
-        reason = message.content.lower().replace("gift <@" + str(mention) + ">", "") 
-        # Basically filtering the content and removing gift and the mention to get the reason
-        if reason == "":
-            reason = "no reason, you simply deserve it. yeet"
-        if mention == None:
-            await message.reply("To whom should I send a gift?")
-        elif mention == myid:
-            await message.reply("Ha! you can't gift yourself.")
-        else:
-            await message.reply(
-                "<@{mention}>, here's a plushie for you!\n reason: {reason}".format(
-                    mention=mention, reason=reason),
-                file=discord.File('giftBlahaj.png'))
-
     # gift a pride flag
     if message.channel.id != channel_ids["important_init"] and message.content.startswith(
             "colors"):
         mention = message.mentions[0].id if len(message.mentions) >= 1 else None
         myid = message.author.id 
-        if mention == None:
+        if not mention:
             await message.reply("whom should I send a gift?")
         elif mention == myid:
             await message.reply("Ha! you can't gift yourself.")
@@ -138,7 +139,7 @@ async def on_message(message):
         # Basically filtering the content and removing gift and the mention to get the reason
         if reason == "":
             reason = "no reason, you simply deserve it. yeet"
-        if mention == None:
+        if not mention:
             await message.reply("whom do you want to hug?")
         elif mention == myid:
             await message.reply("Ha! you can't hug yourself.")
@@ -157,7 +158,7 @@ async def on_message(message):
         # Basically filtering the content and removing gift and the mention to get the reason
         if reason == "":
             reason = "cuz they can"
-        if mention == None:
+        if not mention:
             await message.reply("whom should I arrest?")
         elif mention == myid:
             await message.reply("Ha! you can't arrest yourself.")
