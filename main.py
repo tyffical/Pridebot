@@ -185,7 +185,12 @@ async def on_message(message):
     #only in #dis-for-important-linkz-n-messages-init tho to prevent spam -tiff
     if message.channel.id == important_init_channel_id:
         await message.add_reaction(default_map["watermelon"])
-
+    
+    # gift blahaj for good work or anyway coz why not
+    # NOTE from Vikram: moved up cause lower and join cause ew gross bugs
+    # Basically now, the reason is coming in the mention and ignoring spaces cause of the string thing
+    # Thank you for coming to my TED Talk
+    # I know, I'm very descriptive
     if message.channel.id != important_init_channel_id and (
             message.content.lower().startswith("gift")):
         mention = message.mentions[0].id # We can get the mentioned ID like this -Vikram
@@ -451,12 +456,6 @@ async def on_message(message):
                 "{mention} Here's a gift from blahaj and {author}:\n".format(
                     mention=mention[1], author=message.author.mention),
                 file=discord.File(random.choice(random_flag)))
-
-    # gift blahaj for good work or anyway coz why not
-    # NOTE from Vikram: moved up cause lower and join cause ew gross bugs
-    # Basically now, the reason is coming in the mention and ignoring spaces cause of the string thing
-    # Thank you for coming to my TED Talk
-    # I know, I'm very descriptive
 
     # Who doesn’t need a hug every now and again?
     message.content = message.content.lower()
