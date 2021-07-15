@@ -201,10 +201,10 @@ async def on_message(message):
         # res = list(filter(None, res))
         # res = res[0]
         # NOTE from Vikram: new code doesn't need res and reason is redefined
-        reason = message.content.lower().replace("gift <@" + str(mention) + ">", "") 
+        reason = message.content.lower().replace("gift " + str(message.mentions[0]), "") 
         # Basically filtering the content and removing gift and the mention to get the reason
         if reason == "":
-            reason = "no reason, you simply deserve it. yeet"
+            reason = "no reason, + you simply deserve it. yeet"
         # print(reason)
         if mention == []:
             await message.reply("To whom should I send a gift?")
@@ -212,9 +212,11 @@ async def on_message(message):
             await message.reply("Ha! you can't gift yourself.")
         else:
             await message.reply(
-                "<@{mention}>, here's a plushie for you!\n reason: {why}".format(
-                    mention=mention, why=reason),
+                "{mention}, here's a plushie for you!\n reason: {why}".format(mention=mention, why=reason),
                 file=discord.File('giftBlahaj.png'))
+        print(reason)
+        member = message.mentions[0]
+        print(member)
         
     #strip whitespace and change to lowercase
     string = "".join(message.content.lower().split())
