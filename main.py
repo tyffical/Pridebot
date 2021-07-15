@@ -150,6 +150,11 @@ async def hug(ctx):
 async def elmoash(ctx):
     gif_url = "https://tenor.com/view/ashwin-rise-elmo-meme-lord-rise-ashwin-meme-lord-rise-gif-22312460"
     await ctx.send(content=gif_url)
+    
+@slash.slash(name="whereismyblahaj", guild_ids=guild_ids)
+async def whereismyblahaj(ctx):
+    image = discord.File('WHEREISMYBLAHAJ.png')
+    await ctx.send(content=image)
 
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
