@@ -186,7 +186,39 @@ async def on_message(message):
     #only in #dis-for-important-linkz-n-messages-init tho to prevent spam -tiff
     if message.channel.id == important_init_channel_id:
         await message.add_reaction(default_map["watermelon"])
-
+    
+    # gift blahaj for good work or anyway coz why not
+    # NOTE from Vikram: moved up cause lower and join cause ew gross bugs
+    # Basically now, the reason is coming in the mention and ignoring spaces cause of the string thing
+    # Thank you for coming to my TED Talk
+    # I know, I'm very descriptive
+    if message.channel.id != important_init_channel_id and (
+            message.content.lower().startswith("gift")):
+        mention = message.mentions[0].id # We can get the mentioned ID like this -Vikram
+        myid = message.author.id  #improvement -> this line gets your id, we want it to get the mentioned person's id
+        # res = re.split("[!<>@]", mention[1])
+        # reason = re.split("[!<>@\d+]", mention[1])
+        # res = list(filter(None, res))
+        # res = res[0]
+        # NOTE from Vikram: new code doesn't need res and reason is redefined
+        reason = message.content.lower().replace("gift " + str(message.mentions[0]), "") 
+        # Basically filtering the content and removing gift and the mention to get the reason
+        if reason == "":
+            reason = "no reason, you simply deserve it. yeet"
+        # print(reason)
+        if mention == []:
+            await message.reply("To whom should I send a gift?")
+        elif mention == myid:
+            await message.reply("Ha! you can't gift yourself.")
+        else:
+            await message.reply(
+                "{mention}, here's a plushie for you!\n reason: {why}".format(
+                    mention=mention, why=reason),
+                file=discord.File('giftBlahaj.png'))
+        print(reason)
+        member = message.mentions[0]
+        print(member)
+        
     #strip whitespace and change to lowercase
     string = "".join(message.content.lower().split())
 
@@ -430,35 +462,6 @@ async def on_message(message):
                 "{mention} Here's a gift from blahaj and {author}:\n".format(
                     mention=mention[1], author=message.author.mention),
                 file=discord.File(random.choice(random_flag)))
-
-    # gift blahaj for good work or anyway coz why not
-    message.content = message.content.lower()
-    if message.channel.id != important_init_channel_id and (
-            message.content.startswith("gift")):
-        mention = string.split('gift')
-        myid = message.author.id  #improvement -> this line gets your id, we want it to get the mentioned person's id
-        res = re.split("[!<>@]", mention[1])
-        reason = re.split("[!<>@\d+]", mention[1])
-        res = list(filter(None, res))
-        res = res[0]
-        reason = list(filter(None, reason))
-        if not reason:
-            reason = "no reason, you simply deserve it. yeet"
-        else:
-            reason = reason[0]
-        # print(reason)
-        if not mention[1]:
-            await message.reply("whom should I send a gift?")
-        elif int(res) == myid:
-            await message.reply("Ha! you can't gift yourself.")
-        else:
-            await message.reply(
-                "{mention} Here's a plushie for you:\n reason: {why}".format(
-                    mention=mention[1], why=reason),
-                file=discord.File('giftBlahaj.png'))
-        print(reason)
-        member = message.mentions[0]
-        print(member)
 
     # Who doesn’t need a hug every now and again?
     message.content = message.content.lower()
