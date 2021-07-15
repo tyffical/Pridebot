@@ -1,3 +1,5 @@
+# keeping bot alive on repl.it https://www.codementor.io/@garethdwyer/building-a-discord-bot-with-python-and-repl-it-miblcwejz
+
 from flask import Flask
 from threading import Thread
 
