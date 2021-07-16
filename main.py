@@ -66,6 +66,17 @@ async def on_ready():
 #bot slash commands
 guild_ids_list = [guild_ids["blahajgang"]]
 
+
+@slash.slash(name="contribute", guild_ids=guild_ids_list, description="here's the repo link to contribute to pride bot!")
+async def contribute(ctx):
+    #todo add a dm message with the tree structure of this repo
+        #@client.event
+        #async def on_message(message):
+            #print(message.author.id)
+    
+    url = "https://github.com/tyffical/Pridebot  Hi! Here's the link to the repo to contribute to pride bot! Hope you make me better!"
+    await ctx.send(content=url)
+
 @slash.slash(name="hug", guild_ids=guild_ids_list, description="hug gif because we all need it <3")
 async def hug(ctx):
     hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
