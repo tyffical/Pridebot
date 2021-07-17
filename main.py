@@ -1,5 +1,5 @@
 import discord
-from discord_slash import SlashCommand
+from discord_import SlashCommand
 from discord_slash.utils.manage_commands import create_option
 import os
 from keep_alive import keep_alive
@@ -66,6 +66,7 @@ async def on_ready():
 #bot slash commands
 guild_ids_list = [guild_ids["blahajgang"]]
 
+
 @slash.slash(name="hug", guild_ids=guild_ids_list, description="hug gif because we all need it <3")
 async def hug(ctx):
     hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
@@ -103,7 +104,40 @@ async def gift(ctx, recipient=None, reason=None):
                 mention=mention, reason=reason),
             file=discord.File('giftBlahaj.png'))
 
+@slash.slash(name="arrest", guild_ids=guild_ids_list, description="for some reason blahajgangers wanted to arrest one another?", 
+options=[create_option(
+          name="recipient",
+          description="Who do you want to arrest ?",
+          option_type=6, #corresponds to USER
+          required=False),
+        create_option(
+          name="reason",
+          description="Why are you arrest blahajganger ?",
+          option_type=3, #corresponds to STRING
+          required=False)
+          ])
+async def arrest(ctx, recipient=None, reason=None):
+    mention = recipient.id if recipient else None
+    myid = ctx.author_id 
+    if not mention:
+        await ctx.send(content="To whom should I arrest?")
+    
+    elif not reason:
+        reason = "yeet just for fun! :"
+        await ctx.send(
+            content="<@{mention}>, you got arrested \n reason: {reason}".format(
+                mention=mention, reason=reason))
 
+   
+              
+    elif mention == myid:
+        await ctx.send(content="Ha! you can't arrest yourself.")
+    else:
+        await ctx.send(
+            content="<@{mention}>, you got arrested \n reason: {reason}".format(
+                mention=mention, reason=reason))
+
+        
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
 #bot message reactions and replies
