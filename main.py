@@ -1,5 +1,5 @@
 import discord
-from discord_slash import SlashCommand
+from discord_import SlashCommand
 from discord_slash.utils.manage_commands import create_option
 import os
 from keep_alive import keep_alive
@@ -70,10 +70,6 @@ guild_ids_list = [guild_ids["blahajgang"]]
 @slash.slash(name="contribute", guild_ids=guild_ids_list, description="here's the repo link to contribute to pride bot!")
 async def contribute(ctx):
     #todo add a dm message with the tree structure of this repo
-        #@client.event
-        #async def on_message(message):
-            #print(message.author.id)
-    
     url = "https://github.com/tyffical/Pridebot  Hi! Here's the link to the repo to contribute to pride bot! Hope you make me better!"
     await ctx.send(content=url)
 
