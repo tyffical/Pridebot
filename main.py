@@ -114,7 +114,7 @@ async def on_message(message):
         return
 
     # gift a pride flag
-    if message.channel.id != channel_ids["important_init"] and message.content.startswith(
+    if message.channel.id != channel_ids["important_init"] and message.content.lower().startswith(
             "colors"):
         mention = message.mentions[0].id if len(message.mentions) >= 1 else None
         myid = message.author.id 
@@ -123,16 +123,23 @@ async def on_message(message):
         elif mention == myid:
             await message.reply("Ha! you can't gift yourself.")
         else:
-            path = ["./flags/*.png"]
+            path = ["./pride_flags/*.png"]
             random_flag = glob.glob(random.choice(path))
             await message.reply(
-                "<@{mention}> Here's a gift from blahaj and {author}:\n".format(
+                "<@{mention}> Here's a gift from {author}:\n".format(
                     mention=mention, author=message.author.mention),
                 file=discord.File(random.choice(random_flag)))
 
+    # send a meme template on keyword PR or Pull Request
+    if message.channel.id != channel_ids["important_init"] and (
+            "pull request" in message.content.lower() or ("PR" in message.content)):
+            path = ["./memes/*.jpg"]
+            random_meme = glob.glob(random.choice(path))
+            await message.reply(file=discord.File(random.choice(random_meme)))
+
     # Who doesn’t need a hug every now and again?
     if message.channel.id != channel_ids["important_init"] and (
-            message.content.startswith("hug")):
+            message.content.lower().startswith("hug")):
         mention = message.mentions[0].id if len(message.mentions) >= 1 else None
         myid = message.author.id 
         reason = message.content.lower().replace("hug <@" + str(mention) + ">", "") 
@@ -151,7 +158,7 @@ async def on_message(message):
 
     # for some reason blahajgangers wanted to arrest one another?
     if message.channel.id != channel_ids["important_init"] and (
-            message.content.startswith("arrest")):
+            message.content.lower().startswith("arrest")):
         mention = message.mentions[0].id if len(message.mentions) >= 1 else None
         myid = message.author.id 
         reason = message.content.lower().replace("hug <@" + str(mention) + ">", "") 
