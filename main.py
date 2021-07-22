@@ -183,23 +183,6 @@ async def on_message(message):
                     mention=mention, reason=reason),
                 file=discord.File('hug.gif'))
 
-    # for some reason blahajgangers wanted to arrest one another?
-    if message.channel.id != channel_ids["important_init"] and (
-            message.content.startswith("arrest")):
-        mention = message.mentions[0].id if len(message.mentions) >= 1 else None
-        myid = message.author.id 
-        reason = message.content.lower().replace("hug <@" + str(mention) + ">", "") 
-        # Basically filtering the content and removing gift and the mention to get the reason
-        if reason == "":
-            reason = "cuz they can"
-        if not mention:
-            await message.reply("whom should I arrest?")
-        elif mention == myid:
-            await message.reply("Ha! you can't arrest yourself.")
-        else:
-            await message.reply(
-                "<@{mention}> You're under arrest!\n reason: {why}".format(
-                    mention=mention, why=reason))
         
     #strip whitespace and change to lowercase
     string = "".join(message.content.lower().split())
@@ -399,6 +382,7 @@ async def on_message(message):
     #restricted to #onlypuns channel, per vijay's request
     if message.channel.id == channel_ids["onlypuns"]:
         if "pun" in string:
+            
             not_pun_master = True
             #prevent pinging the pun master if they made the msg
             for role in message.author.roles:
