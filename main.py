@@ -1,5 +1,5 @@
 import discord
-from discord_import SlashCommand
+from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_option
 import os
 from keep_alive import keep_alive
