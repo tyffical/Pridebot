@@ -70,7 +70,7 @@ guild_ids_list = [guild_ids["blahajgang"]]
 @slash.slash(name="contribute", guild_ids=guild_ids_list, description="here's the repo link to contribute to pride bot!")
 async def contribute(ctx):
     #todo add a dm message with the tree structure of this repo
-    url = "https://github.com/tyffical/Pridebot Here's the link to the repo to contribute to pride bot!"
+    url = "https://github.com/tyffical/Pridebot "
     await ctx.send(content=url)
 
 @slash.slash(name="hug", guild_ids=guild_ids_list, description="hug gif because we all need it <3")
