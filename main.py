@@ -265,6 +265,10 @@ async def on_message(message):
     if "boomer" in string:
         await message.add_reaction(default_map["older_adult"])
         
+    if "rain" in string or "thunderstorm" in string or "thunder" in string:
+        await message.add_reaction(default_map["cloud_lightning"])
+        await message.add_reaction(default_map["thunder_cloud_rain"])
+        
     # gamerhaj react for pro blahaj gamer
     if "adi" in string:
         await message.add_reaction(custom_map["gamerhaj"])
