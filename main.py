@@ -107,7 +107,7 @@ async def gift(ctx, recipient=None, reason=None):
 @slash.slash(name="arrest", guild_ids=guild_ids_list, description="for some reason blahajgangers wanted to arrest one another?", 
 options=[create_option(
           name="recipient",
-          description="Who do you want to arrest ?",
+          description="Whom do you want to arrest ?",
           option_type=6, #corresponds to USER
           required=False),
         create_option(
