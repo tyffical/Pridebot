@@ -1,5 +1,5 @@
 import discord
-from discord_import SlashCommand
+from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_option
 import os
 from keep_alive import keep_alive
@@ -112,7 +112,7 @@ options=[create_option(
           required=False),
         create_option(
           name="reason",
-          description="Why are you arrest blahajganger ?",
+          description="Why should they be arrested?",
           option_type=3, #corresponds to STRING
           required=False)
           ])
@@ -120,12 +120,12 @@ async def arrest(ctx, recipient=None, reason=None):
     mention = recipient.id if recipient else None
     myid = ctx.author_id 
     if not mention:
-        await ctx.send(content="To whom should I arrest?")
+        await ctx.send(content="Whom should I arrest?")
     
     elif not reason:
         reason = "yeet just for fun! :"
         await ctx.send(
-            content="<@{mention}>, you got arrested \n reason: {reason}".format(
+            content="<@{mention}>, You're under arrest! \n reason: {reason}".format(
                 mention=mention, reason=reason))
 
    
@@ -134,7 +134,7 @@ async def arrest(ctx, recipient=None, reason=None):
         await ctx.send(content="Ha! you can't arrest yourself.")
     else:
         await ctx.send(
-            content="<@{mention}>, you got arrested \n reason: {reason}".format(
+            content="<@{mention}>, You're under arrest! \n reason: {reason}".format(
                 mention=mention, reason=reason))
 
         
