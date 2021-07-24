@@ -276,6 +276,10 @@ async def on_message(message):
         await message.add_reaction(default_map["cloud_lightning"])
         await message.add_reaction(default_map["thunder_cloud_rain"])
         
+    if "sleep" in string:
+        await message.add_reaction(default_map["yawning_face"])
+        await message.add_reaction(default_map["sleeping"])
+        
     # gamerhaj react for pro blahaj gamer
     if "adi" in string:
         await message.add_reaction(custom_map["gamerhaj"])
