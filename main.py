@@ -417,7 +417,6 @@ async def on_message(message):
 client = commands.Bot(command_prefix="!") #prefix to use all the commands
 afkdict = {} #defines all the ppl afk
 @client.command(name="afk")#afk command body 
-if message.channel.id != channel_ids["important_init"]:
 async def afk(ctx, message = "They didn't leave a message!"):
     global afkdict
 
@@ -430,7 +429,6 @@ async def afk(ctx, message = "They didn't leave a message!"):
         await ctx.send("You are now afk. Beware of the real world!")
 
 @client.event
-
 async def on_message(message):
     global afkdict
     if message.author in afkdict:
