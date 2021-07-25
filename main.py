@@ -405,10 +405,7 @@ async def afk(ctx, message = "They didn't leave a message!"):
         await ctx.send("You are now afk. Beware of the real world!")
 
 @client.event
-if message.author.id == client.user.id:
-        return
-if message.channel.id != channel_ids["important_init"]:
-    
+
 async def on_message(message):
     global afkdict
     if message.author in afkdict:
