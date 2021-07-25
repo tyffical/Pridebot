@@ -67,6 +67,13 @@ async def on_ready():
 #bot slash commands
 guild_ids_list = [guild_ids["blahajgang"]]
 
+
+@slash.slash(name="contribute", guild_ids=guild_ids_list, description="here's the repo link to contribute to pride bot!")
+async def contribute(ctx):
+    #todo add a dm message with the tree structure of this repo
+    url = "https://github.com/tyffical/Pridebot "
+    await ctx.send(content=url)
+
 @slash.slash(name="hug", guild_ids=guild_ids_list, description="hug gif because we all need it <3")
 async def hug(ctx):
     hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
@@ -104,7 +111,33 @@ async def gift(ctx, recipient=None, reason=None):
                 mention=mention, reason=reason),
             file=discord.File('giftBlahaj.png'))
 
+@slash.slash(name="arrest", guild_ids=guild_ids_list, description="for some reason blahajgangers wanted to arrest one another?", 
+options=[create_option(
+          name="recipient",
+          description="Whom do you want to arrest?",
+          option_type=6, #corresponds to USER
+          required=False),
+        create_option(
+          name="reason",
+          description="Why should they be arrested?",
+          option_type=3, #corresponds to STRING
+          required=False)
+          ])
+async def arrest(ctx, recipient=None, reason=None):
+    mention = recipient.id if recipient else None
+    myid = ctx.author_id 
+    if not reason:
+        reason = "yeet! just for fun :)"
+    if not mention:
+        await ctx.send(content="Whom should I arrest?")
+    elif mention == myid:
+        await ctx.send(content="Ha! you can't arrest yourself.")
+    else:
+        await ctx.send(
+            content="<@{mention}>, You're under arrest! \n reason: {reason}".format(
+                mention=mention, reason=reason))
 
+        
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
 #bot message reactions and replies
@@ -150,23 +183,6 @@ async def on_message(message):
                     mention=mention, reason=reason),
                 file=discord.File('hug.gif'))
 
-    # for some reason blahajgangers wanted to arrest one another?
-    if message.channel.id != channel_ids["important_init"] and (
-            message.content.startswith("arrest")):
-        mention = message.mentions[0].id if len(message.mentions) >= 1 else None
-        myid = message.author.id 
-        reason = message.content.lower().replace("hug <@" + str(mention) + ">", "") 
-        # Basically filtering the content and removing gift and the mention to get the reason
-        if reason == "":
-            reason = "cuz they can"
-        if not mention:
-            await message.reply("whom should I arrest?")
-        elif mention == myid:
-            await message.reply("Ha! you can't arrest yourself.")
-        else:
-            await message.reply(
-                "<@{mention}> You're under arrest!\n reason: {why}".format(
-                    mention=mention, why=reason))
         
     #strip whitespace and change to lowercase
     string = "".join(message.content.lower().split())
@@ -265,6 +281,14 @@ async def on_message(message):
 
     if "boomer" in string:
         await message.add_reaction(default_map["older_adult"])
+        
+    if "rain" in string or "thunderstorm" in string or "thunder" in string:
+        await message.add_reaction(default_map["cloud_lightning"])
+        await message.add_reaction(default_map["thunder_cloud_rain"])
+        
+    if "sleep" in string:
+        await message.add_reaction(default_map["yawning_face"])
+        await message.add_reaction(default_map["sleeping"])
         
     # gamerhaj react for pro blahaj gamer
     if "adi" in string:
@@ -366,6 +390,7 @@ async def on_message(message):
     #restricted to #onlypuns channel, per vijay's request
     if message.channel.id == channel_ids["onlypuns"]:
         if "pun" in string:
+            
             not_pun_master = True
             #prevent pinging the pun master if they made the msg
             for role in message.author.roles:

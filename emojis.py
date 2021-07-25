@@ -55,7 +55,12 @@ default_map = {
     "regional_indicator_e": "\U0001f1ea",
     "m": "\u24C2\uFE0F",
     "e_mail": "\U0001f4e7",
-    "flag_vn": "\U0001f1fb\U0001f1f3"
+    "flag_vn": "\U0001f1fb\U0001f1f3",
+    "thunder_cloud_rain": "\u26C8",
+    "cloud_lightning": "\U0001f329",
+    "yawning_face": "\U0001f971",
+    "sleeping": "\U0001f634"
+
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
