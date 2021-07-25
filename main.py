@@ -417,7 +417,7 @@ async def on_message(message):
 client = commands.Bot(command_prefix="!") #prefix to use all the commands
 afkdict = {} #defines all the ppl afk
 @client.command(name="afk")#afk command body 
-async def afk(ctx, message = "They didn't leave a message!"):
+async def afk(ctx,*, message = "They didn't leave a message!"):
     global afkdict
 
     if ctx.message.author in afkdict:
