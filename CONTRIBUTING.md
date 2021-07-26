@@ -1,25 +1,15 @@
-# Contributing to this repository <!-- omit in toc -->
+# Contributing to this repository 
 
-## Getting started <!-- omit in toc -->
+## Getting started 
 
 Before you begin:
-- This site is powered by Node.js. Check to see if you're on the [version of node we support](contributing/development.md).
-- Have you read the [code of conduct](CODE_OF_CONDUCT.md)?
-- Check out the [existing issues](https://github.com/github/docs/issues) & see if we [accept contributions](#types-of-contributions-memo) for your type of issue.
+- This bot is powered by Discord.py
+- Check out the [existing issues](https://github.com/tyffical/Pridebot/issues) & see if we accept contributions
 
-### Use the 'make a contribution' button
-
-<img src="./assets/images/contribution_cta.png" width="400">
-
-Navigating a new codebase can be challenging, so we're making that a little easier. As you're using docs.github.com, you may come across an article that you want to make an update to. You can click on the **make a contribution** button right on that article, which will take you to the file in this repo where you'll make your changes.
-
-Before you make your changes, check to see if an [issue exists](https://github.com/github/docs/issues/) already for the change you want to make.
 
 ### Don't see your issue? Open one
 
-If you spot something new, open an issue using a [template](https://github.com/github/docs/issues/new/choose). We'll use the issue to have a conversation about the problem you want to fix.
-
-**Note:** We cannot accept contributions to the [REST API reference documentation](https://docs.github.com/en/rest/reference). If you spot an inaccuracy in the REST API reference documentation, open an issue in the [github/rest-api-description](https://github.com/github/rest-api-description/issues/new?template=schema-inaccuracy.md) repository.
+If you spot something new, open an issue using a [template](https://github.com/tyffical/Pridebot/issues/new). We'll use the issue to have a conversation about the problem you want to fix.
 
 ### Ready to make a change? Fork the repo
 
@@ -31,21 +21,23 @@ Fork using GitHub Desktop:
 Fork using the command line:
 
 - [Fork the repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#fork-an-example-repository) so that you can make your changes without affecting the original project until you're ready to merge them.
+Fork using Githubs fork button:
 
-Fork with [GitHub Codespaces](https://github.com/features/codespaces):
+Fork using the Github Fork button:
 
-- [Fork, edit, and preview](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace) using [GitHub Codespaces](https://github.com/features/codespaces) without having to install and run the project locally.
+- click on the Fork button at to top right coner 
+
 
 ### Make your update:
-Make your changes to the file(s) you'd like to update. Here are some tips and tricks for [using the docs codebase](#working-in-the-githubdocs-repository).
-  - Are you making changes to the application code? You'll need **Node.js v16** to run the site locally. See [contributing/development.md](contributing/development.md).
+Make your changes to the file(s) you'd like to update.
+  - Are you making changes to the application code? You'll need **discord.py** to run the bot locally. See [contributing/development.md](contributing/development.md).
   - Are you contributing to markdown? We use [GitHub Markdown](contributing/content-markup-reference.md).
 
 ### Open a pull request
 When you're done making changes and you'd like to propose them for review, use the [pull request template](#pull-request-template) to open your PR (pull request).
 
 ### Submit your PR & get it reviewed
-- Once you submit your PR, others from the Docs community will review it with you. The first thing you're going to want to do is a [self review](#self-review).
+- Once you submit your PR, others Contributors  will review it with you.
 - After that, we may have questions, check back on your PR to keep up with the conversation.
 - Did you have an issue, like a merge conflict? Check out our [git tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) on how to resolve merge conflicts and other issues.
 
