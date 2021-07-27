@@ -66,7 +66,7 @@ async def on_ready():
 #bot slash commands
 guild_ids_list = [guild_ids["blahajgang"]]
 
-@slash.slash(name="colors", guild_ids=guild_ids_list, description="gift a pride!", 
+@slash.slash(name="colors", guild_ids=guild_ids, description="gift a pride!", 
 options=[create_option(
           name="recipient",
           description="Who do you want to give this to?",
@@ -87,9 +87,13 @@ async def colors(ctx, recipient=None, reason=None):
         await ctx.send(content="To whom should I send a gift?")
     elif mention == myid:
         await ctx.send(content="Ha! you can't gift yourself.")
+    
     else:
-        await ctx.send(          
-            "<@{mention}> Here's a gift from blahaj and {author}:\n".format(
+        path = ["./flags/*.png"]
+        random_flag = glob.glob(random.choice(path))
+        await ctx.send(
+
+            "<@{mention}> Here's a gift from blahaj:\n".format(
                     mention=mention, reason=reason),
                 file=discord.File(random.choice(random_flag)))
 
@@ -173,23 +177,6 @@ async def on_message(message):
     #ignore bot's own message
     if message.author.id == client.user.id:
         return
-
-    # gift a pride flag
-    if message.channel.id != channel_ids["important_init"] and message.content.startswith(
-            "colors"):
-        mention = message.mentions[0].id if len(message.mentions) >= 1 else None
-        myid = message.author.id 
-        if not mention:
-            await message.reply("whom should I send a gift?")
-        elif mention == myid:
-            await message.reply("Ha! you can't gift yourself.")
-        else:
-            path = ["./flags/*.png"]
-            random_flag = glob.glob(random.choice(path))
-            await message.reply(
-                "<@{mention}> Here's a gift from blahaj and {author}:\n".format(
-                    mention=mention, author=message.author.mention),
-                file=discord.File(random.choice(random_flag)))
 
     # Who doesn’t need a hug every now and again?
     if message.channel.id != channel_ids["important_init"] and (
