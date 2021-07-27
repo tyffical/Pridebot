@@ -78,7 +78,7 @@ options=[create_option(
           option_type=3, #corresponds to STRING
           required=False)
           ])
-async def gift(ctx, recipient=None, reason=None):
+async def colors(ctx, recipient=None, reason=None):
     mention = recipient.id if recipient else None
     myid = ctx.author_id 
     if not reason:
@@ -88,9 +88,9 @@ async def gift(ctx, recipient=None, reason=None):
     elif mention == myid:
         await ctx.send(content="Ha! you can't gift yourself.")
     else:
-        await ctx.send(
+        await ctx.send(          
             "<@{mention}> Here's a gift from blahaj and {author}:\n".format(
-                    mention=mention, author=message.author.mention),
+                    mention=mention, reason=reason),
                 file=discord.File(random.choice(random_flag)))
 
 
