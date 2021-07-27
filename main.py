@@ -66,6 +66,34 @@ async def on_ready():
 #bot slash commands
 guild_ids_list = [guild_ids["blahajgang"]]
 
+@slash.slash(name="colors", guild_ids=guild_ids_list, description="gift a pride!", 
+options=[create_option(
+          name="recipient",
+          description="Who do you want to give this to?",
+          option_type=6, #corresponds to USER
+          required=False),
+        create_option(
+          name="reason",
+          description="Why are you gifting this to them?",
+          option_type=3, #corresponds to STRING
+          required=False)
+          ])
+async def gift(ctx, recipient=None, reason=None):
+    mention = recipient.id if recipient else None
+    myid = ctx.author_id 
+    if not reason:
+        reason = "no reason, you simply deserve it. yeet"
+    if not mention:
+        await ctx.send(content="To whom should I send a gift?")
+    elif mention == myid:
+        await ctx.send(content="Ha! you can't gift yourself.")
+    else:
+        await ctx.send(
+            "<@{mention}> Here's a gift from blahaj and {author}:\n".format(
+                    mention=mention, author=message.author.mention),
+                file=discord.File(random.choice(random_flag)))
+
+
 
 @slash.slash(name="contribute", guild_ids=guild_ids_list, description="here's the repo link to contribute to pride bot!")
 async def contribute(ctx):
