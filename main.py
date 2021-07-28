@@ -137,6 +137,26 @@ async def arrest(ctx, recipient=None, reason=None):
             content="<@{mention}>, You're under arrest! \n reason: {reason}".format(
                 mention=mention, reason=reason))
 
+#!afk command so ->If I use the command and add the reason when ever someone tags me it should show <myname> is afk reason: So and so (krish)
+# client = commands.Bot(command_prefix="!") #prefix to use all the commands
+afkdict = {} #defines all the ppl afk
+@slash.slash(name="afk", guild_ids=guild_ids_list, description="set your afk status so that it will show up when you're tagged", 
+options=[create_option(
+          name="reason",
+          description="Why will you be afk?",
+          option_type=3, #corresponds to STRING
+          required=False)
+          ])#afk command body 
+async def afk(ctx, reason = "They didn't leave a reason!"):
+    global afkdict
+
+    if ctx.author in afkdict:
+        afkdict.pop(ctx.author)
+        await ctx.send('Welcome back! You are no longer afk.')
+
+    else:
+        afkdict[ctx.author] = reason
+        await ctx.send("You are now afk. Beware of the real world!")
         
 #TODO: refactor this function maybe (react func and mention func)
 #TODO: map keywords to reacts
@@ -146,6 +166,17 @@ async def on_message(message):
     #ignore bot's own message
     if message.author.id == client.user.id:
         return
+    
+    #afk stuff
+    global afkdict
+    if message.author in afkdict:
+       await message.channel.send("Welcome back! You are no longer afk.")
+       afkdict.pop(message.author)
+    for member in message.mentions:  
+        if member != message.author:  
+            if member in afkdict:  
+                afkmsg = afkdict[member]  
+                await message.reply(f"Oh noes! <@{member.id}> is afk. Reason-> {afkmsg}")
 
     # gift a pride flag
     if message.channel.id != channel_ids["important_init"] and message.content.startswith(
@@ -418,38 +449,6 @@ async def on_message(message):
         if "init" in string or "scream" in string:
             # await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
             await message.add_reaction(custom_map["initinit"])
-            
- #!afk command so ->If I use the command and add the reason when ever someone tags me it should show <myname> is afk reason: So and so (krish)
-client = commands.Bot(command_prefix="!") #prefix to use all the commands
-afkdict = {} #defines all the ppl afk
-@client.command(name="afk")#afk command body 
-async def afk(ctx,*, message = "They didn't leave a message!"):
-    global afkdict
-
-    if ctx.message.author in afkdict:
-        afkdict.pop(ctx.message.author)
-        await ctx.send('Welcome back! You are no longer afk.')
-
-    else:
-        afkdict[ctx.message.author] = message
-        await ctx.send("You are now afk. Beware of the real world!")
-
-@client.event
-async def on_message(message):
-    global afkdict
-    if message.author in afkdict:
-       await message.channel.send("Welcome back! You are no longer afk.")
-       afkdict.pop(message.author)
-       
-    
-    for member in message.mentions:  
-        if member != message.author:  
-            if member in afkdict:  
-                afkmsg = afkdict[member]  
-                await message.reply(f"Oh noes! {member} is afk. Reason-> {afkmsg}")
-              
-    await client.process_commands(message) 
-    
 
 
 keep_alive()
