@@ -373,7 +373,7 @@ async def on_message(message):
     if "india" in string:
         await message.add_reaction(default_map["flag_in"])
 
-    if "usa" in string:
+    if  "us" in string:
         await message.add_reaction(default_map["flag_us"])
 
     #added by Adam in the club
