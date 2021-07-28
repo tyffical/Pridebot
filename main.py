@@ -10,6 +10,7 @@ import glob, random
 from dotenv import load_dotenv
 from ids import role_ids, channel_ids, guild_ids
 from emojis import default_map, custom_list
+from discord.ext import commands #added this to use commands for the afk command (krish)
 
 load_dotenv()
 
@@ -417,6 +418,38 @@ async def on_message(message):
         if "init" in string or "scream" in string:
             # await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
             await message.add_reaction(custom_map["initinit"])
+            
+ #!afk command so ->If I use the command and add the reason when ever someone tags me it should show <myname> is afk reason: So and so (krish)
+client = commands.Bot(command_prefix="!") #prefix to use all the commands
+afkdict = {} #defines all the ppl afk
+@client.command(name="afk")#afk command body 
+async def afk(ctx,*, message = "They didn't leave a message!"):
+    global afkdict
+
+    if ctx.message.author in afkdict:
+        afkdict.pop(ctx.message.author)
+        await ctx.send('Welcome back! You are no longer afk.')
+
+    else:
+        afkdict[ctx.message.author] = message
+        await ctx.send("You are now afk. Beware of the real world!")
+
+@client.event
+async def on_message(message):
+    global afkdict
+    if message.author in afkdict:
+       await message.channel.send("Welcome back! You are no longer afk.")
+       afkdict.pop(message.author)
+       
+    
+    for member in message.mentions:  
+        if member != message.author:  
+            if member in afkdict:  
+                afkmsg = afkdict[member]  
+                await message.reply(f"Oh noes! {member} is afk. Reason-> {afkmsg}")
+              
+    await client.process_commands(message) 
+    
 
 
 keep_alive()
