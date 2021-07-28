@@ -369,6 +369,12 @@ async def on_message(message):
     if "adam" in string or "iom" in string:
         await message.add_reaction(default_map["isle_of_man"])
         await message.add_reaction(custom_map["adam"])
+    
+    if "india" in string:
+        await message.add_reaction(default_map["flag_in"])
+
+    if "usa" in string:
+        await message.add_reaction(default_map["flag_us"])
 
     #added by Adam in the club
     if "party" in string:
