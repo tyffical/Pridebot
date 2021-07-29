@@ -1,7 +1,13 @@
 <h1 align="center">Pridebot</h1>
 <br>
 <p align="center">
-  <img alt="Pride Bot" title="Pride Bot" src="./flags/1.png" width="400" align="center">
+  <a href="https://github.com/tyffical/Pridebot/issues"><img src="https://img.shields.io/github/issues/tyffical/Pridebot"></a>
+  <a href="https://github.com/tyffical/Pridebot/network/members"><img src="https://img.shields.io/github/forks/tyffical/Pridebot"></a>
+  <a href="https://github.com/tyffical/Pridebot/stargazers"><img src="https://img.shields.io/github/stars/tyffical/Pridebot"></a>
+  <a href="https://github.com/tyffical/Pridebot/blob/main/LICENSE"><img src="https://img.shields.io/github/license/tyffical/Pridebot"></a>
+</p>
+<p align="center">
+  <a href="https://blahaj.lol/discord"><img alt="Pride Bot" title="Pride Bot" src="./flags/1.png" width="300" align="center"></a>
   <figcaption>BLAHAJGang's custom-made pride Discord bot that reacts to pride-related messages with pride emojis, as well as some other Blahaj-tastic Easter eggs!</figcaption>
 </p>
 
@@ -10,7 +16,7 @@
 
 - [Invite the Bot](#invite-the-bot)
 - [Quickstart](#quickstart)
-  - [Locally](#locally)
+  - [Local](#local)
     - [Prerequisites](#prerequisites)
     - [Manual Setup](#manual-setup)
   - [On Replit](#on-replit)
@@ -19,6 +25,8 @@
 - [Support](#support)
 - [License](#license)
 - [Special Thanks](#special-thanks)
+
+</details>
 
 ---
 
@@ -71,6 +79,20 @@ and you're good to go!
 Make sure to add your bot token by clicking on the padlock symbol on the left sidebar, and then inserting "TOKEN" into the `key` text field and your bot token into the `value` text field.
 
 You can turn on the ```Always On``` setting (found by clicking on the repl name) to keep the bot continuously running!
+
+---
+
+## Screenshots
+
+Below are some screenshots of Pridebot in action.
+
+![Colors command](screenshots/ss1.jpg)
+![Pridebot INIT reaction](screenshots/ss2.jpg)
+![Gift command](screenshots/ss3.jpg)
+![Pridebot greeting](screenshots/ss4.jpg)
+![Pridebot flag heart reactions](screenshots/ss5.jpg)
+
+---
 
 ## Contributing
 First off, thanks for taking the time to contribute! Contributions are what makes the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**.
