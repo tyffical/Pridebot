@@ -7,8 +7,10 @@
   <a href="https://github.com/tyffical/Pridebot/blob/main/LICENSE"><img src="https://img.shields.io/github/license/tyffical/Pridebot"></a>
 </p>
 <p align="center">
-  <a href="https://blahaj.lol/discord"><img alt="Pride Bot" title="Pride Bot" src="./flags/1.png" width="300" align="center"></a>
-  <figcaption>BLAHAJGang's custom-made pride Discord bot that reacts to pride-related messages with pride emojis, as well as some other Blahaj-tastic Easter eggs!</figcaption>
+  <a href="https://blahaj.lol/discord"><img alt="Pride Bot" title="Pride Bot" src="./flags/1.png" width="400" align="center"></a>
+</p>
+<p align="center">
+  BLAHAJGang's custom-made pride Discord bot that reacts to pride-related messages with pride emojis, as well as some other Blahaj-tastic Easter eggs!
 </p>
 
 <details open="open">
