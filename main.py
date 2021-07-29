@@ -66,7 +66,7 @@ async def on_ready():
 #bot slash commands
 guild_ids_list = [guild_ids["blahajgang"]]
 
-@slash.slash(name="colors", guild_ids=guild_ids, description="a pride flag", 
+@slash.slash(name="colors", guild_ids=guild_ids, description="gift a pride flag!", 
 options=[create_option(
           name="recipient",
           description="Who do you want to give this to?",
