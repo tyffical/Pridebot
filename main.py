@@ -10,7 +10,6 @@ import glob, random
 from dotenv import load_dotenv
 from ids import role_ids, channel_ids, guild_ids
 from emojis import default_map, custom_list
-from discord.ext import commands #added this to use commands for the afk command (krish)
 
 load_dotenv()
 
