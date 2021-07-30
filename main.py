@@ -460,11 +460,9 @@ async def on_message(message):
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
 
-    #scream for INIT, but reactions only it is too much
-    if message.channel.id != channel_ids["important_init"]:
-        if "init" in string or "scream" in string:
-            # await message.reply("https://tenor.com/view/jonah-hill-shriek-excited-scream-shout-gif-4705306")
-            await message.add_reaction(custom_map["initinit"])
+    #scream for INIT
+    if "init" in string or "scream" in string:
+        await message.add_reaction(custom_map["initinit"])
 
 
 keep_alive()
