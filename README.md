@@ -120,6 +120,7 @@ Some resources for contributing are listed below:
 - Tiffany Trinh (https://tyffic.al)
 - Neel Adwani (https://neeltron.com)
 - Adam Drummond (https://adamd.fyi/)
+- Michael Cao (https://m.omg.lol)
 
 ## Other Major Contributors
 
