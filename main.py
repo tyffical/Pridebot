@@ -1,36 +1,25 @@
 import discord
+from discord.ext import commands
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_option
-import os
-from keep_alive import keep_alive
-import re
-import time
-import requests
-import glob, random
-from dotenv import load_dotenv
-from ids import role_ids, channel_ids, guild_ids
-from emojis import default_map, custom_list
 
+from info.ids import role_ids, channel_ids, guild_ids
+from info.emojis import default_map, custom_list
+
+import os, re, time, requests, random
+
+from scripts.keep_alive import keep_alive
+from dotenv import load_dotenv
 load_dotenv()
 
-# emoji info https://gist.github.com/scragly/b8d20aece2d058c8c601b44a689a47a0
-# discord.py docs https://discordpy.readthedocs.io/en/latest/api.html
-# change bot status https://python.plainenglish.io/how-to-change-discord-bot-status-with-discord-py-39219c8fceea
-# "run on repl.it" button https://replit.com/talk/learn/Configuring-GitHub-repos-to-run-on-Replit-and-contributing-back/23948
-# python regex basics https://www.w3schools.com/python/python_regex.asp
-# python regex cheatsheet https://cheatography.com/mutanclan/cheat-sheets/python-regular-expression-regex/
-# discord py slash commands #https://discord-py-slash-command.readthedocs.io/en/latest/gettingstarted.html #https://discord-py-slash-command.readthedocs.io/en/latest/discord_slash.context.html
-#https://discord-py-slash-command.readthedocs.io/en/latest/gettingstarted.html?highlight=options#more-in-the-option-give-them-a-choice
-#https://discord.com/developers/docs/interactions/slash-commands#application-command-object-application-command-option-type
-
-#global vars
-
-client = discord.Client(intents=discord.Intents.all())
+# global vars
+client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 slash = SlashCommand(client, sync_commands=True)
 response = requests.get("https://discord.com/oauth2/849471740052504606")
 remaining_requests = response.headers.get('X-RateLimit-Limit')
-print(remaining_requests)
+# print(remaining_requests)
 
+# various dicts
 pride_words = [
     "pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "june",
     "heart", "jack"
@@ -47,129 +36,28 @@ responses = [
     "sorry, im busy atm"
 ]
 
-#actual bot functions
+guild_ids_list = [guild_ids["blahajgang"]]
+
+# add cogs
+client.load_extension("cogs.fun")
+client.load_extension("cogs.gifts")
+client.load_extension("cogs.utils")
 
 #bot startup and status
 @client.event
 async def on_ready():
-    print("I'm in")
-    print(client.user)
+    print("Bot is ready! Logged in as " + str(client.user))
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
     blahajgang_guild = discord.utils.get(client.guilds, id=guild_ids["blahajgang"])
     roles_map["pun_master"] = discord.utils.get(blahajgang_guild.roles,
                                                 id=role_ids["pun_master"])
     await client.change_presence(
-        activity=discord.Game("Happy Pride Month! " +
-                              default_map["rainbow_flag"]))
+        activity=discord.Game("Happy Pride Month! " + default_map["rainbow_flag"]))
 
-#bot slash commands
-guild_ids_list = [guild_ids["blahajgang"]]
-
-@slash.slash(name="colors", guild_ids=guild_ids_list, description="gift a pride flag!", 
-options=[create_option(
-          name="recipient",
-          description="Who do you want to give this to?",
-          option_type=6, #corresponds to USER
-          required=False),
-        create_option(
-          name="reason",
-          description="Why are you gifting this to them?",
-          option_type=3, #corresponds to STRING
-          required=False)
-          ])
-async def colors(ctx, recipient=None, reason=None):
-    mention = recipient.id if recipient else None
-    myid = ctx.author_id 
-    if not reason:
-        reason = "no reason, you simply deserve it. yeet"
-    if not mention:
-        await ctx.send(content="To whom should I send a gift?")
-    elif mention == myid:
-        await ctx.send(content="Ha! you can't gift yourself.")
-    
-    else:
-        path = ["./flags/*.png"]
-        random_flag = glob.glob(random.choice(path))
-        await ctx.send(
-
-            "<@{mention}> Here's a gift from blahaj:\n".format(
-                    mention=mention, reason=reason),
-                file=discord.File(random.choice(random_flag)))
-
-
-
-@slash.slash(name="contribute", guild_ids=guild_ids_list, description="here's the repo link to contribute to pride bot!")
-async def contribute(ctx):
-    #todo add a dm message with the tree structure of this repo
-    url = "https://github.com/tyffical/Pridebot "
-    await ctx.send(content=url)
-
-@slash.slash(name="hug", guild_ids=guild_ids_list, description="hug gif because we all need it <3")
-async def hug(ctx):
-    hug_url = "https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif"
-    await ctx.send(content=hug_url)
-    
-@slash.slash(name="elmoash", guild_ids=guild_ids_list, description="gif of ash morphing into elmo")
-async def elmoash(ctx):
-    gif_url = "https://tenor.com/view/ashwin-rise-elmo-meme-lord-rise-ashwin-meme-lord-rise-gif-22312460"
-    await ctx.send(content=gif_url)
-
-@slash.slash(name="gift", guild_ids=guild_ids_list, description="gift a friendo a blahaj!", 
-options=[create_option(
-          name="recipient",
-          description="Who do you want to give this to?",
-          option_type=6, #corresponds to USER
-          required=False),
-        create_option(
-          name="reason",
-          description="Why are you gifting this to them?",
-          option_type=3, #corresponds to STRING
-          required=False)
-          ])
-async def gift(ctx, recipient=None, reason=None):
-    mention = recipient.id if recipient else None
-    myid = ctx.author_id 
-    if not reason:
-        reason = "no reason, you simply deserve it. yeet"
-    if not mention:
-        await ctx.send(content="To whom should I send a gift?")
-    elif mention == myid:
-        await ctx.send(content="Ha! you can't gift yourself.")
-    else:
-        await ctx.send(
-            content="<@{mention}>, here's a plushie for you!\n reason: {reason}".format(
-                mention=mention, reason=reason),
-            file=discord.File('giftBlahaj.png'))
-
-@slash.slash(name="arrest", guild_ids=guild_ids_list, description="for some reason blahajgangers wanted to arrest one another?", 
-options=[create_option(
-          name="recipient",
-          description="Whom do you want to arrest?",
-          option_type=6, #corresponds to USER
-          required=False),
-        create_option(
-          name="reason",
-          description="Why should they be arrested?",
-          option_type=3, #corresponds to STRING
-          required=False)
-          ])
-async def arrest(ctx, recipient=None, reason=None):
-    mention = recipient.id if recipient else None
-    myid = ctx.author_id 
-    if not reason:
-        reason = "yeet! just for fun :)"
-    if not mention:
-        await ctx.send(content="Whom should I arrest?")
-    elif mention == myid:
-        await ctx.send(content="Ha! you can't arrest yourself.")
-    else:
-        await ctx.send(
-            content="<@{mention}>, You're under arrest! \n reason: {reason}".format(
-                mention=mention, reason=reason))
-
-#!afk command so ->If I use the command and add the reason when ever someone tags me it should show <myname> is afk reason: So and so (krish)
-# client = commands.Bot(command_prefix="!") #prefix to use all the commands
+# afk slash command
+# TODO: Move it to a cog once I figure out a database - Michael
+# !afk command so ->If I use the command and add the reason when ever someone tags me it should show <myname> is afk reason: So and so (krish)
 afkdict = {} #defines all the ppl afk
 @slash.slash(name="afk", guild_ids=guild_ids_list, description="set your afk status so that it will show up when you're tagged", 
 options=[create_option(
@@ -188,10 +76,9 @@ async def afk(ctx, reason = "They didn't leave a reason!"):
     else:
         afkdict[ctx.author] = reason
         await ctx.send("You are now afk. Beware of the real world!")
-        
-#TODO: refactor this function maybe (react func and mention func)
-#TODO: map keywords to reacts
-#bot message reactions and replies
+
+# bot message reactions and replies
+# TODO: refactor this function (react func and mention func)
 @client.event
 async def on_message(message):
     #ignore bot's own message
@@ -228,7 +115,7 @@ async def on_message(message):
             await message.reply(
                 "<@{mention}> Everbody needs a hug. It changes your metabolism:\n Reason: {reason}".format(
                     mention=mention, reason=reason),
-                file=discord.File('hug.gif'))
+                file=discord.File('./images/hug.gif'))
 
         
     #strip whitespace and change to lowercase
@@ -257,27 +144,26 @@ async def on_message(message):
 
             break
 
-    #identity-specific reacts
-    if "trans" in string:
-        await message.add_reaction(custom_map["pride_heart_trans"])
-    if "poc" in string:
-        await message.add_reaction(custom_map["pride_heart_pocpride"])
-    if "pan" in string:
-        await message.add_reaction(custom_map["pride_heart_pan"])
-    if "nonbinary" in string or "nb" in string:
-        await message.add_reaction(custom_map["pride_heart_nonbinary"])
-    if "lesbian" in string:
-        await message.add_reaction(custom_map["pride_heart_lesbian"])
-    if "genderqueer" in string:
-        await message.add_reaction(custom_map["pride_heart_genderqueer"])
-    if "gay" in string:
-        await message.add_reaction(custom_map["pride_heart_gay"])
-    if "bi" in string:
-        await message.add_reaction(custom_map["pride_heart_bi"])
-    if "aro" in string:
-        await message.add_reaction(custom_map["pride_heart_aro"])
-    if "ace" in string or "asexual" in string:
-        await message.add_reaction(custom_map["pride_heart_ace"])
+    #identity-specific react map
+    identity_reacts = {
+        'trans': [custom_map["pride_heart_trans"]],
+        'poc': [custom_map["pride_heart_pocpride"]],
+        'pan': [custom_map["pride_heart_pan"]],
+        'nonbinary': [custom_map["pride_heart_nonbinary"]],
+        'nb': [custom_map["pride_heart_nonbinary"]],
+        'lesbian': [custom_map["pride_heart_lesbian"]],
+        'genderqueer': [custom_map["pride_heart_genderqueer"]],
+        'gay': [custom_map["pride_heart_gay"]],
+        'bi': [custom_map["pride_heart_bi"]],
+        'aro': [custom_map["pride_heart_aro"]],
+        'ace': [custom_map["pride_heart_ace"]],
+        'asexual': [custom_map["pride_heart_ace"]]
+    }
+
+    for substr, reacts in identity_reacts.items():
+        if substr in string:
+            for react in reacts:
+                await message.add_reaction(react)
 
     #pridebot responding to a mention of its name
     if message.channel.id != channel_ids["important_init"]:
