@@ -106,10 +106,12 @@ When creating a Github issue, try to create bug reports that are:
 
 When contributing, make sure to adhere to the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Contributors
-* Tiffany Trinh (https://www.mit.edu/~acetiff)
-* Neel Adwani (https://www.neeltron.com) 
+## Maintainers
+* Tiffany Trinh (https://tyffic.al)
+* Neel Adwani (https://neeltron.com) 
 * Adam Drummond (https://adamd.fyi/)
+
+## Other Major Contributors
 * Ashwin Kumar Uppala (https://github.com/ashwinexe)
 
 ## Support
