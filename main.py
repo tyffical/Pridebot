@@ -176,7 +176,9 @@ async def on_message(message):
         if member != message.author:  
             if member in afkdict:  
                 afkmsg = afkdict[member]  
-                await message.reply(f"Oh noes! <@{member.id}> is afk. Reason-> {afkmsg}")
+                # await message.reply(f"Oh noes! <@{member.id}> is afk. Reason-> {afkmsg}")  #commented out original
+                await message.reply(f"This bitch afk. YEET [*source*](https://www.youtube.com/watch?v=2Bjy5YQ5xPc)")
+                await message.reply(f"Reason-> {afkmsg}")
 
     # gift a pride flag
     if message.channel.id != channel_ids["important_init"] and message.content.startswith(
