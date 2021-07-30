@@ -321,6 +321,9 @@ async def on_message(message):
         await message.add_reaction(default_map["yawning_face"])
         await message.add_reaction(default_map["sleeping"])
         
+    if "be quite" in string or "shut up" in string  or "shush" in string:
+        await message.add_reaction(default_map["shushing_face"])
+        
     # gamerhaj react for pro blahaj gamer
     if "adi" in string:
         await message.add_reaction(custom_map["gamerhaj"])
