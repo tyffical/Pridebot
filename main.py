@@ -324,7 +324,11 @@ async def on_message(message):
     # gamerhaj react for pro blahaj gamer
     if "adi" in string:
         await message.add_reaction(custom_map["gamerhaj"])
-
+     
+    if "mind blowing" in string or "thats cool" in string:
+        await message.add_reaction(default_map["exploding_head"])
+    
+    
     #per neel's request
     if "space" in string or "innovation" in string or "motivation" in string:
         await message.add_reaction(default_map["rocket"])
