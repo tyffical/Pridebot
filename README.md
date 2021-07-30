@@ -68,12 +68,11 @@ Note: BLAHAJGang-specific emojis will not work unless those emojis are also incl
     ```
     cp .env.example .env
     ```
-5. Run the main file
+5. Run the main file.
     ```
     python3 main.py
     ```
-
-and you're good to go!
+6. And congratulations! You're good to go!
 
 ### On Replit
 [![Run on Repl.it](https://repl.it/badge/github/tyffical/Pridebot)](https://repl.it/github/tyffical/Pridebot)
