@@ -5,7 +5,7 @@ from discord_slash.utils.manage_commands import create_option
 
 import glob, random
 
-from info.ids import guild_ids
+from data.ids import guild_ids
 guild_ids_list = [guild_ids["blahajgang"]]
 
 class Gifts(commands.Cog):

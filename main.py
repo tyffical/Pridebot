@@ -3,8 +3,8 @@ from discord.ext import commands
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_option
 
-from info.ids import role_ids, channel_ids, guild_ids
-from info.emojis import default_map, custom_list
+from data.ids import role_ids, channel_ids, guild_ids
+from data.emojis import default_map, custom_list
 
 import os, re, time, requests, random
 

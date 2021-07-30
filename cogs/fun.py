@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord_slash import cog_ext
 from discord_slash.utils.manage_commands import create_option
 
-from info.ids import guild_ids
+from data.ids import guild_ids
 guild_ids_list = [guild_ids["blahajgang"]]
 
 class Fun(commands.Cog):
