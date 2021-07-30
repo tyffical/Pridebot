@@ -1,0 +1,7 @@
+codebug-tether>=0.9.1
+discord>=1.7.3
+discord.py>=1.7.3
+discord-py-slash-command>=2.3.2
+flask>=2.0.1
+python-dotenv>=0.18.0
+requests>=2.26.0
