@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 from discord_slash import cog_ext
 from discord_slash.utils.manage_commands import create_option
@@ -9,6 +10,30 @@ class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @cog_ext.cog_slash(name="hug", guild_ids=guild_ids_list, description="everyone needs a hug once in a while <3", 
+    options=[create_option(
+            name="recipient",
+            description="Whom do you want to hug?",
+            option_type=6, #corresponds to USER
+            required=False),
+            create_option(
+            name="reason",
+            description="Why do you want to hug them?",
+            option_type=3, #corresponds to STRING
+            required=False)
+            ])
+    async def hug(self, ctx, recipient=None, reason=None):
+        mention = recipient.id if recipient else None
+        myid = ctx.author_id 
+        if not reason:
+            reason = "no reason, you simply deserve it. yeet"
+        if not mention:
+            await ctx.send(content="Who do you want to hug?")
+        else:
+            await ctx.send("<@{mention}> Everbody needs a hug. It changes your metabolism:\n Reason: {reason}".format(
+                mention=mention, reason=reason),
+                file=discord.File('./images/hug.gif'))
+                
     @cog_ext.cog_slash(name="arrest", guild_ids=guild_ids_list, description="for some reason blahajgangers wanted to arrest one another?", 
     options=[create_option(
             name="recipient",
@@ -34,10 +59,6 @@ class Fun(commands.Cog):
             await ctx.send(
                 content="<@{mention}>, You're under arrest! \n reason: {reason}".format(
                     mention=mention, reason=reason))
-                    
-    @cog_ext.cog_slash(name="hug", guild_ids=guild_ids_list, description="hug gif because we all need it <3")
-    async def hug(self, ctx):
-        await ctx.send(content="https://thumbs.gfycat.com/AromaticWhiteChuckwalla-size_restricted.gif")
 
     @cog_ext.cog_slash(name="elmoash", guild_ids=guild_ids_list, description="gif of ash morphing into elmo")
     async def elmoash(self, ctx):
