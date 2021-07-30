@@ -62,7 +62,7 @@ async def on_message(message):
             if member in client.afkdict:  
                 afkmsg = client.afkdict[member]  
                 # await message.reply(f"Oh noes! <@{member.id}> is afk. Reason-> {afkmsg}")  #commented out original
-                await message.reply(f"This bitch afk. YEET [*source*](https://www.youtube.com/watch?v=2Bjy5YQ5xPc)")
+                await message.reply(f"This bitch afk. YEET [*source* https://www.youtube.com/watch?v=2Bjy5YQ5xPc]")
                 await message.reply(f"Reason-> {afkmsg}")
 
     # split by spaces, commas, periods, etc to get the words in the string
