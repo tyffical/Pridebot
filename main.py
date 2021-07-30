@@ -67,6 +67,38 @@ async def on_ready():
 #bot slash commands
 guild_ids_list = [guild_ids["blahajgang"]]
 
+@slash.slash(name="colors", guild_ids=guild_ids, description="gift a pride flag!", 
+options=[create_option(
+          name="recipient",
+          description="Who do you want to give this to?",
+          option_type=6, #corresponds to USER
+          required=False),
+        create_option(
+          name="reason",
+          description="Why are you gifting this to them?",
+          option_type=3, #corresponds to STRING
+          required=False)
+          ])
+async def colors(ctx, recipient=None, reason=None):
+    mention = recipient.id if recipient else None
+    myid = ctx.author_id 
+    if not reason:
+        reason = "no reason, you simply deserve it. yeet"
+    if not mention:
+        await ctx.send(content="To whom should I send a gift?")
+    elif mention == myid:
+        await ctx.send(content="Ha! you can't gift yourself.")
+    
+    else:
+        path = ["./flags/*.png"]
+        random_flag = glob.glob(random.choice(path))
+        await ctx.send(
+
+            "<@{mention}> Here's a gift from blahaj:\n".format(
+                    mention=mention, reason=reason),
+                file=discord.File(random.choice(random_flag)))
+
+
 
 @slash.slash(name="contribute", guild_ids=guild_ids_list, description="here's the repo link to contribute to pride bot!")
 async def contribute(ctx):
@@ -179,23 +211,6 @@ async def on_message(message):
                 # await message.reply(f"Oh noes! <@{member.id}> is afk. Reason-> {afkmsg}")  #commented out original
                 await message.reply(f"This bitch afk. YEET [*source*](https://www.youtube.com/watch?v=2Bjy5YQ5xPc)")
                 await message.reply(f"Reason-> {afkmsg}")
-
-    # gift a pride flag
-    if message.channel.id != channel_ids["important_init"] and message.content.startswith(
-            "colors"):
-        mention = message.mentions[0].id if len(message.mentions) >= 1 else None
-        myid = message.author.id 
-        if not mention:
-            await message.reply("whom should I send a gift?")
-        elif mention == myid:
-            await message.reply("Ha! you can't gift yourself.")
-        else:
-            path = ["./flags/*.png"]
-            random_flag = glob.glob(random.choice(path))
-            await message.reply(
-                "<@{mention}> Here's a gift from blahaj and {author}:\n".format(
-                    mention=mention, author=message.author.mention),
-                file=discord.File(random.choice(random_flag)))
 
     # Who doesn’t need a hug every now and again?
     if message.channel.id != channel_ids["important_init"] and (
