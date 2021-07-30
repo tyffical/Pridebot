@@ -208,7 +208,7 @@ async def on_message(message):
             if member in afkdict:  
                 afkmsg = afkdict[member]  
                 # await message.reply(f"Oh noes! <@{member.id}> is afk. Reason-> {afkmsg}")  #commented out original
-                await message.reply(f"This bitch afk. YEET [*source*](https://www.youtube.com/watch?v=2Bjy5YQ5xPc)")
+                await message.reply(f"This bitch afk. YEET [*source* https://www.youtube.com/watch?v=2Bjy5YQ5xPc]")
                 await message.reply(f"Reason-> {afkmsg}")
 
     # Who doesn’t need a hug every now and again?
