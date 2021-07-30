@@ -137,6 +137,14 @@ async def arrest(ctx, recipient=None, reason=None):
             content="<@{mention}>, You're under arrest! \n reason: {reason}".format(
                 mention=mention, reason=reason))
 
+# invite command for blahaj discord server 
+
+@slash.slash(name="invite", guild_ids=guild_ids_list, description="Blahaj Discord server Link")
+async def invite(ctx):
+    # Invite link dmed
+    await ctx.send("🦈 Invite link DMed 🦈")
+    await ctx.author.send("🐳🐳 https://discord.com/invite/763bUceUHb 🐳🐳")
+
 #!afk command so ->If I use the command and add the reason when ever someone tags me it should show <myname> is afk reason: So and so (krish)
 # client = commands.Bot(command_prefix="!") #prefix to use all the commands
 afkdict = {} #defines all the ppl afk
