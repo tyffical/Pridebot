@@ -405,7 +405,7 @@ async def on_message(message):
     if "india" in string:
         await message.add_reaction(default_map["flag_in"])
 
-    if  "us" in message.content.lower().split(): #now it checks only for the word 'us'
+    if  "usa" in message.content.lower().split(): #now it checks only for the word 'us' AND NOW IT CHECKS FOR USA BECAUSE ADAM ANNOYED
         await message.add_reaction(default_map["flag_us"])
 
     #added by Adam in the club
