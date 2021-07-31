@@ -65,7 +65,7 @@ async def on_message(message):
                 await message.reply(f"Reason-> {afkmsg}")
 
     # split by spaces, commas, periods, etc to get the words in the string
-    string = re.split(r"[,. \"'-]+", message.content.lower())
+    string = re.split(r"[,:. \"'-]+", message.content.lower())
 
     # TODO: see if computer vision can be used to detect text or rainbows in images
     # general pride react map
@@ -86,6 +86,24 @@ async def on_message(message):
                     await message.add_reaction(default_map["rainbow"])
                     await message.add_reaction(custom_map["rainbowblahaj"])
                     await message.add_reaction(custom_map["partyblahaj"])
+    
+    # regex react map for whitespace-sensitive reactions
+    regex_reacts = {
+        'yee+t': [custom_map["blahajyeet"]],
+        'partyisland:thevirtualexperience': [
+            default_map["regional_indicator_p"],
+            default_map["regional_indicator_a"],
+            default_map["regional_indicator_r"],
+            default_map["regional_indicator_t"],
+            default_map["regional_indicator_y"],
+            default_map["white_check_mark"],
+            default_map["x"]
+        ]
+    }
+    for regex, reacts in regex_reacts.items():
+        if re.search(regex, "".join(message.content.lower().split())) != None:
+            for react in reacts:
+                await message.add_reaction(react)
 
     # identity-specific react map
     identity_reacts = {
@@ -158,15 +176,6 @@ async def on_message(message):
             'india': [default_map["flag_in"]],
             'usa': [default_map["flag_us"]],
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
-            'partyisland:thevirtualexperience': [
-                default_map["regional_indicator_p"],
-                default_map["regional_indicator_a"],
-                default_map["regional_indicator_r"],
-                default_map["regional_indicator_t"],
-                default_map["regional_indicator_y"],
-                default_map["white_check_mark"],
-                default_map["x"]
-            ]
         }
 
         for substr, reacts in fun_reacts.items():
@@ -207,10 +216,6 @@ async def on_message(message):
             except:
                 rn = random.randint(0, 3)
                 await message.reply(responses[rn])
-
-    #matches yeets with an arbitrary number of e's
-    if re.search("yee+t", "".join(message.content.lower().split())) != None:
-        await message.add_reaction(custom_map["blahajyeet"])
 
     # per neel's request
     # if "elon" in string:
