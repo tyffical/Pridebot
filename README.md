@@ -116,11 +116,11 @@ Some resources for contributing are listed below:
 
 ## Maintainers
 
-- [Tiffany Trinh](https://tyffic.al)
-- [Neel Adwani](https://neeltron.com)
-- [Adam Drummond](https://adamd.fyi/)
-- [Michael Cao](https://m.omg.lol)
-- [Ashwin Kumar Uppala](https://github.com/ashwinexe)
+- [Tiffany Trinh](https://tyffic.al) (tyffical#2000)
+- [Neel Adwani](https://neeltron.com) (neeltron#4377)
+- [Adam Drummond](https://adamd.fyi/) (Adam Drummond 🇮🇲#0001)
+- [Michael Cao](https://m.omg.lol) (mxc#9999)
+- [Ashwin Kumar Uppala](https://github.com/ashwinexe) (Ashwin.java#6428)
 
 ## Special Thanks
 
