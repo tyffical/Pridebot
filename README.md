@@ -11,131 +11,133 @@
 </p>
 
 <p align="center">
-  BLAHAJGang's custom-made pride-themed Discord bot that reacts to pride-related messages with pride emojis, as well as some other Blahaj-tastic Easter eggs!
+  BLAHAJGang's custom-made pride-themed Discord bot that reacts to pride-related messages with pride emojis, as well as some other Blahajtastic Easter eggs (*other holidays available upon request!).
+  
   <br>
   <br>
-  <a href="https://discord.com/api/oauth2/authorize?client_id=864548443234107402&permissions=2148002880&scope=bot">Click here to invite the bot!</href>
+  <h2 align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=864548443234107402&permissions=2148002880&scope=bot">I know you want Pride Bot! Click me!</a></h2>
 </p>
 
 <details open="open">
 <summary>Table of Contents</summary>
 
-- [Invite the Bot](#invite-the-bot)
-- [Quickstart](#quickstart)
-  - [Local](#local)
-    - [Prerequisites](#prerequisites)
-    - [Manual Setup](#manual-setup)
-  - [On Replit](#on-replit)
-- [Contributing](#contributing)
-  - [Resources](#resources)
-- [Maintainers](#maintainers)
-- [Special Thanks](#special-thanks)
-- [Support](#support)
-- [License](#license)
+- [Get Pride Bot Running ASAP!](#get-pride-bot-running-asap)
+  - [Fine, Do it on My Computer](#fine-do-it-on-my-computer)
+    - [Wait, I need stuff already installed?!](#wait-i-need-stuff-already-installed)
+    - [Wow, I have to do work :(](#wow-i-have-to-do-work-)
+  - [WOO IT WORKS ONLINE](#woo-it-works-online)
+- [Allow me to help](#allow-me-to-help)
+  - [Ur making it even easier?](#ur-making-it-even-easier)
+- [Proud Friendos](#proud-friendos)
+- [YAY THANKS BESTIES](#woo-go-besties-3)
+- [BLAHAJ is sad because it doesn't work](#blahaj-is-sad-because-it-doesnt-work)
+- [License, whatever that is](#license-whatever-that-is)
 
 </details>
 
 ---
 
-# Quickstart
+# Get Pride Bot Running ASAP!
 
-## Selfhosting
+## Fine, Do it on My Computer
 
-### Prerequisites
+### Wait, I need stuff already installed?!
 
-- [Python 3.8 or above](https://www.python.org/downloads/)
-  - [PIP (Python Package Manager)](https://pip.pypa.io/en/stable/installation/)
-- [Command Line Git](https://git-scm.com/downloads)
-  - [Or Github Desktop, if you prefer](https://desktop.github.com)
-- [A Discord Bot Account](https://discordpy.readthedocs.io/en/stable/discord.html)
+- [That Snakey Program](https://www.python.org/downloads/)
+  - [The manager of said Snakey Program](https://pip.pypa.io/en/stable/installation/)
+- [Some Gitty Stuff](https://git-scm.com/downloads)
+  - [(Or another alternative _shh_)](https://desktop.github.com)
+- [Discord Account for Programming!!](https://discordpy.readthedocs.io/en/stable/discord.html)
 
-### Manual Setup
+### Wow, I have to do work :(
 
 _Note: Right now, you will have to edit `ids.py` to contain role IDs and channel IDs from your test server; otherwise the bot may not function properly._
 
-1. To run the bot locally, clone and `cd` into the repository.
+1. First you gotta get this code stuff onto ur computer.
    ```
    git clone https://github.com/tyffical/Pridebot.git
    cd Pridebot
    ```
-2. (OPTIONAL) Create and activate a new Python virtual environment.
+2. (OPTIONAL) Do this difficult thing if you want to idk.
    ```
    python3 -m venv venv
    source venv/bin/activate
    ```
-3. Install the requirements using `pip`.
+3. Do as BLAHAJ asked and install these tings using a command called `pip` (no it's not talking about fruit seeds).
    ```
    pip install -r requirements.txt
    ```
-4. Copy the `.env.example` file to `.env`, and edit it to include your Discord bot token. Your bot token can be found in the "Bot" settings of your [application settings.](https://discord.com/developers/applications)
+4. Here's the hard stuff. Copy the `.env.example` file and call it `.env`, and edit it to include your Discord bot token (this is secret stuff so don't go telling all your friends it!! Don't know where it is? It's probably in the "Bot" settings of your [application settings](https://discord.com/developers/applications)!
    ```
    cp .env.example .env
    ```
-5. Run the main file.
+5. Pray to our lord BLAHAJ and set Pride Bot off.
    ```
    python3 main.py
    ```
-6. And congratulations! You're good to go!
+6. Bing Bang Bosh you've done it. Time to pull a table out of your [rear end](https://youtu.be/zHUEs22lhvQ?t=3) and treat yourself to somthing nice!
 
-### On Replit
+### WOO IT WORKS ONLINE
 
 [![Run on Repl.it](https://repl.it/badge/github/tyffical/Pridebot)](https://repl.it/github/tyffical/Pridebot)
 
-Make sure to add your bot token by clicking on the padlock symbol on the left sidebar, and then inserting "TOKEN" into the `key` text field and your bot token into the `value` text field.
+Boring Stuff: Make sure to add your bot token by clicking on the padlock symbol on the left sidebar, and then inserting "TOKEN" into the `key` text field and your bot token into the `value` text field.
 
-You can turn on the `Always On` setting (found by clicking on the repl name) to keep the bot continuously running!
+ALso Boring Stuff: You can turn on the `Always On` setting (found by clicking on the repl name) to keep the bot continuously running!
 
-# Contributing
+# Allow me to help
 
-**First off: thanks for contributing to Pridebot!** As a BLAHAJGang community project, we welcome any and all contributions by members and are so excited to see you grow as a developer!
+**OMG THANK YOU SO MUCH FOR MAKING PRIDE BOT BETTER <3** YOU BETTER KEEP UP WITH OUR CHANGES OR IT WILL MAKE BLAHAJ CRY
 
-Any contributions, no matter how big or small, will benefit the bot and are greatly appreciated!
+We (BLAHAJ) love(s) anything you make for his server so we love you for making stuff
 
-To get started, head over to the [BLAHAJGang Discord Server](https://blahaj.lol/discord) and ask one of the bot's maintainers to walk you through the repository and how to set the bot up locally.
+There's a list of [friendos](#proud-friendos) below who can tell you what to do incase you bork it (or just have no idea what to do lol)
 
 Then, read the [Code of Conduct](https://github.com/tyffical/Pridebot/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guidelines](https://github.com/tyffical/Pridebot/blob/main/CONTRIBUTING.md) to brush up on how to properly contribute to the bot! Make sure you have the prerequisite knowledge of Python and Discord.py if you plan on contributing to the code itself.
 
-When you open an issue or pull request, ping one (or more) of the bot's maintainers in the BLAHAJGang Discord Server to go over it with you and formally review it! They're usually available during the day (EST) and will be more than happy to help you out.
+Just remember that when you do something BLAHAJ likes to rest and isn't gonna look at it instantly. He hates it when you scream for him to look at your pull requests or problemos. Just wait...
 
-After that, you're good to go! Happy coding <3
+**GO ON GET CODING WHAT ARE YOU WAITING FOR???**
 
-## Contribution Resources
+## Ur making it even easier?
 
-Some resources for contributing are listed below:
+Here's some stuff to make ur life easier 
 
-- [Discord.py Documentation](https://discordpy.readthedocs.io/en/latest/api.html)
-- [Information on Discord Emojis](https://gist.github.com/scragly/b8d20aece2d058c8c601b44a689a47a0)
-- [Hosting on Repl.it](https://replit.com/talk/learn/Configuring-GitHub-repos-to-run-on-Replit-and-contributing-back/23948)
-- [Python Regex Basics](https://www.w3schools.com/python/python_regex.asp)
-- [Python Regex Cheatsheet](https://cheatography.com/mutanclan/cheat-sheets/python-regular-expression-regex/)
-- [Discord.py Slash Commands](https://discord-py-slash-command.readthedocs.io/en/latest/gettingstarted.html)
-- [Discord.py Slash Command Context](https://discord-py-slash-command.readthedocs.io/en/latest/discord_slash.context.html)
+- [Discord.py info stuff](https://discordpy.readthedocs.io/en/latest/api.html)
+- [how to make emojis work properly on discord](https://gist.github.com/scragly/b8d20aece2d058c8c601b44a689a47a0)
+- [more info about getting stuff working online](https://replit.com/talk/learn/Configuring-GitHub-repos-to-run-on-Replit-and-contributing-back/23948)
+- [some ting called regex](https://www.w3schools.com/python/python_regex.asp)
+- [more on dis](https://cheatography.com/mutanclan/cheat-sheets/python-regular-expression-regex/)
+- [commanding Discord.py](https://discord-py-slash-command.readthedocs.io/en/latest/gettingstarted.html)
+- [context on commanding Discord.py](https://discord-py-slash-command.readthedocs.io/en/latest/discord_slash.context.html)
 
 ---
 
-## Maintainers
+## Proud Friendos
 
-- [Tiffany Trinh](https://tyffic.al) (tyffical#2000)
-- [Neel Adwani](https://neeltron.com) (neeltron#4377)
-- [Adam Drummond](https://adamd.fyi/) (Adam Drummond 🇮🇲#0001)
-- [Michael Cao](https://m.omg.lol) (mxc#9999)
-- [Ashwin Kumar Uppala](https://github.com/ashwinexe) (Ashwin.java#6428)
+- [yay go tiff](https://tyffic.al) (tyffical#2000)
+- [Neel before him](https://neeltron.com) (neeltron#4377)
+- [your favourite Isle of Man friendo](https://adamd.fyi/) (Adam Drummond 🇮🇲#0001)
+- [mr formal](https://m.omg.lol) (mxc#9999)
+- [elmo meme friend](https://github.com/ashwinexe) (Ashwin.java#6428)
 
-## Special Thanks
+## WOO GO BESTIES <3
 
-- [Jacklyn Biggin](https://poly.work/jacklynbiggin)
+- [Queen Jack](https://poly.work/jacklynbiggin)
   - Creator of BLAHAJGang &#x2764;&#xFE0F;
 - [BLAHAJ](https://www.ikea.com/us/en/p/blahaj-soft-toy-shark-90373590/)
   - We wouldn't be a cult without you &#x2764;&#xFE0F;
 - [BLAHAJGang](https://blahajgang.lol/)
-  - For being an awesome community! &#x2764;&#xFE0F;
+  - For being an awesome cult! &#x2764;&#xFE0F;
 - The LGBTQ+ Community
   - Happy Pride! &#x1F3F3;&#xFE0F;&#x200D;&#x1F308; Thanks for being awesome! &#x2764;&#xFE0F;
 
-## Support
+## What BLAHAJ's _Other_ Besties Think
+```"10/10, made me go YEET" - Squid```
 
-For support, reach out to us on [our Discord server](https://blahaj.lol/discord) in the #pride-bot-requests-and-contributions channel.
+## BLAHAJ is sad because it doesn't work
 
-## License
+just scream at us at https://blahaj.lol/discord and wait
+## License, whatever that is
 
-This repository is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license.
+wow formal stuff - This repository is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license.
