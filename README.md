@@ -45,7 +45,7 @@
 ### Prerequisites
 
 - [Python 3.8 or above](https://www.python.org/downloads/)
-- [PIP (Python Package Manager)](https://pip.pypa.io/en/stable/installation/)
+  - [PIP (Python Package Manager)](https://pip.pypa.io/en/stable/installation/)
 - [Command Line Git](https://git-scm.com/downloads)
   - [Or Github Desktop, if you prefer](https://desktop.github.com)
 - [A Discord Bot Account](https://discordpy.readthedocs.io/en/stable/discord.html)
@@ -88,17 +88,17 @@ You can turn on the `Always On` setting (found by clicking on the repl name) to 
 
 # Contributing
 
-**First off: thanks for contributing to Pridebot!** As a BLAHAJGang community project, we welcome any and all contributions by members and are excited to see you grow as a developer!
+**First off: thanks for contributing to Pridebot!** As a BLAHAJGang community project, we welcome any and all contributions by members and are so excited to see you grow as a developer!
 
 Any contributions, no matter how big or small, will benefit the bot and are greatly appreciated!
 
-To learn how to contribute to the bot, head over to the [BLAHAJGang Discord Server](https://blahaj.lol/discord) and ask one of the bot's maintainers to walk you through the repository and setting the bot up locally.
+To get started, head over to the [BLAHAJGang Discord Server](https://blahaj.lol/discord) and ask one of the bot's maintainers to walk you through the repository and how to set the bot up locally.
 
-Then, read the [code of conduct](https://github.com/tyffical/Pridebot/blob/main/CODE_OF_CONDUCT.md) and [contribution guidelines](https://github.com/tyffical/Pridebot/blob/main/CONTRIBUTING.md) and brush up on how to properly write code for the bot, test it, and open pull requests and issues!
+Then, read the [Code of Conduct](https://github.com/tyffical/Pridebot/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guidelines](https://github.com/tyffical/Pridebot/blob/main/CONTRIBUTING.md) to brush up on how to properly contribute to the bot! Make sure you have the prerequisite knowledge of Python and Discord.py if you plan on contributing to the code itself.
 
-When you open an issue or pull request, ping one of the bot's maintainers in the BLAHAJGang Discord Server to go over it and review it! They're usually available during the day EST and will be more than happy to help you out.
+When you open an issue or pull request, ping one (or more) of the bot's maintainers in the BLAHAJGang Discord Server to go over it with you and formally review it! They're usually available during the day (EST) and will be more than happy to help you out.
 
-After that, you're good to go! Happy coding!
+After that, you're good to go! Happy coding <3
 
 ## Contribution Resources
 
@@ -120,9 +120,6 @@ Some resources for contributing are listed below:
 - [Neel Adwani](https://neeltron.com)
 - [Adam Drummond](https://adamd.fyi/)
 - [Michael Cao](https://m.omg.lol)
-
-## Other Major Contributors
-
 - [Ashwin Kumar Uppala](https://github.com/ashwinexe)
 
 ## Special Thanks
