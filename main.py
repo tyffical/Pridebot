@@ -4,7 +4,6 @@ from discord_slash import SlashCommand
 import discord_slash
 
 import os, re, time, requests, random
-from scripts.keep_alive import keep_alive
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -243,5 +242,4 @@ async def on_message(message):
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
 
-keep_alive()
 client.run(os.getenv('TOKEN'))
