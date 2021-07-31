@@ -142,8 +142,7 @@ async def arrest(ctx, recipient=None, reason=None):
 @slash.slash(name="invite", guild_ids=guild_ids_list, description="Blahaj Discord server Link")
 async def invite(ctx):
     # Invite link dmed
-    await ctx.send("🦈 Invite link DMed 🦈")
-    await ctx.author.send("🐳🐳 https://discord.com/invite/763bUceUHb 🐳🐳")
+    await ctx.send("🦈 https://blahaj.lol/discord 🦈")
 
 #!afk command so ->If I use the command and add the reason when ever someone tags me it should show <myname> is afk reason: So and so (krish)
 # client = commands.Bot(command_prefix="!") #prefix to use all the commands
