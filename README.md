@@ -93,8 +93,7 @@ We (BLAHAJ) love(s) anything you make for his server so we love you for making s
 
 There's a list of [friendos](#proud-friendos) below who can tell you what to do incase you bork it (or just have no idea what to do lol)
 
-Then, read the [Code of Conduct](https://github.com/tyffical/Pridebot/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guidelines](https://github.com/tyffical/Pridebot/blob/main/CONTRIBUTING.md) to brush up on how to properly contribute to the bot! Make sure you have the prerequisite knowledge of Python and Discord.py if you plan on contributing to the code itself.
-
+feel free to read [this](https://github.com/tyffical/Pridebot/blob/main/CODE_OF_CONDUCT.md) and [this](https://github.com/tyffical/Pridebot/blob/main/CONTRIBUTING.md) but tbh they might not help. just make sure you know ur $#!T 
 Just remember that when you do something BLAHAJ likes to rest and isn't gonna look at it instantly. He hates it when you scream for him to look at your pull requests or problemos. Just wait...
 
 **GO ON GET CODING WHAT ARE YOU WAITING FOR???**
