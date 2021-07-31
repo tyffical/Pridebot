@@ -65,7 +65,7 @@ async def on_message(message):
                 await message.reply(f"Reason-> {afkmsg}")
 
     # split by spaces, commas, periods, etc to get the words in the string
-    string = re.split(r"[,:. \"'-]+", message.content.lower())
+    string = re.split(r"[,. \"'-]+", message.content.lower())
 
     # TODO: see if computer vision can be used to detect text or rainbows in images
     # general pride react map
