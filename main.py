@@ -190,6 +190,7 @@ async def on_message(message):
             'india': [default_map["flag_in"]],
             'usa': [default_map["flag_us"]],
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
+            'pizza ': [default_map["pizza"]],
             'watermelon': [default_map["watermelon"]]
         }
 
