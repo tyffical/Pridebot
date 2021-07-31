@@ -109,7 +109,12 @@ async def on_message(message):
             default_map["regional_indicator_y"],
             default_map["white_check_mark"],
             default_map["x"]
-        ]
+        ],
+        'mindblowing': [default_map["exploding_head"]],
+        'that\'scool': [default_map["exploding_head"]],
+        'holyfruit': [custom_map["melonblahaj"]],
+        'bequiet': [default_map["shushing_face"]],
+        'shutup': [default_map["shushing_face"]],
     }
     for regex, reacts in regex_reacts.items():
         if re.search(regex, "".join(message.content.lower().split())) != None:
@@ -188,6 +193,7 @@ async def on_message(message):
             'india': [default_map["flag_in"]],
             'usa': [default_map["flag_us"]],
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
+            'pizza': [default_map["pizza"]],
             'watermelon': [default_map["watermelon"]]
         }
 
@@ -207,8 +213,6 @@ async def on_message(message):
             'cri': [custom_map["blahajcry"]],
             'sad': [custom_map["blahajcry"]],
             'alone': [custom_map["blahajcry"]],
-            'be quiet': [default_map["shushing_face"]],
-            'shut up': [default_map["shushing_face"]],
             'shush': [default_map["shushing_face"]]
         }
 
