@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from discord_slash import cog_ext, SlashContext
+from discord_slash import cog_ext
 from discord_slash.utils.manage_commands import create_option
 
 import glob, random
@@ -38,7 +38,7 @@ class Gifts(commands.Cog):
                 "<@{mention}> Here's a gift from blahaj:\n".format(
                         mention=mention, reason=reason),
                     file=discord.File(random.choice(random_flag)))
-            await ctx.send(content="I'm making copies... Move, I'm gay [*source* https://www.youtube.com/watch?v=5HgGgPHYTss]")
+            await ctx.send(content="I'm making copies... Move, I'm gay [*source* <https://www.youtube.com/watch?v=5HgGgPHYTss>]")
 
     @cog_ext.cog_slash(name="gift", description="gift a friendo a blahaj!", 
     options=[create_option(
@@ -66,7 +66,7 @@ class Gifts(commands.Cog):
                 content="<@{mention}>, here's a plushie for you!\n reason: {reason}".format(
                     mention=mention, reason=reason),
                 file=discord.File('./images/giftBlahaj.png'))
-            await ctx.send(content="It's a avocado... thanks <3 [*source* https://www.youtube.com/watch?v=q48Fp0-1xAY]")
+            await ctx.send(content="It's a avocado... thanks <3 [*source* <https://www.youtube.com/watch?v=q48Fp0-1xAY>]")
 
 def setup(bot):
     bot.add_cog(Gifts(bot))
