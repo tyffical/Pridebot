@@ -1,129 +1,50 @@
-# Contributing to this repository 
+# Contributing to Pridebot
 
-## Getting started 
+## Getting started
 
-Before you begin:
-- This bot is powered by Discord.py
-- Check out the [existing issues](https://github.com/tyffical/Pridebot/issues) & see if we accept contributions
+**Before you begin:** Please contact one of the Pridebot maintainers in the BLAHAJGang Discord Server who will be able to walk you through this repository and how you can best contribute! Otherwise, you might risk working on something that's already in progress or going through unnecessary effort to get your contributions approved.
 
+# Ways to Contribute
 
-### Don't see your issue? Open one
+## Suggesting Features / Filing Bug Reports
 
-If you spot something new, open an issue using a [template](https://github.com/tyffical/Pridebot/issues/new). We'll use the issue to have a conversation about the problem you want to fix.
+Have an idea for Pridebot? Notice a bug in the bot? Awesome! [Open an issue](https://github.com/tyffical/Pridebot/issues/new) and fill it out with as many details as you can. We'll use the issue to have a conversation about the feature you want added or the bug you want to fix, and assign one of our code contributors to it or walk you through writing the code for it yourself.
 
-### Ready to make a change? Fork the repo
+## Contributing Documentation
 
-Fork using GitHub Desktop:
+TODO: Write This
 
-- [Getting started with GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/getting-started-with-github-desktop) will guide you through setting up Desktop.
-- Once Desktop is set up, you can use it to [fork the repo](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/cloning-and-forking-repositories-from-github-desktop)!
+## Contributing Code
 
-Fork using the command line:
+**IMPORTANT:** If you would like to independently contribute code to the bot, we assume you have a basic working knowledge of Git/GitHub, Python, and Discord.py. If you don't, feel free to ask one of the bot's maintainers to help you make your first contribution - we'd be more than happy to take some time to teach you!
 
-- [Fork the repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#fork-an-example-repository) so that you can make your changes without affecting the original project until you're ready to merge them.
-Fork using Githubs fork button:
+Good to go and confident in your ability to contribute independently? Let's get started!
 
-Fork using the Github Fork button:
+1. Fork the repository using the Fork button in the top right hand corner to make your own copy of the repository.
+2. Use your Git tool of choice (Git Command Line or GitHub Desktop) to clone your fork locally.
+3. Open the repository in your favorite code editor - we recommend [Visual Studio Code](https://code.visualstudio.com) or PyCharm.
+4. Make the changes you'd like to contribute - whether that's a new command, new reaction response, new feature, or bug fix.
+5. Test your code! Use the [Quickstart](https://github.com/tyffical/Pridebot#quickstart) in the README to host the bot locally and test your changes. Make sure they're working as intended with no bugs!
+6. Commit and push your code to GitHub! Use the `git commit` and `git push` commands (or the buttons on GitHub Desktop) to push your code to your remote fork. **Make sure that all your commits use one of the prefixes below to indicate what kind of commit it is!**
 
-- click on the Fork button at to top right coner 
+![https://i.imgur.com/BmIxpKi.png](https://i.imgur.com/BmIxpKi.png)
 
+## [Contributing Docs / Code] Open a Pull Request
 
-### Make your update:
-Make your changes to the file(s) you'd like to update.
-  - Are you making changes to the application code? You'll need **discord.py** to run the bot locally. See [contributing/development.md](contributing/development.md).
-  - Are you contributing to markdown? We use [GitHub Markdown](contributing/content-markup-reference.md).
+When you're done with the changes you want to contribute, open a pull request on GitHub, making sure that the base branch of the PR is the `dev` branch of our repository. **We do not accept pull request directly to our main branch anymore.** Don't worry if you accidentally make the pull request on the main branch, though - we can change it easily.
 
-### Open a pull request
-When you're done making changes and you'd like to propose them for review, use the [pull request template](#pull-request-template) to open your PR (pull request).or make your own
+When creating your PR, make sure to name it with a prefix (see above) and concise title that effectively summarizes your changes! In the body, include a few bullets that outline what your PR will contribute to our codebase as well as examples of any new features being implemented. If you're unsure if your PR is written correctly, feel free to ping a maintainer in the BLAHAJGang Discord Server and we'd be more than happy to walk you through the process!
 
-### Submit your PR & get it reviewed
-- Once you submit your PR, others Contributors  will review it with you.
-- After that, we may have questions, check back on your PR to keep up with the conversation.
-- Did you have an issue, like a merge conflict? Check out our [git tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) on how to resolve merge conflicts and other issues.
+Once you submit your PR, ping one of our maintainers in the Discord server, who will review your changes and make any suggestions, edits, or requests as needed to ensure that your code is working properly and meets our standards. If your code has any merge conflicts, we'll work with you to resolve those as well.
+
+Once your code is satisfactory and good to go, we'll approve it and merge it into our dev branch, where it'll eventually make its way to our live bot!
 
 ### Your PR is merged!
-Congratulations! The whole GitHub community thanks you. :sparkles:
 
-Once your PR is merged, you will be proudly listed as a contributor in the [contributor chart](https://github.com/tyffical/Pridebot/graphs/contributors).
+Once your PR is merged, you will be proudly listed as a contributor in the [contributor chart](https://github.com/tyffical/Pridebot/graphs/contributors) and be a part of the Pridebot community!
 
-### Keep contributing as you use GitHub Docs
+Congratulations! The BLAHAJGang community thanks you for your contribution. :sparkles:
 
-Now that you're a part of the GitHub Docs community, you can keep participating in many ways.
+## Questions?
 
-**Learn more about contributing:**
-
-- [Types of contributions :memo:](#types-of-contributions-memo)
-  - [:mega: Discussions](#mega-discussions)
-  - [:beetle: Issues](#beetle-issues)
-  - [:hammer_and_wrench: Pull requests](#hammer_and_wrench-pull-requests)
-  - [:question: Support](#question-support)
-  - [:earth_asia: Translations](#earth_asia-translations)
-  - [:balance_scale: Site Policy](#balance_scale-site-policy)
-- [Starting with an issue](#starting-with-an-issue)
-  - [Labels](#labels)
-- [Opening a pull request](#opening-a-pull-request)
-- [Working in the github/docs repository](#working-in-the-githubdocs-repository)
-- [Reviewing](#reviewing)
-  - [Self review](#self-review)
-  - [Pull request template](#pull-request-template)
-  - [Suggested changes](#suggested-changes)
-- [Windows](#windows)
-
-## Types of contributions :memo:
-You can contribute to the GitHub Docs content and site in several ways. This repo is a place to discuss and collaborate on docs.github.com! Our small, but mighty :muscle: docs team is maintaining this repo, to preserve our bandwidth, off topic conversations will be closed.
-
-### :mega: Discussions
-Discussions are where we have conversations.
-
-If you'd like help troubleshooting a docs PR you're working on, have a great new idea, or want to share something amazing you've learned in our docs, join us in [discord](https://blahajgang.lol/).
-
-### :beetle: Issues
-[Issues](https://docs.github.com/en/github/managing-your-work-on-github/about-issues) are used to track tasks that contributors can help with. If an issue has a triage label, we haven't reviewed it yet and you shouldn't begin work on it.
-
-If you've found something in the content or the website that should be updated, search open issues to see if someone else has reported the same thing. If it's something new, open an issue using a [template](https://github.com/tyffical/Pridebot/issues/new/choose). We'll use the issue to have a conversation about the problem you want to fix.
-
-### :hammer_and_wrench: Pull requests
-A [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) is a way to suggest changes in our repository.
-
-When we merge those changes, they should be deployed to the live site within 24 hours. :earth_africa: To learn more about opening a pull request in this repo, see [Opening a pull request](#opening-a-pull-request) below.
-
-### :question: Support
-We are a small team working hard to keep up with the documentation demands of a continuously changing product. Unfortunately, we just can't help with support questions in this repository. If you are experiencing a problem with GitHub, unrelated to our documentation, please [contact GitHub Support directly](https://support.github.com/contact). Any issues, discussions, or pull requests opened here requesting support will be given information about how to contact GitHub Support, then closed and locked.
-
-If you're having trouble with your GitHub account, contact [Support](https://support.github.com/contact).
-
-
-## Starting with an issue
-You can browse existing issues to find something that needs help!
-
-### Labels
-Labels can help you find an issue you'd like to help with.
-- The [`help wanted` label](https://github.com/github/docs/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) is for problems or updates that anyone in the community can start working on.
-- The [`good first issue` label](https://github.com/github/docs/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) is for problems or updates we think are ideal for beginners.
-- The [`content` label](https://github.com/github/docs/issues?q=is%3Aopen+is%3Aissue+label%3Acontent) is for problems or updates in the content on docs.github.com. These will usually require some knowledge of Markdown.
-- The [`engineering` label](https://github.com/github/docs/issues?q=is%3Aopen+is%3Aissue+label%3Aengineering) is for problems or updates in the docs.github.com website. These will usually require some knowledge of JavaScript/Node.js or YAML to fix.
-
-## Opening a pull request
-You can use the GitHub user interface :pencil2: for some small changes, like fixing a typo or updating a readme. You can also fork the repo and then clone it locally, to view changes and run your tests on your machine.
-
-
-### Self review
-You should always review your own PR first.
-
-For content changes, make sure that you:
-- [ ] Confirm that the changes meet the user experience and goals outlined in the content design plan (if there is one).
-- [ ] Compare your pull request's source changes to staging to confirm that the output matches the source and that everything is rendering as expected. This helps spot issues like typos, content that doesn't follow the style guide, or content that isn't rendering due to versioning problems. Remember that lists and tables can be tricky.
-- [ ] Review the content for technical accuracy.
-- [ ] Review the entire pull request using the [localization checklist](contributing/localization-checklist.md).
-- [ ] Copy-edit the changes for grammar, spelling, and adherence to the [style guide](https://github.com/github/docs/blob/main/contributing/content-style-guide.md).
-- [ ] Check new or updated Liquid statements to confirm that versioning is correct.
-- [ ] If there are any failing checks in your PR, troubleshoot them until they're all passing.
-
-### Pull request template
-When you open a pull request, you must fill out the "Ready for review" template before we can review your PR. This template helps reviewers understand your changes and the purpose of your pull request.
-
-### Suggested changes
-We may ask for changes to be made before a PR can be merged, either using [suggested changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
-
-As you update your PR and apply changes, mark each conversation as [resolved](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#resolving-conversations).
-
+If you have any questions about these guidelines, feel free to contact any of our maintainers on the BLAHAJGang Discord Server. We'll be more than happy to answer your questions!
