@@ -172,6 +172,7 @@ async def on_message(message):
             'blahaj': [custom_map["justblahaj"]],
             'shark': [custom_map["justblahaj"]],
             'melon': [custom_map["melonblahaj"]],
+            'holy fruit': [custom_map["melonblahaj"]],
             'uwu': [custom_map["blahajuwu"]],
             'boomer': [default_map["older_adult"]],
             'rain': [default_map["cloud_lightning"], default_map["thunder_cloud_rain"]],
