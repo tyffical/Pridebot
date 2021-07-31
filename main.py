@@ -3,7 +3,6 @@ from discord.ext import commands
 from discord_slash import SlashCommand
 
 import os, re, time, requests, random
-from scripts.keep_alive import keep_alive
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -13,7 +12,6 @@ from data.emojis import default_map, custom_list
 # global vars
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 slash = SlashCommand(client, sync_commands=True)
-slash.sync_all_commands(delete_from_unused_guilds=True, delete_perms_from_unused_guilds=True)
 
 # response = requests.get("https://discord.com/oauth2/849471740052504606")
 # remaining_requests = response.headers.get('X-RateLimit-Limit')
@@ -38,10 +36,13 @@ async def on_ready():
 
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
-
     client.blahajgang_guild = discord.utils.get(client.guilds, id=guild_ids["blahajgang"]) # BLAHAJGang 
 
+    # Changes the bot's presence
     await client.change_presence(activity=discord.Game("Happy Pride! " + default_map["rainbow_flag"]))
+
+    # Syncs global slash commands
+    await slash.sync_all_commands(delete_from_unused_guilds=True, delete_perms_from_unused_guilds=True)
 
 # bot message reactions and replies
 @client.event
@@ -56,8 +57,8 @@ async def on_message(message):
         client.afkdict.pop(message.author)
     for member in message.mentions:  
         if member != message.author and member in client.afkdict:  
-            await message.reply(f"Oh noes! {member.mention} is currently AFK.\nReason: **{client.afkdict[member]}**")
-            await message.reply(f"This bitch afk. YEET [*source* <https://www.youtube.com/watch?v=2Bjy5YQ5xPc>]")
+            await message.reply(content=f"Oh noes! {member.mention} is currently AFK.\nReason: **{client.afkdict[member]}**", delete_after=20)
+            await message.reply(content=f"This bitch afk. YEET [*source* <https://www.youtube.com/watch?v=2Bjy5YQ5xPc>]", delete_after=20)
 
     # split by spaces, commas, periods, etc to get the words in the string
     string = re.split(r"[,:. \"'-]+", message.content.lower())
@@ -172,6 +173,7 @@ async def on_message(message):
             'india': [default_map["flag_in"]],
             'usa': [default_map["flag_us"]],
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
+            'watermelon': [default_map["watermelon"]]
         }
 
         for substr, reacts in fun_reacts.items():
@@ -240,5 +242,4 @@ async def on_message(message):
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
 
-keep_alive()
 client.run(os.getenv('TOKEN'))
