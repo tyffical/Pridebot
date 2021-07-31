@@ -1,26 +1,24 @@
 import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
-from discord_slash.utils.manage_commands import create_option
 
-from data.ids import role_ids, channel_ids
-from data.emojis import default_map, custom_list
-
-import os, re, time, requests, random
-
-from scripts.keep_alive import keep_alive
+import os, re, time, requests, random, time
+from git import Repo
 from dotenv import load_dotenv
 load_dotenv()
+
+from data.ids import role_ids, channel_ids, guild_ids
+from data.emojis import default_map, custom_list
 
 # global vars
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 slash = SlashCommand(client, sync_commands=True)
-response = requests.get("https://discord.com/oauth2/849471740052504606")
-remaining_requests = response.headers.get('X-RateLimit-Limit')
+
+# response = requests.get("https://discord.com/oauth2/849471740052504606")
+# remaining_requests = response.headers.get('X-RateLimit-Limit')
 # print(remaining_requests)
 
 # various dicts
-roles_map = {}
 custom_map = {}
 times = {"last_cry_time": 0}
 
@@ -32,20 +30,36 @@ client.load_extension("cogs.fun")
 client.load_extension("cogs.gifts")
 client.load_extension("cogs.utils")
 
-#bot startup and status
+# bot startup and status
 @client.event
 async def on_ready():
     print("Bot is ready! Logged in as " + str(client.user))
+
+    repo = Repo("./")
+    if 'REPL_OWNER' in os.environ and os.environ['REPL_OWNER'] == "tyffical":
+      host = "Production Repl.it Instance"
+    else:
+      host = "Local Development Instance"
+    await client.get_channel(channel_ids["feed"]).send(f'''<a:partyblahaj:828802809565675570> SUCCESS! I'M ALIVEEEEEEEEEE <a:partyblahaj:828802809565675570>
+
+**Started At:** <t:{int(time.time())}>
+
+**Current Environment:** {host}
+
+**Current Commit:** `{repo.head.commit.author.name}` - `{repo.head.commit.message}`
+''')
+
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
-    blahajgang_guild = discord.utils.get(client.guilds, id=825807863146479657) # BLAHAJGang 
-    roles_map["pun_master"] = discord.utils.get(blahajgang_guild.roles,
-                                                id=role_ids["pun_master"])
-    await client.change_presence(
-        activity=discord.Game("Happy Pride Month! " + default_map["rainbow_flag"]))
+    client.blahajgang_guild = discord.utils.get(client.guilds, id=guild_ids["blahajgang"]) # BLAHAJGang 
+
+    # Changes the bot's presence
+    await client.change_presence(activity=discord.Game("Happy Pride! " + default_map["rainbow_flag"]))
+
+    # Syncs global slash commands
+    await slash.sync_all_commands(delete_from_unused_guilds=True, delete_perms_from_unused_guilds=True)
 
 # bot message reactions and replies
-# TODO: refactor this function (react func and mention func)
 @client.event
 async def on_message(message):
     # ignore bot's own message
@@ -54,15 +68,12 @@ async def on_message(message):
     
     # afk stuff
     if message.author in client.afkdict:
-       await message.channel.send("Welcome back! You are no longer afk.")
-       client.afkdict.pop(message.author)
+        await message.channel.send("Welcome back! You are no longer afk.")
+        client.afkdict.pop(message.author)
     for member in message.mentions:  
-        if member != message.author:  
-            if member in client.afkdict:  
-                afkmsg = client.afkdict[member]  
-                # await message.reply(f"Oh noes! <@{member.id}> is afk. Reason-> {afkmsg}")  #commented out original
-                await message.reply(f"This bitch afk. YEET [*source* https://www.youtube.com/watch?v=2Bjy5YQ5xPc]")
-                await message.reply(f"Reason-> {afkmsg}")
+        if member != message.author and member in client.afkdict:  
+            await message.reply(content=f"Oh noes! {member.mention} is currently AFK.\nReason: **{client.afkdict[member]}**", delete_after=20)
+            await message.reply(content=f"This bitch afk. YEET [*source* <https://www.youtube.com/watch?v=2Bjy5YQ5xPc>]", delete_after=20)
 
     # split by spaces, commas, periods, etc to get the words in the string
     string = re.split(r"[,:. \"'-]+", message.content.lower())
@@ -76,17 +87,17 @@ async def on_message(message):
             await message.add_reaction(default_map["rainbow_flag"])
             await message.add_reaction(custom_map["prideblahaj"])
 
-            #check if author not "Member" (i.e. bot) -> they have no roles
+            # check if author not "Member" (i.e. bot) -> they have no roles
             if not isinstance(message.author, discord.Member):
                 break
 
-            #proud friendo gets extra reacts, per jack's request
-            for role in message.author.roles:
-                if role.id == role_ids["proud_friendo"]:
-                    await message.add_reaction(default_map["rainbow"])
-                    await message.add_reaction(custom_map["rainbowblahaj"])
-                    await message.add_reaction(custom_map["partyblahaj"])
-    
+            friendo_role = discord.utils.get(client.blahajgang_guild.roles, id=role_ids["proud_friendo"])
+            if friendo_role in message.author.roles:
+                # proud friendo gets extra reacts, per jack's request
+                await message.add_reaction(default_map["rainbow"])
+                await message.add_reaction(custom_map["rainbowblahaj"])
+                await message.add_reaction(custom_map["partyblahaj"])
+
     # regex react map for whitespace-sensitive reactions
     regex_reacts = {
         'yee+t': [custom_map["blahajyeet"]],
@@ -98,7 +109,9 @@ async def on_message(message):
             default_map["regional_indicator_y"],
             default_map["white_check_mark"],
             default_map["x"]
-        ]
+        ],
+      'mindblowing': [default_map["exploding_head"]],
+      'thatscool': [default_map["exploding_head"]]
     }
     for regex, reacts in regex_reacts.items():
         if re.search(regex, "".join(message.content.lower().split())) != None:
@@ -156,6 +169,7 @@ async def on_message(message):
             'blahaj': [custom_map["justblahaj"]],
             'shark': [custom_map["justblahaj"]],
             'melon': [custom_map["melonblahaj"]],
+            'holy fruit': [custom_map["melonblahaj"]],
             'uwu': [custom_map["blahajuwu"]],
             'boomer': [default_map["older_adult"]],
             'rain': [default_map["cloud_lightning"], default_map["thunder_cloud_rain"]],
@@ -176,7 +190,8 @@ async def on_message(message):
             'india': [default_map["flag_in"]],
             'usa': [default_map["flag_us"]],
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
-            'pizza ': [default_map["pizza"]]
+            'pizza ': [default_map["pizza"]],
+            'watermelon': [default_map["watermelon"]]
         }
 
         for substr, reacts in fun_reacts.items():
@@ -195,6 +210,9 @@ async def on_message(message):
             'cri': [custom_map["blahajcry"]],
             'sad': [custom_map["blahajcry"]],
             'alone': [custom_map["blahajcry"]],
+            'be quiet': [default_map["shushing_face"]],
+            'shut up': [default_map["shushing_face"]],
+            'shush': [default_map["shushing_face"]]
         }
 
         for substr, reacts in emotion_reacts.items():
@@ -203,20 +221,13 @@ async def on_message(message):
                     await message.add_reaction(react)
 
     #pridebot responding to a mention of its name
-    responses = [
-        "hey homie", "sup mate?", "why'd you summon me, mate?",
-        "sorry, im busy atm"
-    ]
-    if message.channel.id != channel_ids["important_init"]:
-        if "pridebot" in string:
-            r = requests.head(url="https://discord.com/api/v2/")
-            try:
-                await message.reply(
-                    f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity"
-                )
-            except:
-                rn = random.randint(0, 3)
-                await message.reply(responses[rn])
+    responses = ["hey homie", "sup mate?", "why'd you summon me, mate?", "sorry, im busy atm"]
+    if "pridebot" in string:
+        r = requests.head(url="https://discord.com/api/v2/")
+        try:
+            await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
+        except:
+            await message.reply(responses[random.randint(0, 3)])
 
     # per neel's request
     # if "elon" in string:
@@ -239,17 +250,12 @@ async def on_message(message):
     #     await message.reply(nqn_msg.format("meow_heart"))
 
     #restricted to #onlypuns channel, per vijay's request
-    if message.channel.id == channel_ids["onlypuns"]:
-        if "pun" in string:
-            not_pun_master = True
-            #prevent pinging the pun master if they made the msg
-            for role in message.author.roles:
-                if role.id == role_ids["pun_master"]:
-                    not_pun_master = False
-                    break
+    if message.channel.id == channel_ids["onlypuns"] and "pun" in string:
+        pun_role = discord.utils.get(client.blahajgang_guild.roles, id=role_ids["pun_master"])
+        #prevent pinging the pun master if they made the msg
+        if pun_role not in message.author.roles:
             #ping pun master to deliver a needed pun
-            if not_pun_master:
-                await message.reply(roles_map["pun_master"].mention)
+            await message.reply(pun_role.mention)
 
     #react to msgs in #rant-here-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa but only if it has been more than an hour since last cry react, per neel's request
     if message.channel.id == channel_ids["rant"]:
@@ -257,5 +263,4 @@ async def on_message(message):
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
 
-keep_alive()
 client.run(os.getenv('TOKEN'))
