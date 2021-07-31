@@ -43,6 +43,7 @@ default_map = {
     "yawning_face": "\U0001f971",
     "sleeping": "\U0001f634",
     "shushing_face": "\U0001f92b",
+    "exploding_head": "\U0001f92f"
     
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
