@@ -27,7 +27,7 @@ class Fun(commands.Cog):
         if not mention:
             await ctx.send(content="Who do you want to hug?")
         elif mention == myid:
-            await ctx.send(content="Does someone need a hug? [*source* https://www.youtube.com/watch?v=TIMj0s5dvpA]")
+            await ctx.send(content="Does someone need a hug? [*source* <https://www.youtube.com/watch?v=TIMj0s5dvpA>]")
         else:
             await ctx.send("<@{mention}> Everbody needs a hug. It changes your metabolism:\n Reason: {reason}".format(
                 mention=mention, reason=reason),
