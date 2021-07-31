@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
 
-import os, re, time, requests, random, socket
+import os, re, time, requests, random, time
 from git import Repo
 from dotenv import load_dotenv
 load_dotenv()
@@ -36,7 +36,18 @@ async def on_ready():
     print("Bot is ready! Logged in as " + str(client.user))
 
     repo = Repo("./")
-    await client.get_channel(channel_ids["feed"]).send(f"<a:partyblahaj:828802809565675570> SUCCESS! I'M ALIVEEEEEEEEEE <a:partyblahaj:828802809565675570>\n\n**Current Commit:** `{repo.head.commit.author.name}` - `{repo.head.commit.message}`\n**Current Environment:** {socket.gethostname()}")
+    if 'REPL_OWNER' in os.environ and os.environ['REPL_OWNER'] == "tyffical":
+      host = "Production Repl.it Instance"
+    else:
+      host = "Local Development Instance"
+    await client.get_channel(channel_ids["feed"]).send(f'''<a:partyblahaj:828802809565675570> SUCCESS! I'M ALIVEEEEEEEEEE <a:partyblahaj:828802809565675570>
+
+**Started At:** <t:{int(time.time())}>
+
+**Current Environment:** {host}
+
+**Current Commit:** `{repo.head.commit.author.name}` - `{repo.head.commit.message}`
+''')
 
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
