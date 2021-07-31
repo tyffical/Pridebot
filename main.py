@@ -58,8 +58,8 @@ async def on_message(message):
         client.afkdict.pop(message.author)
     for member in message.mentions:  
         if member != message.author and member in client.afkdict:  
-            await message.reply(f"Oh noes! {member.mention} is currently AFK.\nReason: **{client.afkdict[member]}**")
-            await message.reply(f"This bitch afk. YEET [*source* <https://www.youtube.com/watch?v=2Bjy5YQ5xPc>]")
+            await message.reply(content=f"Oh noes! {member.mention} is currently AFK.\nReason: **{client.afkdict[member]}**", delete_after=20)
+            await message.reply(content=f"This bitch afk. YEET [*source* <https://www.youtube.com/watch?v=2Bjy5YQ5xPc>]", delete_after=20)
 
     # split by spaces, commas, periods, etc to get the words in the string
     string = re.split(r"[,:. \"'-]+", message.content.lower())
