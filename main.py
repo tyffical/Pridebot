@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
 
-import os, re, time, requests, random, socket
+import os, re, time, requests, random, time
 from git import Repo
 from dotenv import load_dotenv
 load_dotenv()
@@ -36,7 +36,18 @@ async def on_ready():
     print("Bot is ready! Logged in as " + str(client.user))
 
     repo = Repo("./")
-    await client.get_channel(channel_ids["feed"]).send(f"<a:partyblahaj:828802809565675570> SUCCESS! I'M ALIVEEEEEEEEEE <a:partyblahaj:828802809565675570>\n\n**Current Commit:** `{repo.head.commit.author.name}` - `{repo.head.commit.message}`\n**Current Environment:** {socket.gethostname()}")
+    if 'REPL_OWNER' in os.environ and os.environ['REPL_OWNER'] == "tyffical":
+      host = "Production Repl.it Instance"
+    else:
+      host = "Local Development Instance"
+    await client.get_channel(channel_ids["feed"]).send(f'''<a:partyblahaj:828802809565675570> SUCCESS! I'M ALIVEEEEEEEEEE <a:partyblahaj:828802809565675570>
+
+**Started At:** <t:{int(time.time())}>
+
+**Current Environment:** {host}
+
+**Current Commit:** `{repo.head.commit.author.name}` - `{repo.head.commit.message}`
+''')
 
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
@@ -86,7 +97,7 @@ async def on_message(message):
                 await message.add_reaction(default_map["rainbow"])
                 await message.add_reaction(custom_map["rainbowblahaj"])
                 await message.add_reaction(custom_map["partyblahaj"])
-    
+
     # regex react map for whitespace-sensitive reactions
     regex_reacts = {
         'yee+t': [custom_map["blahajyeet"]],
@@ -98,7 +109,9 @@ async def on_message(message):
             default_map["regional_indicator_y"],
             default_map["white_check_mark"],
             default_map["x"]
-        ]
+        ],
+      'mindblowing': [default_map["exploding_head"]],
+      'thatscool': [default_map["exploding_head"]]
     }
     for regex, reacts in regex_reacts.items():
         if re.search(regex, "".join(message.content.lower().split())) != None:
@@ -156,6 +169,7 @@ async def on_message(message):
             'blahaj': [custom_map["justblahaj"]],
             'shark': [custom_map["justblahaj"]],
             'melon': [custom_map["melonblahaj"]],
+            'holy fruit': [custom_map["melonblahaj"]],
             'uwu': [custom_map["blahajuwu"]],
             'boomer': [default_map["older_adult"]],
             'rain': [default_map["cloud_lightning"], default_map["thunder_cloud_rain"]],
@@ -176,6 +190,7 @@ async def on_message(message):
             'india': [default_map["flag_in"]],
             'usa': [default_map["flag_us"]],
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
+            'pizza ': [default_map["pizza"]],
             'watermelon': [default_map["watermelon"]]
         }
 
@@ -195,6 +210,9 @@ async def on_message(message):
             'cri': [custom_map["blahajcry"]],
             'sad': [custom_map["blahajcry"]],
             'alone': [custom_map["blahajcry"]],
+            'be quiet': [default_map["shushing_face"]],
+            'shut up': [default_map["shushing_face"]],
+            'shush': [default_map["shushing_face"]]
         }
 
         for substr, reacts in emotion_reacts.items():
