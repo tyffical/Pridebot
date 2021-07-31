@@ -26,5 +26,9 @@ class Utils(commands.Cog):
             self.client.afkdict[ctx.author] = reason
             await ctx.send(content="You are now afk. Beware of the real world!", hidden=True)
 
+    @cog_ext.cog_slash(name="invite", description="Invite link for blahaj discord server!")
+    async def contribute(self, ctx):
+        await ctx.send(content="Here's the invite link 🦈 https://blahaj.lol/discord 🦈", hidden=True)
+
 def setup(bot):
     bot.add_cog(Utils(bot))
