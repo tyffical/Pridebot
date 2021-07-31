@@ -94,7 +94,7 @@ Any contributions, no matter how big or small, will benefit the bot and are grea
 
 To learn how to contribute to the bot, head over to the [BLAHAJGang Discord Server](https://blahaj.lol/discord) and ask one of the bot's maintainers to walk you through the repository and setting the bot up locally.
 
-Then, read the [contribution guidelines](https://github.com/tyffical/Pridebot/blob/main/CONTRIBUTING.md) and brush up on how to properly write code for the bot, test it, and open pull requests and issues!
+Then, read the [code of conduct](https://github.com/tyffical/Pridebot/blob/main/CODE_OF_CONDUCT.md) and [contribution guidelines](https://github.com/tyffical/Pridebot/blob/main/CONTRIBUTING.md) and brush up on how to properly write code for the bot, test it, and open pull requests and issues!
 
 When you open an issue or pull request, ping one of the bot's maintainers in the BLAHAJGang Discord Server to go over it and review it! They're usually available during the day EST and will be more than happy to help you out.
 
