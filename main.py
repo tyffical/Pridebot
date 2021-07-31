@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
-import discord_slash
 
 import os, re, time, requests, random
 from dotenv import load_dotenv
