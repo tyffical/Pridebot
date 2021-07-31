@@ -65,6 +65,7 @@ class Gifts(commands.Cog):
                 content="<@{mention}>, here's a plushie for you!\n reason: {reason}".format(
                     mention=mention, reason=reason),
                 file=discord.File('./images/giftBlahaj.png'))
+            await ctx.send(content="It's a avocado... thanks <3 [*source* https://www.youtube.com/watch?v=q48Fp0-1xAY]")
 
 def setup(bot):
     bot.add_cog(Gifts(bot))
