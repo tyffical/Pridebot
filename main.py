@@ -2,7 +2,8 @@ import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
 
-import os, re, time, requests, random
+import os, re, time, requests, random, time
+from git import Repo
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -33,6 +34,20 @@ client.load_extension("cogs.utils")
 @client.event
 async def on_ready():
     print("Bot is ready! Logged in as " + str(client.user))
+
+    repo = Repo("./")
+    if 'REPL_OWNER' in os.environ and os.environ['REPL_OWNER'] == "tyffical":
+      host = "Production Repl.it Instance"
+    else:
+      host = "Local Development Instance"
+    await client.get_channel(channel_ids["feed"]).send(f'''<a:partyblahaj:828802809565675570> SUCCESS! I'M ALIVEEEEEEEEEE <a:partyblahaj:828802809565675570>
+
+**Started At:** <t:{int(time.time())}>
+
+**Current Environment:** {host}
+
+**Current Commit:** `{repo.head.commit.author.name}` - `{repo.head.commit.message}`
+''')
 
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
@@ -82,7 +97,7 @@ async def on_message(message):
                 await message.add_reaction(default_map["rainbow"])
                 await message.add_reaction(custom_map["rainbowblahaj"])
                 await message.add_reaction(custom_map["partyblahaj"])
-    
+
     # regex react map for whitespace-sensitive reactions
     regex_reacts = {
         'yee+t': [custom_map["blahajyeet"]],
@@ -192,6 +207,9 @@ async def on_message(message):
             'cri': [custom_map["blahajcry"]],
             'sad': [custom_map["blahajcry"]],
             'alone': [custom_map["blahajcry"]],
+            'be quiet': [default_map["shushing_face"]],
+            'shut up': [default_map["shushing_face"]],
+            'shush': [default_map["shushing_face"]]
         }
 
         for substr, reacts in emotion_reacts.items():
