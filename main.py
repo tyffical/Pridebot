@@ -38,7 +38,7 @@ async def on_ready():
     print("Bot is ready! Logged in as " + str(client.user))
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
-    blahajgang_guild = discord.utils.get(client.guilds, id="825807863146479657") # BLAHAJGang 
+    blahajgang_guild = discord.utils.get(client.guilds, id=825807863146479657) # BLAHAJGang 
     roles_map["pun_master"] = discord.utils.get(blahajgang_guild.roles,
                                                 id=role_ids["pun_master"])
     await client.change_presence(
