@@ -24,7 +24,7 @@
   - [On Replit](#on-replit)
 - [Contributing](#contributing)
   - [Resources](#resources)
-- [Maintainers] (#maintainers)
+- [Maintainers](#maintainers)
 - [Other Major Contributors](#other-major-contributors)
 - [Support](#support)
 - [License](#license)
