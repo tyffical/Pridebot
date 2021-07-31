@@ -3,14 +3,11 @@ from discord.ext import commands
 from discord_slash import cog_ext
 from discord_slash.utils.manage_commands import create_option
 
-from data.ids import guild_ids
-guild_ids_list = [guild_ids["blahajgang"]]
-
 class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @cog_ext.cog_slash(name="hug", guild_ids=guild_ids_list, description="everyone needs a hug once in a while <3", 
+    @cog_ext.cog_slash(name="hug", description="everyone needs a hug once in a while <3", 
     options=[create_option(
             name="recipient",
             description="Whom do you want to hug?",
@@ -34,7 +31,7 @@ class Fun(commands.Cog):
                 mention=mention, reason=reason),
                 file=discord.File('./images/hug.gif'))
                 
-    @cog_ext.cog_slash(name="arrest", guild_ids=guild_ids_list, description="for some reason blahajgangers wanted to arrest one another?", 
+    @cog_ext.cog_slash(name="arrest", description="for some reason blahajgangers wanted to arrest one another?", 
     options=[create_option(
             name="recipient",
             description="Whom do you want to arrest?",
@@ -60,7 +57,7 @@ class Fun(commands.Cog):
                 content="<@{mention}>, You're under arrest! \n reason: {reason}".format(
                     mention=mention, reason=reason))
 
-    @cog_ext.cog_slash(name="elmoash", guild_ids=guild_ids_list, description="gif of ash morphing into elmo")
+    @cog_ext.cog_slash(name="elmoash", description="gif of ash morphing into elmo")
     async def elmoash(self, ctx):
         await ctx.send(content="https://tenor.com/view/ashwin-rise-elmo-meme-lord-rise-ashwin-meme-lord-rise-gif-22312460")
 

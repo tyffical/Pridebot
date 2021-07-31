@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_option
 
-from data.ids import role_ids, channel_ids, guild_ids
+from data.ids import role_ids, channel_ids
 from data.emojis import default_map, custom_list
 
 import os, re, time, requests, random
@@ -23,7 +23,6 @@ remaining_requests = response.headers.get('X-RateLimit-Limit')
 roles_map = {}
 custom_map = {}
 times = {"last_cry_time": 0}
-guild_ids_list = [guild_ids["blahajgang"]]
 
 # define the afk dict as part of the client, so it can be accessed anywhere
 client.afkdict = {}
@@ -39,7 +38,7 @@ async def on_ready():
     print("Bot is ready! Logged in as " + str(client.user))
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
-    blahajgang_guild = discord.utils.get(client.guilds, id=guild_ids["blahajgang"])
+    blahajgang_guild = discord.utils.get(client.guilds, id="825807863146479657") # BLAHAJGang 
     roles_map["pun_master"] = discord.utils.get(blahajgang_guild.roles,
                                                 id=role_ids["pun_master"])
     await client.change_presence(

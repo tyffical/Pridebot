@@ -2,19 +2,16 @@ from discord.ext import commands
 from discord_slash import cog_ext
 from discord_slash.utils.manage_commands import create_option
 
-from data.ids import guild_ids
-guild_ids_list = [guild_ids["blahajgang"]]
-
 class Utils(commands.Cog):
     def __init__(self, client):
         self.client = client
     
-    @cog_ext.cog_slash(name="contribute", guild_ids=guild_ids_list, description="here's the repo link to contribute to pride bot!")
+    @cog_ext.cog_slash(name="contribute", description="here's the repo link to contribute to pride bot!")
     async def contribute(self, ctx):
         #todo add a dm message with the tree structure of this repo
         await ctx.send(content="Want to make Pridebot even better? Feel free to contribute at https://github.com/tyffical/Pridebot <a:partyblahaj:828802809565675570>")
     
-    @cog_ext.cog_slash(name="afk", guild_ids=guild_ids_list, description="set your afk status so that it will show up when you're tagged", 
+    @cog_ext.cog_slash(name="afk", description="set your afk status so that it will show up when you're tagged", 
     options=[create_option(
             name="reason",
             description="Why will you be afk?",

@@ -5,14 +5,11 @@ from discord_slash.utils.manage_commands import create_option
 
 import glob, random
 
-from data.ids import guild_ids
-guild_ids_list = [guild_ids["blahajgang"]]
-
 class Gifts(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @cog_ext.cog_slash(name="colors", guild_ids=guild_ids_list, description="gift a pride flag!", 
+    @cog_ext.cog_slash(name="colors", description="gift a pride flag!", 
     options=[create_option(
             name="recipient",
             description="Who do you want to give this to?",
@@ -42,7 +39,7 @@ class Gifts(commands.Cog):
                         mention=mention, reason=reason),
                     file=discord.File(random.choice(random_flag)))
 
-    @cog_ext.cog_slash(name="gift", guild_ids=guild_ids_list, description="gift a friendo a blahaj!", 
+    @cog_ext.cog_slash(name="gift", description="gift a friendo a blahaj!", 
     options=[create_option(
             name="recipient",
             description="Who do you want to give this to?",
