@@ -109,7 +109,9 @@ async def on_message(message):
             default_map["regional_indicator_y"],
             default_map["white_check_mark"],
             default_map["x"]
-        ]
+        ],
+      'mindblowing': [default_map["exploding_head"]],
+      'thatscool': [default_map["exploding_head"]]
     }
     for regex, reacts in regex_reacts.items():
         if re.search(regex, "".join(message.content.lower().split())) != None:
