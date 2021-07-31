@@ -97,7 +97,7 @@ async def on_message(message):
                 await message.add_reaction(default_map["rainbow"])
                 await message.add_reaction(custom_map["rainbowblahaj"])
                 await message.add_reaction(custom_map["partyblahaj"])
-    
+
     # regex react map for whitespace-sensitive reactions
     regex_reacts = {
         'yee+t': [custom_map["blahajyeet"]],
@@ -207,6 +207,9 @@ async def on_message(message):
             'cri': [custom_map["blahajcry"]],
             'sad': [custom_map["blahajcry"]],
             'alone': [custom_map["blahajcry"]],
+            'be quiet': [default_map["shushing_face"]],
+            'shut up': [default_map["shushing_face"]],
+            'shush': [default_map["shushing_face"]]
         }
 
         for substr, reacts in emotion_reacts.items():
