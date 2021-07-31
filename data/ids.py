@@ -1,5 +1,3 @@
-role_ids = {"proud_friendo": 849425044345716756, "pun_master": 842825815808409632}
+role_ids = {"proud_friendo": 336616805336481792, "pun_master": 336616805336481792}
 
-channel_ids = {"onlypuns": 842807004879650826, "rant": 838861911374037062, "important_init": 850119805330653224, "sentiment": 860347893729460264}
-
-guild_ids = {"blahajgang": 825807863146479657}
+channel_ids = {"onlypuns": 786461702706167879, "rant": 786461702706167879, "important_init": 786461702706167879, "sentiment": 786461702706167879}
