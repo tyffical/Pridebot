@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord_slash import SlashCommand
 import discord_slash
 
-import os, re, time, requests, random, asyncio
+import os, re, time, requests, random
 from scripts.keep_alive import keep_alive
 from dotenv import load_dotenv
 load_dotenv()
