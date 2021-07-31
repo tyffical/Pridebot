@@ -38,6 +38,7 @@ class Gifts(commands.Cog):
                 "<@{mention}> Here's a gift from blahaj:\n".format(
                         mention=mention, reason=reason),
                     file=discord.File(random.choice(random_flag)))
+            await ctx.send(content="I'm making copies... Move, I'm gay [*source* https://www.youtube.com/watch?v=5HgGgPHYTss]")
 
     @cog_ext.cog_slash(name="gift", description="gift a friendo a blahaj!", 
     options=[create_option(
