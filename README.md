@@ -29,7 +29,6 @@
 - [Contributing](#contributing)
   - [Resources](#resources)
 - [Maintainers](#maintainers)
-- [Other Major Contributors](#other-major-contributors)
 - [Special Thanks](#special-thanks)
 - [Support](#support)
 - [License](#license)

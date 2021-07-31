@@ -2,7 +2,7 @@
 
 ## Getting started
 
-### **Before you begin:** Please contact one of the Pridebot maintainers in the BLAHAJGang Discord Server who will be able to walk you through this repository and how you can best contribute! Otherwise, you might risk working on something that's already in progress or going through unnecessary effort to get your contributions approved.
+**Before you begin:** Please contact one of the Pridebot maintainers in the BLAHAJGang Discord Server who will be able to walk you through this repository and how you can best contribute! Otherwise, you might risk working on something that's already in progress or going through unnecessary effort to get your contributions approved.
 
 # Ways to Contribute
 
