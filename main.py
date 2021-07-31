@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
+import discord_slash
 
-import os, re, time, requests, random
+import os, re, time, requests, random, asyncio
 from scripts.keep_alive import keep_alive
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,7 +14,6 @@ from data.emojis import default_map, custom_list
 # global vars
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 slash = SlashCommand(client, sync_commands=True)
-slash.sync_all_commands(delete_from_unused_guilds=True, delete_perms_from_unused_guilds=True)
 
 # response = requests.get("https://discord.com/oauth2/849471740052504606")
 # remaining_requests = response.headers.get('X-RateLimit-Limit')
@@ -38,10 +38,13 @@ async def on_ready():
 
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
-
     client.blahajgang_guild = discord.utils.get(client.guilds, id=guild_ids["blahajgang"]) # BLAHAJGang 
 
+    # Changes the bot's presence
     await client.change_presence(activity=discord.Game("Happy Pride! " + default_map["rainbow_flag"]))
+
+    # Syncs global slash commands
+    await slash.sync_all_commands(delete_from_unused_guilds=True, delete_perms_from_unused_guilds=True)
 
 # bot message reactions and replies
 @client.event
