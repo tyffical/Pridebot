@@ -2,7 +2,8 @@ import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
 
-import os, re, time, requests, random
+import os, re, time, requests, random, socket
+from git import Repo
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -33,6 +34,9 @@ client.load_extension("cogs.utils")
 @client.event
 async def on_ready():
     print("Bot is ready! Logged in as " + str(client.user))
+
+    repo = Repo("./")
+    await client.get_channel(channel_ids["feed"]).send(f"<a:partyblahaj:828802809565675570> SUCCESS! I'M ALIVEEEEEEEEEE <a:partyblahaj:828802809565675570>\n\n**Current Commit:** `{repo.head.commit.author.name}` - `{repo.head.commit.message}`\n**Current Environment:** {socket.gethostname()}")
 
     for emoji in custom_list:
         custom_map[emoji] = discord.utils.get(client.emojis, name=emoji)
