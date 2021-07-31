@@ -41,7 +41,9 @@ default_map = {
     "thunder_cloud_rain": "\u26C8",
     "cloud_lightning": "\U0001f329",
     "yawning_face": "\U0001f971",
-    "sleeping": "\U0001f634"
+    "sleeping": "\U0001f634",
+    "shushing_face": "\U0001f92b",
+    
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
