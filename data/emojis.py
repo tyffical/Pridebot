@@ -4,24 +4,6 @@
 #emojis
 
 #default -> unicode (see emojiterra or emojigraph for codes)
-default_list = [
-    "rainbow_flag", "rainbow", "rocket", "sparkles", "night_with_stars",
-    "angry", "sunrise", "pirate_flag", "england", "motorboat", "isle_of_man",
-    "tada", "regional_indicator_p", "regional_indicator_a",
-    "regional_indicator_r", "regional_indicator_t", "regional_indicator_y",
-    "white_check_mark", "x", "smiling_face_with_hearts", "watermelon", 
-    "regional_indicator_o",
-    "regional_indicator_l",
-    "o2",
-    "flag_us",
-    "older_adult",
-    "flag_in",
-    "regional_indicator_m",
-    "regional_indicator_e",
-    "m",
-    "e_mail",
-    "flag_vn"
-]
 default_map = {
     "rainbow_flag": "\U0001f3f3\uFE0F\u200D\U0001f308",
     "rainbow": "\U0001f308",
@@ -59,8 +41,10 @@ default_map = {
     "thunder_cloud_rain": "\u26C8",
     "cloud_lightning": "\U0001f329",
     "yawning_face": "\U0001f971",
-    "sleeping": "\U0001f634"
-
+    "sleeping": "\U0001f634",
+    "shushing_face": "\U0001f92b",
+    "exploding_head": "\U0001f92f"
+    
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
