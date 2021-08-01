@@ -4,8 +4,12 @@ from discord_slash import SlashCommand
 
 import os, re, time, requests, random, time
 from git import Repo
+
 from dotenv import load_dotenv
 load_dotenv()
+
+from scripts import keep_alive
+keep_alive.run()
 
 from data.ids import role_ids, channel_ids, guild_ids
 from data.emojis import default_map, custom_list
