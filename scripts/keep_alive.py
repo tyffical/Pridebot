@@ -11,7 +11,7 @@ def home():
 
 @app.route('/refresh', methods = ['POST'])
 def refresh():
-    print(f"repl.deploy{request.json}{request.headers.get('Signature')}")
+    print(f"repl.deploy{request.get_data()}{request.headers.get('Signature')}")
     deploy = input()
     print("repl.deploy-success")
     return deploy
