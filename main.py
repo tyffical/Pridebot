@@ -194,7 +194,11 @@ async def on_message(message):
             'usa': [default_map["flag_us"]],
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
             'pizza': [default_map["pizza"]],
-            'watermelon': [default_map["watermelon"]]
+            'watermelon': [default_map["watermelon"]],
+            'pls': [default_map["pleading_face"]],
+            'please': [default_map["pleading_face"]],
+            'uh': [default_map["expressionless"]]
+            
         }
 
         for substr, reacts in fun_reacts.items():
