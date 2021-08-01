@@ -45,7 +45,7 @@ async def on_ready():
       host = "Local Development Instance"
     await client.get_channel(channel_ids["feed"]).send(f'''<a:partyblahaj:828802809565675570> SUCCESS! I'M ALIVEEEEEEEEEE <a:partyblahaj:828802809565675570>
 
-**Started At:** <t:{int(time.time())}>
+**Started:** <t:{int(time.time())}:R> (<t:{int(time.time())}:F>)
 
 **Current Environment:** {host}
 
