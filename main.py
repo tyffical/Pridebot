@@ -10,6 +10,8 @@ load_dotenv()
 from data.ids import role_ids, channel_ids, guild_ids
 from data.emojis import default_map, custom_list
 
+from scripts.keep_alive import keep_alive
+
 # global vars
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 slash = SlashCommand(client, sync_commands=True)
@@ -264,4 +266,5 @@ async def on_message(message):
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
 
+keep_alive()
 client.run(os.getenv('TOKEN'))
