@@ -2,6 +2,7 @@
 
 from flask import Flask, request
 from threading import Thread
+import json
 
 app = Flask('')
 
@@ -11,10 +12,10 @@ def home():
 
 @app.route('/refresh', methods = ['POST'])
 def refresh():
-    print(f"repl.deploy{request.get_data()}{request.headers.get('Signature')}")
+    print(f"repl.deploy{json.loads(request.get_data())}{request.headers.get('Signature')}")
     deploy = input()
     print("repl.deploy-success")
-    return deploy
+    return json.loads(deploy)
 
 def run():
     app.run(host='0.0.0.0',port=8080)
