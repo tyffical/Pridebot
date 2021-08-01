@@ -8,8 +8,7 @@ from git import Repo
 from dotenv import load_dotenv
 load_dotenv()
 
-from scripts import keep_alive
-keep_alive.run()
+from scripts.keep_alive import keep_alive
 
 from data.ids import role_ids, channel_ids, guild_ids
 from data.emojis import default_map, custom_list
@@ -268,4 +267,5 @@ async def on_message(message):
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
 
+keep_alive()
 client.run(os.getenv('TOKEN'))
