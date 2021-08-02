@@ -52,21 +52,13 @@ default_map = {
 
 #custom -> discord.Emoji objects
 custom_list = [
-    "prideblahaj", "partyblahaj", "justblahaj", "blahajyeet", "rip",
+    "blahajyeet", "prideblahaj", "partyblahaj", "justblahaj", "rip",
     "melonblahaj", "ryancoin", "angrypinghaj", "blahajcry", "royalblahaj",
     "rainbowblahaj", "spaceblahaj", "blahajoof", "pride_heart_trans",
     "pride_heart_pocpride", "pride_heart_pan", "pride_heart_nonbinary",
     "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay",
     "pride_heart_bi", "pride_heart_aro", "pride_heart_ace", "initinit",
-    "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj", "adam", "awwblahaj"
+    "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj", "adam", "awwblahaj",
+    "elonsmoke", "meow_coffee", "catclown", "LMAO", "crii", "blobdance", "meow_code", "meow_heart"
 ]
 custom_map = {}
-
-#nqn -> custom emojis from other servers using NotQuiteNitro bot (can be done by sending a message with !react <emoji_name>)
-#unfortunately this does not work if sender is a bot :(
-#TODO: figure out a way to use nqn anyway?
-nqn_list = [
-    "elonsmoke", "meow_coffee", "catclown", "LMAO", "crii", "blobdance",
-    "meow_code", "meow_heart", "3c"
-]
-nqn_msg = "!react {}"

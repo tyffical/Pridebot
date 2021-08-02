@@ -1,3 +1,2 @@
 language = "python3"
-run = "./repl.deploy --standalone python main.py"
-
+run = "chmod +x ./repl.deploy && ./repl.deploy python main.py"

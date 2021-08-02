@@ -4,8 +4,11 @@ from discord_slash import SlashCommand
 
 import os, re, time, requests, random, time
 from git import Repo
+
 from dotenv import load_dotenv
 load_dotenv()
+
+from scripts.keep_alive import keep_alive
 
 from data.ids import role_ids, channel_ids, guild_ids
 from data.emojis import default_map, custom_list
@@ -42,7 +45,7 @@ async def on_ready():
       host = "Local Development Instance"
     await client.get_channel(channel_ids["feed"]).send(f'''<a:partyblahaj:828802809565675570> SUCCESS! I'M ALIVEEEEEEEEEE <a:partyblahaj:828802809565675570>
 
-**Started At:** <t:{int(time.time())}>
+**Started:** <t:{int(time.time())}:R> (<t:{int(time.time())}:F>)
 
 **Current Environment:** {host}
 
@@ -77,6 +80,16 @@ async def on_message(message):
 
     # split by spaces, commas, periods, etc to get the words in the string
     string = re.split(r"[,:. \"'-]+", message.content.lower())
+    
+    #pridebot responding to a mention of its name aka 'the hotword'
+    responses = ["hey homie", "sup mate?", "why'd you summon me, mate?", "sorry, im busy atm"]
+    hotword = "".join(string) 
+    if "pridebot" in hotword:
+        r = requests.head(url="https://discord.com/api/v2/")
+        try:
+            await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
+        except:
+            await message.reply(responses[random.randint(0, 3)])
 
     # TODO: see if computer vision can be used to detect text or rainbows in images
     # general pride react map
@@ -197,8 +210,17 @@ async def on_message(message):
             'watermelon': [default_map["watermelon"]],
             'pls': [default_map["pleading_face"]],
             'please': [default_map["pleading_face"]],
-            'uh': [default_map["expressionless"]]
-            
+            'uh': [default_map["expressionless"]],
+            'elon': [custom_map["elonsmoke"]],
+            'musk': [custom_map["elonsmoke"]],
+            'coffee': [custom_map["meow_coffee"]],
+            'clown': [custom_map["catclown"]],
+            'dance': [custom_map["blobdance"]],
+            'code': [custom_map["meow_code"]],
+            'hack': [custom_map["meow_code"]],
+            'cat': [custom_map["meow_heart"]],
+            'kitty': [custom_map["meow_heart"]],
+            'meow': [custom_map["meow_heart"]],
         }
 
         for substr, reacts in fun_reacts.items():
@@ -213,11 +235,12 @@ async def on_message(message):
             'angry': [default_map["angry"]],
             'anger': [default_map["angry"]],
             'mad': [default_map["angry"]],
-            'cry': [custom_map["blahajcry"]],
-            'cri': [custom_map["blahajcry"]],
-            'sad': [custom_map["blahajcry"]],
+            'cry': [custom_map["blahajcry"], custom_map["crii"]],
+            'cri': [custom_map["blahajcry"], custom_map["crii"]],
+            'sad': [custom_map["blahajcry"], custom_map["crii"]],
             'alone': [custom_map["blahajcry"]],
-            'shush': [default_map["shushing_face"]]
+            'shush': [default_map["shushing_face"]],
+            'lmao': [custom_map["LMAO"]]
         }
 
         for substr, reacts in emotion_reacts.items():
@@ -225,34 +248,7 @@ async def on_message(message):
                 for react in reacts:
                     await message.add_reaction(react)
 
-    #pridebot responding to a mention of its name
-    responses = ["hey homie", "sup mate?", "why'd you summon me, mate?", "sorry, im busy atm"]
-    if "pridebot" in string:
-        r = requests.head(url="https://discord.com/api/v2/")
-        try:
-            await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
-        except:
-            await message.reply(responses[random.randint(0, 3)])
-
-    # per neel's request
-    # if "elon" in string:
-    #     await message.reply(nqn_msg.format("elonsmoke"))
-    # if "coffee" in string:
-    #     await message.reply(nqn_msg.format("meow_coffee"))
-    # if "clown" in string:
-    #     await message.reply(nqn_msg.format("catclown"))
-    # if "lmao" in string:
-    #     await message.reply(nqn_msg.format("LMAO"))
-    # if "cry" in string or "cri" in string or "sad" in string:
-    #     await message.reply(nqn_msg.format("crii"))
-    # if "dance" in string:
-    #     await message.reply(nqn_msg.format("blobdance"))
-
-    # tiffany having fun
-    # if "code" in string or "hack" in string:
-    #     await message.reply(nqn_msg.format("meow_code"))
-    # if "cat" in string or "kitty" in string or "meow" in string:
-    #     await message.reply(nqn_msg.format("meow_heart"))
+    
 
     #restricted to #onlypuns channel, per vijay's request
     if message.channel.id == channel_ids["onlypuns"] and "pun" in string:
@@ -268,4 +264,5 @@ async def on_message(message):
             await message.add_reaction(custom_map["blahajcry"])
             times["last_cry_time"] = time.time()
 
+keep_alive()
 client.run(os.getenv('TOKEN'))
