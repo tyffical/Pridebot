@@ -36,7 +36,7 @@ class Utils(commands.Cog):
       embed=discord.Embed()
       embed=discord.Embed(title="Here are all the slash commands you can use with pridebot:")
       for key in self.client.better_commands:
-        embed.add_field(name=key, value=self.client.better_commands[key], inline=False)
+        embed.add_field(name="/"+key, value=self.client.better_commands[key], inline=False)
       await ctx.send(embed=embed,hidden=True)  
       
 
