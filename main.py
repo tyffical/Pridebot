@@ -71,7 +71,7 @@ async def on_ready():
     await client.change_presence(activity=discord.Game("Happy Pride! " + default_map["rainbow_flag"]))
 
     # Syncs global slash commands
-    await slash.sync_all_commands(delete_from_unused_guilds=True, delete_perms_from_unused_guilds=True)
+    await slash.sync_all_commands()
 
 # bot message reactions and replies
 @client.event
