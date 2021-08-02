@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
+from discord_slash.utils.manage_commands import get_all_commands
 
 import os, re, time, requests, random, time
 from git import Repo
@@ -28,6 +29,9 @@ times = {"last_cry_time": 0}
 # define the afk dict as part of the client, so it can be accessed anywhere
 client.afkdict = {}
 
+#Defines the dictionary with Slashcommand Name:Description as key:value pairs(also as a part of the client)
+client.better_commands = {}
+
 # add cogs
 client.load_extension("cogs.fun")
 client.load_extension("cogs.gifts")
@@ -36,6 +40,13 @@ client.load_extension("cogs.utils")
 # bot startup and status
 @client.event
 async def on_ready():
+    #for the help command: getting the slashcommands name and description into the better_commands dictionary
+    commands = await get_all_commands(client.user.id, os.getenv('TOKEN'))
+
+    #iterating though commands to get name:description pairs
+    for command in commands:
+        client.better_commands[command["name"]] = command["description"]
+    
     print("Bot is ready! Logged in as " + str(client.user))
 
     repo = Repo("./")
@@ -60,7 +71,7 @@ async def on_ready():
     await client.change_presence(activity=discord.Game("Happy Pride! " + default_map["rainbow_flag"]))
 
     # Syncs global slash commands
-    await slash.sync_all_commands(delete_from_unused_guilds=True, delete_perms_from_unused_guilds=True)
+    await slash.sync_all_commands()
 
 # bot message reactions and replies
 @client.event
@@ -208,6 +219,9 @@ async def on_message(message):
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
             'pizza': [default_map["pizza"]],
             'watermelon': [default_map["watermelon"]],
+            'pls': [default_map["pleading_face"]],
+            'please': [default_map["pleading_face"]],
+            'uh': [default_map["expressionless"]],
             'elon': [custom_map["elonsmoke"]],
             'musk': [custom_map["elonsmoke"]],
             'coffee': [custom_map["meow_coffee"]],
