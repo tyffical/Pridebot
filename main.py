@@ -80,6 +80,16 @@ async def on_message(message):
 
     # split by spaces, commas, periods, etc to get the words in the string
     string = re.split(r"[,:. \"'-]+", message.content.lower())
+    
+    #pridebot responding to a mention of its name aka 'the hotword'
+    responses = ["hey homie", "sup mate?", "why'd you summon me, mate?", "sorry, im busy atm"]
+    hotword = "".join(string) 
+    if "pridebot" in hotword:
+        r = requests.head(url="https://discord.com/api/v2/")
+        try:
+            await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
+        except:
+            await message.reply(responses[random.randint(0, 3)])
 
     # TODO: see if computer vision can be used to detect text or rainbows in images
     # general pride react map
@@ -235,14 +245,7 @@ async def on_message(message):
                 for react in reacts:
                     await message.add_reaction(react)
 
-    #pridebot responding to a mention of its name
-    responses = ["hey homie", "sup mate?", "why'd you summon me, mate?", "sorry, im busy atm"]
-    if "pridebot" in string:
-        r = requests.head(url="https://discord.com/api/v2/")
-        try:
-            await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
-        except:
-            await message.reply(responses[random.randint(0, 3)])
+    
 
     #restricted to #onlypuns channel, per vijay's request
     if message.channel.id == channel_ids["onlypuns"] and "pun" in string:
