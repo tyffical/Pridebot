@@ -80,10 +80,6 @@ async def on_message(message):
 
     # split by spaces, commas, periods, etc to get the words in the string
     string = re.split(r"[,:. \"'-]+", message.content.lower())
-
-    # TODO: see if computer vision can be used to detect text or rainbows in images
-    # general pride react map
-    pride_words = ["pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "june", "heart", "jack"]
     
     #pridebot responding to a mention of its name aka 'the hotword'
     responses = ["hey homie", "sup mate?", "why'd you summon me, mate?", "sorry, im busy atm"]
@@ -95,6 +91,9 @@ async def on_message(message):
         except:
             await message.reply(responses[random.randint(0, 3)])
 
+    # TODO: see if computer vision can be used to detect text or rainbows in images
+    # general pride react map
+    pride_words = ["pride", "proud", "rainbow", "gay", "queer", "lgbt", "love", "june", "heart", "jack"]
 
     for word in pride_words:
         if word in string:
