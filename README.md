@@ -5,6 +5,8 @@
   <a href="https://github.com/tyffical/Pridebot/network/members"><img src="https://img.shields.io/github/forks/tyffical/Pridebot"></a>
   <a href="https://github.com/tyffical/Pridebot/stargazers"><img src="https://img.shields.io/github/stars/tyffical/Pridebot"></a>
   <a href="https://github.com/tyffical/Pridebot/blob/main/LICENSE"><img src="https://img.shields.io/github/license/tyffical/Pridebot"></a>
+  <a  href="https://www.python.org/"><img  src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg"></a>
+
 </p>
 <p align="center">
   <a href="https://blahaj.lol/discord"><img alt="Pride Bot" title="Pride Bot" src="./images/flags/1.png" width="400" align="center"></a>
