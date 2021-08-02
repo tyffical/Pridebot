@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
+from discord_slash.utils.manage_commands import get_all_commands
 
 import os, re, time, requests, random, time
 from git import Repo
@@ -28,6 +29,9 @@ times = {"last_cry_time": 0}
 # define the afk dict as part of the client, so it can be accessed anywhere
 client.afkdict = {}
 
+#Defines the dictionary with Slashcommand Name:Description as key:value pairs(also as a part of the client)
+client.better_commands = {}
+
 # add cogs
 client.load_extension("cogs.fun")
 client.load_extension("cogs.gifts")
@@ -36,6 +40,13 @@ client.load_extension("cogs.utils")
 # bot startup and status
 @client.event
 async def on_ready():
+    #for the help command: getting the slashcommands name and description into the better_commands dictionary
+    commands = await get_all_commands(client.user.id, os.getenv('TOKEN'))
+
+    #iterating though commands to get name:description pairs
+    for command in commands:
+        client.better_commands[command["name"]] = command["description"]
+    
     print("Bot is ready! Logged in as " + str(client.user))
 
     repo = Repo("./")
