@@ -219,6 +219,9 @@ async def on_message(message):
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
             'pizza': [default_map["pizza"]],
             'watermelon': [default_map["watermelon"]],
+            'pls': [default_map["pleading_face"]],
+            'please': [default_map["pleading_face"]],
+            'uh': [default_map["expressionless"]],
             'elon': [custom_map["elonsmoke"]],
             'musk': [custom_map["elonsmoke"]],
             'coffee': [custom_map["meow_coffee"]],
@@ -228,7 +231,7 @@ async def on_message(message):
             'hack': [custom_map["meow_code"]],
             'cat': [custom_map["meow_heart"]],
             'kitty': [custom_map["meow_heart"]],
-            'meow': [custom_map["meow_heart"]]
+            'meow': [custom_map["meow_heart"]],
         }
 
         for substr, reacts in fun_reacts.items():
