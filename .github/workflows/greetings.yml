@@ -1,0 +1,22 @@
+name: Greetings
+
+on: [pull_request]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        pr-message: |
+            👋 Hello @${{ github.actor }}, thank you for submitting a 🚀 PR! and making Pridebot even better:
+            - ✅ Verify your PR is **up-to-date with origin/master.** If your PR is behind origin/master update by running the following, replacing 'feature' with the name of your local branch:
+            - ✅ Verify all Continuous Integration (CI) **checks are passing**.
+            - Join the [discord](https://blahaj.lol/discord) for help !
+            - ✅ Reduce changes to the absolute **minimum** required for your bug fix or feature addition. _"It is not daily increase but daily decrease, hack away the unessential. The closer to the source, the less wastage there is."_  -Bruce Lee
+
+                      
