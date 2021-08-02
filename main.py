@@ -197,7 +197,17 @@ async def on_message(message):
             'usa': [default_map["flag_us"]],
             'party': [default_map["isle_of_man"], default_map["tada"], custom_map["partyblahaj"]],
             'pizza': [default_map["pizza"]],
-            'watermelon': [default_map["watermelon"]]
+            'watermelon': [default_map["watermelon"]],
+            'elon': [custom_map["elonsmoke"]],
+            'musk': [custom_map["elonsmoke"]],
+            'coffee': [custom_map["meow_coffee"]],
+            'clown': [custom_map["catclown"]],
+            'dance': [custom_map["blobdance"]],
+            'code': [custom_map["meow_code"]],
+            'hack': [custom_map["meow_code"]],
+            'cat': [custom_map["meow_heart"]],
+            'kitty': [custom_map["meow_heart"]],
+            'meow': [custom_map["meow_heart"]]
         }
 
         for substr, reacts in fun_reacts.items():
@@ -212,11 +222,12 @@ async def on_message(message):
             'angry': [default_map["angry"]],
             'anger': [default_map["angry"]],
             'mad': [default_map["angry"]],
-            'cry': [custom_map["blahajcry"]],
-            'cri': [custom_map["blahajcry"]],
-            'sad': [custom_map["blahajcry"]],
+            'cry': [custom_map["blahajcry"], custom_map["crii"]],
+            'cri': [custom_map["blahajcry"], custom_map["crii"]],
+            'sad': [custom_map["blahajcry"], custom_map["crii"]],
             'alone': [custom_map["blahajcry"]],
-            'shush': [default_map["shushing_face"]]
+            'shush': [default_map["shushing_face"]],
+            'lmao': [custom_map["LMAO"]]
         }
 
         for substr, reacts in emotion_reacts.items():
@@ -232,26 +243,6 @@ async def on_message(message):
             await message.reply(f"Rate limit {int(r.headers['Retry-After']) / 60} minutes until activity")
         except:
             await message.reply(responses[random.randint(0, 3)])
-
-    # per neel's request
-    # if "elon" in string:
-    #     await message.reply(nqn_msg.format("elonsmoke"))
-    # if "coffee" in string:
-    #     await message.reply(nqn_msg.format("meow_coffee"))
-    # if "clown" in string:
-    #     await message.reply(nqn_msg.format("catclown"))
-    # if "lmao" in string:
-    #     await message.reply(nqn_msg.format("LMAO"))
-    # if "cry" in string or "cri" in string or "sad" in string:
-    #     await message.reply(nqn_msg.format("crii"))
-    # if "dance" in string:
-    #     await message.reply(nqn_msg.format("blobdance"))
-
-    # tiffany having fun
-    # if "code" in string or "hack" in string:
-    #     await message.reply(nqn_msg.format("meow_code"))
-    # if "cat" in string or "kitty" in string or "meow" in string:
-    #     await message.reply(nqn_msg.format("meow_heart"))
 
     #restricted to #onlypuns channel, per vijay's request
     if message.channel.id == channel_ids["onlypuns"] and "pun" in string:
