@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 from discord_slash import cog_ext
 from discord_slash.utils.manage_commands import create_option
@@ -29,6 +30,15 @@ class Utils(commands.Cog):
     @cog_ext.cog_slash(name="invite", description="Invite link for blahaj discord server!")
     async def invite(self, ctx):
         await ctx.send(content="Here's the invite link 🦈 https://blahaj.lol/discord 🦈", hidden=True)
+    
+    @cog_ext.cog_slash(name="help", description="Shows a list of all commands and what it does")
+    async def help(self, ctx):
+      embed=discord.Embed()
+      embed=discord.Embed(title="Here are all the slash commands you can use with pridebot:")
+      for key in self.client.better_commands:
+        embed.add_field(name=key, value=self.client.better_commands[key], inline=False)
+      await ctx.send(embed=embed,hidden=True)  
+      
 
 def setup(bot):
     bot.add_cog(Utils(bot))
