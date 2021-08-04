@@ -44,7 +44,9 @@ default_map = {
     "sleeping": "\U0001f634",
     "shushing_face": "\U0001f92b",
     "exploding_head": "\U0001f92f",
-    "pizza": "\U0001f355"
+    "pizza": "\U0001f355",
+    "expressionless": "\U0001F611",
+    "pleading_face": "\U0001f97a",
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
@@ -57,6 +59,6 @@ custom_list = [
     "pride_heart_lesbian", "pride_heart_genderqueer", "pride_heart_gay",
     "pride_heart_bi", "pride_heart_aro", "pride_heart_ace", "initinit",
     "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj", "adam", "awwblahaj",
-    "elonsmoke", "meow_coffee", "catclown", "LMAO", "crii", "blobdance", "meow_code", "meow_heart"
+    "elonsmoke", "meow_coffee", "catclown", "LMAO", "crii", "blobdance", "meow_code", "meow_heart","susblahaj"
 ]
 custom_map = {}
