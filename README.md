@@ -17,7 +17,7 @@
   
   <br>
   <br>
-  <h2 align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=864548443234107402&permissions=2148002880&scope=bot">I know you want Pride Bot! Click me!</a></h2>
+  <h2 align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=864548443234107402&permissions=242666032192&scope=bot%20applications.commands">I know you want Pride Bot! Click me!</a></h2>
 </p>
 
 <details open="open">
