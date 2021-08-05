@@ -26,5 +26,5 @@ jobs:
             - Verify your PR is up-to-date with ``tyffical/main.`` If your PR is behind ``tyffical/main`` update by running ``git merge tyffical/main`` on your local Git command line.
             - Ensure all of your commit messages as well as your pull request name begin with one of our approved prefixes: ``feat``, ``fix``, ``docs``, ``style``, ``refactor``, ``test``, or ``chore``. This will help us keep our git commit log clean.
             - Join our Discord server at https://blahaj.lol/discord to keep up with the bot's development! :shark:
-            - :shark:, make sure to have fun! We want BLAHAJGang to be a safe and welcoming (and memey) environment for all! :shark:
+            - :shark:make sure to have fun! We want BLAHAJGang to be a safe and welcoming (and memey) environment for all! :shark:
             Have a BLAHAJ-tastic day! :shark:
