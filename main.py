@@ -233,6 +233,7 @@ async def on_message(message):
             'kitty': [custom_map["meow_heart"]],
             'meow': [custom_map["meow_heart"]],
             'sus': [custom_map["susblahaj"]],
+            'github': [custom_map["github"]]
         }
 
         for substr, reacts in fun_reacts.items():
