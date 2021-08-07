@@ -61,5 +61,7 @@ custom_list = [
     "blaheart", "melonBLAHAJ", "yaay", "blahajuwu", "mlhblahaj", "gamerhaj", "adam", "awwblahaj",
     "elonsmoke", "meow_coffee", "catclown", "LMAO", "crii", "blobdance", "meow_code", "meow_heart","susblahaj",
     "github"
+    
+
 ]
 custom_map = {}
