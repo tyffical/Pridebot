@@ -5,6 +5,8 @@
   <a href="https://github.com/tyffical/Pridebot/network/members"><img src="https://img.shields.io/github/forks/tyffical/Pridebot"></a>
   <a href="https://github.com/tyffical/Pridebot/stargazers"><img src="https://img.shields.io/github/stars/tyffical/Pridebot"></a>
   <a href="https://github.com/tyffical/Pridebot/blob/main/LICENSE"><img src="https://img.shields.io/github/license/tyffical/Pridebot"></a>
+  <a  href="https://www.python.org/"><img  src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg"></a>
+  <a  href="https://discord.com/invite/763bUceUHb"><img  src="https://img.shields.io/discord/825807863146479657.svg?color=7289da&label=blahajgang&logo=discord&style=flat-square"></a>
 </p>
 <p align="center">
   <a href="https://blahaj.lol/discord"><img alt="Pride Bot" title="Pride Bot" src="./images/flags/1.png" width="400" align="center"></a>
@@ -15,7 +17,7 @@
   
   <br>
   <br>
-  <h2 align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=864548443234107402&permissions=2148002880&scope=bot">I know you want Pride Bot! Click me!</a></h2>
+  <h2 align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=864548443234107402&permissions=242666032192&scope=bot%20applications.commands">I know you want Pride Bot! Click me!</a></h2>
 </p>
 
 <details open="open">
