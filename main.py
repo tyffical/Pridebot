@@ -270,6 +270,13 @@ async def on_message(message):
             #ping pun master to deliver a needed pun
             await message.reply(pun_role.mention)
 
+    if message.channel.id == channel_ids["onlypuns"] and "rate" in string:
+        pun_role = discord.utils.get(client.blahajgang_guild.roles, id=role_ids["pun_master"])
+        #prevent pinging the pun master if they made the msg
+        if pun_role not in message.author.roles:
+            #ping pun master to deliver a needed pun
+            await message.reply(pun_role.mention + " rate 0-10")
+
     #react to msgs in #rant-here-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa but only if it has been more than an hour since last cry react, per neel's request
     if message.channel.id == channel_ids["rant"]:
         if time.time() > times["last_cry_time"] + 3600:
