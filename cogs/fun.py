@@ -62,6 +62,11 @@ class Fun(commands.Cog):
     @cog_ext.cog_slash(name="elmoash", description="gif of ash morphing into elmo")
     async def elmoash(self, ctx):
         await ctx.send(content="https://tenor.com/view/ashwin-rise-elmo-meme-lord-rise-ashwin-meme-lord-rise-gif-22312460")
+        
+    @cog_ext.cog_slash(name="whereismyblahaj", description="find your blahaj (great ad for a dating site)")
+    async def whereismyblahaj(self, ctx):
+        mention = recipient.id if recipient else None
+        await ctx.send("<@{mention}> I found your Blahaj but you may not like where it is...".format(mention=mention), file=discord.File('./images/WHEREISMYBLAHAJ.png'))
 
 def setup(bot):
     bot.add_cog(Fun(bot))
