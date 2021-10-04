@@ -65,7 +65,7 @@ class Fun(commands.Cog):
         
     @cog_ext.cog_slash(name="whereismyblahaj", description="find your blahaj (great ad for a dating site)")
     async def whereismyblahaj(self, ctx):
-        mention = recipient.id if recipient else None
+        mention = ctx.author_id
         await ctx.send("<@{mention}> I found your Blahaj but you may not like where it is...".format(mention=mention), file=discord.File('./images/WHEREISMYBLAHAJ.png'))
 
 def setup(bot):
