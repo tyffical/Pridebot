@@ -58,6 +58,32 @@ class Fun(commands.Cog):
             await ctx.send(
                 content="<@{mention}>, You're under arrest! \n reason: {reason}".format(
                     mention=mention, reason=reason))
+            
+    @cog_ext.cog_slash(name="yeet", description="yeet someone... you know you want to", 
+    options=[create_option(
+            name="recipient",
+            description="Who do you want to yeet?",
+            option_type=6, #corresponds to USER
+            required=False),
+            create_option(
+            name="reason",
+            description="Why do you want to yeet them?",
+            option_type=3, #corresponds to STRING
+            required=False)
+            ])
+    async def yeet(self, ctx, recipient=None, reason=None):
+        mention = recipient.id if recipient else None
+        myid = ctx.author_id 
+        if not reason:
+            reason = "'Not every yeet has a reason' - Blahajamin Franklin"
+        if not mention:
+            await ctx.send(content="Okay, but who do you want to yeet?")
+        elif mention == myid:
+            await ctx.send(content="You yeet yourself. Congratulations, you played yourself...")
+        else:
+            await ctx.send("<@{mention}> ya been yeeted, friendo! Enjoy the flight!\n Reason: {reason}".format(
+                mention=mention, reason=reason),
+                file=discord.File('./images/yeet-rafiki.gif'))
 
     @cog_ext.cog_slash(name="elmoash", description="gif of ash morphing into elmo")
     async def elmoash(self, ctx):
