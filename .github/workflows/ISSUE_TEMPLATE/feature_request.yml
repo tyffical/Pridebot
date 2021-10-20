@@ -1,0 +1,24 @@
+name: 💡 General Feature Request
+description: Have a new idea/feature for Pridebot? Please suggest!
+title: "[FEATURE] <description>"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A brief description of the enhancement you propose, also include what you tried and what worked.
+    validations:
+      required: true
+    validations:
+      required: false
+  - type: textarea
+    id: extrainfo
+    attributes:
+      label: Additional information
+      description: Is there anything else we should know about this idea?
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        You can also join our Discord community [here](https://blahaj.lol/discord)
