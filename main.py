@@ -233,6 +233,9 @@ async def on_message(message):
             'kitty': [custom_map["meow_heart"]],
             'meow': [custom_map["meow_heart"]],
             'sus': [custom_map["susblahaj"]],
+            'passion': [default_map["heart_on_fire"]],
+            'passionate': [default_map["heart_on_fire"]],
+            'love': [default_map["heart_on_fire"]],
         }
 
         for substr, reacts in fun_reacts.items():
@@ -252,7 +255,8 @@ async def on_message(message):
             'sad': [custom_map["blahajcry"], custom_map["crii"]],
             'alone': [custom_map["blahajcry"]],
             'shush': [default_map["shushing_face"]],
-            'lmao': [custom_map["LMAO"]]
+            'lmao': [custom_map["LMAO"]],
+            'bruh': [default_map["rolling_eyes"]],
         }
 
         for substr, reacts in emotion_reacts.items():
