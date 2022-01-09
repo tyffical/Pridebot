@@ -233,6 +233,11 @@ async def on_message(message):
             'kitty': [custom_map["meow_heart"]],
             'meow': [custom_map["meow_heart"]],
             'sus': [custom_map["susblahaj"]],
+            'minecraft': [default_map["video_game"]],
+            'hacktoberfest': [default_map["jack_o_lantern"]],
+            'October': [default_map["jack_o_lantern"]],        
+            'congrats': [default_map["partying_face"], default_map["confetti_ball"], default_map["tada"]],
+            'study' : [custom_map["studyblahaj"]],
         }
 
         for substr, reacts in fun_reacts.items():
