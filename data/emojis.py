@@ -47,6 +47,7 @@ default_map = {
     "pizza": "\U0001f355",
     "expressionless": "\U0001F611",
     "pleading_face": "\U0001f97a",
+    "cross": "\U0000271D",
 }
 #TODO: find a way to automate getting the unicodes (web scraping?)
 
