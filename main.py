@@ -171,6 +171,7 @@ async def on_message(message):
         'ryan': [custom_map["ryancoin"]],
         'neel': [custom_map["spaceblahaj"]],
         'vik': [custom_map["mlhblahaj"]],
+        'electron': [default_map["zap"]],
         'bailey': [custom_map["awwblahaj"], default_map["flag_vn"]],
         'tiff': [custom_map["royalblahaj"]],
         'tyff': [custom_map["royalblahaj"]],
