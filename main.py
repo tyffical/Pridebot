@@ -171,6 +171,7 @@ async def on_message(message):
         'ryan': [custom_map["ryancoin"]],
         'neel': [custom_map["spaceblahaj"]],
         'vik': [custom_map["mlhblahaj"]],
+        'electron': [default_map["zap"]],
         'bailey': [custom_map["awwblahaj"], default_map["flag_vn"]],
         'tiff': [custom_map["royalblahaj"]],
         'tyff': [custom_map["royalblahaj"]],
@@ -179,7 +180,8 @@ async def on_message(message):
         'ash': [default_map["regional_indicator_m"], default_map["regional_indicator_e"], default_map["m"], default_map["e_mail"]],
         'mara': [default_map["smiling_face_with_hearts"]],
         'adam': [default_map["isle_of_man"], custom_map["adam"]],
-        'rico': [default_map["flag_us"], default_map["flag_in"]]
+        'rico': [default_map["flag_us"], default_map["flag_in"]],
+        'nandan': [default_map["face_exhaling"]]
     }
 
     for substr, reacts in people_reacts.items():
