@@ -5,3 +5,4 @@ flask>=2.0.1
 python-dotenv>=0.18.0
 requests>=2.26.0
 gitpython>=3.1.18
+flair>=0.10
