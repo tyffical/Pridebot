@@ -90,7 +90,7 @@ async def on_message(message):
             await message.reply(content=f"This bitch afk. YEET [*source* <https://www.youtube.com/watch?v=2Bjy5YQ5xPc>]", delete_after=20)
 
     # split by spaces, commas, periods, etc to get the words in the string
-    string = re.split(r"[,:. \"'-]+", message.content.lower())
+    string = re.split(r"[,:. \"'-!\?]+", message.content.lower())
     
     #pridebot responding to a mention of its name aka 'the hotword'
     responses = ["hey homie", "sup mate?", "why'd you summon me, mate?", "sorry, im busy atm"]
