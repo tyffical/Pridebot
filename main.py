@@ -4,6 +4,9 @@ import os
 import random
 import re
 
+from dotenv import load_dotenv
+load_dotenv()
+
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
@@ -140,5 +143,5 @@ async def on_message(message: discord.Message):
         await message.add_reaction(react)
 
 
-token = os.environ['TOKEN']
+token = os.getenv('TOKEN')
 bot.run(token)
